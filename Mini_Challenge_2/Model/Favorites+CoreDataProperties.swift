@@ -16,8 +16,6 @@ extension Favorites {
         return NSFetchRequest<Favorites>(entityName: "Favorites")
     }
 
-    @NSManaged public var user: String?
-    @NSManaged public var restaurant: String?
 
 }
 

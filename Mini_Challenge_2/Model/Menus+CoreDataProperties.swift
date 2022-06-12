@@ -17,8 +17,8 @@ extension Menus {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var restaurant: String?
     @NSManaged public var imageUrl: String?
+    @NSManaged public var restaurant: Restaurants?
 
 }
 

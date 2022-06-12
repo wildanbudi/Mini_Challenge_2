@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Favorites" representedClassName="Favorites" syncable="YES">
-        <attribute name="restaurant" optional="YES" attributeType="String"/>
-        <attribute name="user" optional="YES" attributeType="String"/>
-    </entity>
+    <entity name="Favorites" representedClassName="Favorites" syncable="YES"/>
     <entity name="Menus" representedClassName="Menus" syncable="YES">
         <attribute name="imageUrl" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="restaurant" optional="YES" attributeType="String"/>
+        <relationship name="restaurant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Restaurants" inverseName="menus" inverseEntity="Restaurants"/>
     </entity>
     <entity name="Restaurants" representedClassName="Restaurants" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String"/>
@@ -21,16 +18,19 @@
         <attribute name="priceMin" optional="YES" attributeType="String"/>
         <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="vegeResto" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="menus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Menus" inverseName="restaurant" inverseEntity="Menus"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Users" inverseName="restaurants" inverseEntity="Users"/>
     </entity>
     <entity name="Users" representedClassName="Users" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
+        <relationship name="restaurants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Restaurants" inverseName="users" inverseEntity="Restaurants"/>
     </entity>
     <elements>
-        <element name="Favorites" positionX="-36" positionY="72" width="128" height="59"/>
+        <element name="Favorites" positionX="-36" positionY="72" width="128" height="29"/>
         <element name="Menus" positionX="-18" positionY="81" width="128" height="74"/>
-        <element name="Restaurants" positionX="-63" positionY="-18" width="128" height="194"/>
-        <element name="Users" positionX="-54" positionY="63" width="128" height="74"/>
+        <element name="Restaurants" positionX="-63" positionY="-18" width="128" height="224"/>
+        <element name="Users" positionX="-54" positionY="63" width="128" height="89"/>
     </elements>
 </model>
