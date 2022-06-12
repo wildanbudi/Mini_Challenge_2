@@ -23,8 +23,9 @@
 		436636A128559DCF00808306 /* Menus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4366369F28559DCF00808306 /* Menus+CoreDataClass.swift */; };
 		436636A228559DCF00808306 /* Menus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436636A028559DCF00808306 /* Menus+CoreDataProperties.swift */; };
 		43C5043528559ECA00F1C815 /* DataSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5043428559ECA00F1C815 /* DataSeeder.swift */; };
-		43C5044028561FF300F1C815 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5043F28561FF300F1C815 /* FavoriteViewController.swift */; };
 		43C504442856204000F1C815 /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43C504432856204000F1C815 /* Favorite.storyboard */; };
+		43C5044D285624C400F1C815 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5044C285624C400F1C815 /* FavoriteTableViewController.swift */; };
+		43C5044F2856264E00F1C815 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5044E2856264E00F1C815 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +47,9 @@
 		4366369F28559DCF00808306 /* Menus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Menus+CoreDataClass.swift"; path = "Mini_Challenge_2/Model/Menus+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		436636A028559DCF00808306 /* Menus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Menus+CoreDataProperties.swift"; path = "Mini_Challenge_2/Model/Menus+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		43C5043428559ECA00F1C815 /* DataSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSeeder.swift; sourceTree = "<group>"; };
-		43C5043F28561FF300F1C815 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		43C504432856204000F1C815 /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
+		43C5044C285624C400F1C815 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
+		43C5044E2856264E00F1C815 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				43C5043A28561EF600F1C815 /* Pages */,
 				428364F52854D57B00D057E9 /* Main.storyboard */,
 				428364FB2854D57C00D057E9 /* Assets.xcassets */,
+				43C504452856218800F1C815 /* Themes */,
 				428364FD2854D57C00D057E9 /* LaunchScreen.storyboard */,
 				428365002854D57C00D057E9 /* Info.plist */,
 				428364F82854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld */,
@@ -138,7 +141,7 @@
 		43C5043D28561F8600F1C815 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				43C5043F28561FF300F1C815 /* FavoriteViewController.swift */,
+				43C5044C285624C400F1C815 /* FavoriteTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -149,6 +152,22 @@
 				43C504432856204000F1C815 /* Favorite.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		43C504452856218800F1C815 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				43C504492856220800F1C815 /* UI */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
+		43C504492856220800F1C815 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				43C5044E2856264E00F1C815 /* SearchBar.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,13 +246,14 @@
 				4366369828559C6000808306 /* Restaurants+CoreDataProperties.swift in Sources */,
 				428364F42854D57B00D057E9 /* ViewController.swift in Sources */,
 				4366369A28559C6000808306 /* Users+CoreDataProperties.swift in Sources */,
+				43C5044D285624C400F1C815 /* FavoriteTableViewController.swift in Sources */,
 				4366369928559C6000808306 /* Users+CoreDataClass.swift in Sources */,
+				43C5044F2856264E00F1C815 /* SearchBar.swift in Sources */,
 				436636A128559DCF00808306 /* Menus+CoreDataClass.swift in Sources */,
 				428364FA2854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld in Sources */,
 				428364F02854D57B00D057E9 /* AppDelegate.swift in Sources */,
 				43C5043528559ECA00F1C815 /* DataSeeder.swift in Sources */,
 				436636A228559DCF00808306 /* Menus+CoreDataProperties.swift in Sources */,
-				43C5044028561FF300F1C815 /* FavoriteViewController.swift in Sources */,
 				4366369528559C6000808306 /* Favorites+CoreDataClass.swift in Sources */,
 				4366369728559C6000808306 /* Restaurants+CoreDataClass.swift in Sources */,
 				428364F22854D57B00D057E9 /* SceneDelegate.swift in Sources */,
