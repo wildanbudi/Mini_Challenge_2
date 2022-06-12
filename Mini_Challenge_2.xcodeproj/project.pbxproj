@@ -80,9 +80,9 @@
 				428364EF2854D57B00D057E9 /* AppDelegate.swift */,
 				43C504372855EAB100F1C815 /* Helper */,
 				428364F12854D57B00D057E9 /* SceneDelegate.swift */,
-				428364F32854D57B00D057E9 /* ViewController.swift */,
 				428364F52854D57B00D057E9 /* Main.storyboard */,
 				428364FB2854D57C00D057E9 /* Assets.xcassets */,
+				43C504382855F5CE00F1C815 /* Controller */,
 				428364FD2854D57C00D057E9 /* LaunchScreen.storyboard */,
 				428365002854D57C00D057E9 /* Info.plist */,
 				428364F82854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld */,
@@ -111,6 +111,14 @@
 				43C5043428559ECA00F1C815 /* DataSeeder.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		43C504382855F5CE00F1C815 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				428364F32854D57B00D057E9 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
