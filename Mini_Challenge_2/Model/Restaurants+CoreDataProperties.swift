@@ -27,6 +27,8 @@ extension Restaurants {
     @NSManaged public var rating: Double
     @NSManaged public var imageUrl: String?
     @NSManaged public var vegeResto: Bool
+    @NSManaged public var city: String?
+    @NSManaged public var kecamatan: String?
     @NSManaged public var menus: NSSet?
     @NSManaged public var users: NSSet?
 
