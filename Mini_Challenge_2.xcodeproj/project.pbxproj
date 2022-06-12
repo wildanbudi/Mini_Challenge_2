@@ -14,6 +14,15 @@
 		428364FA2854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 428364F82854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld */; };
 		428364FC2854D57C00D057E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 428364FB2854D57C00D057E9 /* Assets.xcassets */; };
 		428364FF2854D57C00D057E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428364FD2854D57C00D057E9 /* LaunchScreen.storyboard */; };
+		4366369528559C6000808306 /* Favorites+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4366368F28559C6000808306 /* Favorites+CoreDataClass.swift */; };
+		4366369628559C6000808306 /* Favorites+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4366369028559C6000808306 /* Favorites+CoreDataProperties.swift */; };
+		4366369728559C6000808306 /* Restaurants+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4366369128559C6000808306 /* Restaurants+CoreDataClass.swift */; };
+		4366369828559C6000808306 /* Restaurants+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4366369228559C6000808306 /* Restaurants+CoreDataProperties.swift */; };
+		4366369928559C6000808306 /* Users+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4366369328559C6000808306 /* Users+CoreDataClass.swift */; };
+		4366369A28559C6000808306 /* Users+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4366369428559C6000808306 /* Users+CoreDataProperties.swift */; };
+		436636A128559DCF00808306 /* Menus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4366369F28559DCF00808306 /* Menus+CoreDataClass.swift */; };
+		436636A228559DCF00808306 /* Menus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436636A028559DCF00808306 /* Menus+CoreDataProperties.swift */; };
+		43C5043528559ECA00F1C815 /* DataSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5043428559ECA00F1C815 /* DataSeeder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +35,15 @@
 		428364FB2854D57C00D057E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		428364FE2854D57C00D057E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		428365002854D57C00D057E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4366368F28559C6000808306 /* Favorites+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4366369028559C6000808306 /* Favorites+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4366369128559C6000808306 /* Restaurants+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurants+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4366369228559C6000808306 /* Restaurants+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurants+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4366369328559C6000808306 /* Users+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4366369428559C6000808306 /* Users+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4366369F28559DCF00808306 /* Menus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Menus+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		436636A028559DCF00808306 /* Menus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Menus+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		43C5043428559ECA00F1C815 /* DataSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSeeder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +76,15 @@
 		428364EE2854D57B00D057E9 /* Mini_Challenge_2 */ = {
 			isa = PBXGroup;
 			children = (
+				4366369F28559DCF00808306 /* Menus+CoreDataClass.swift */,
+				43C5043428559ECA00F1C815 /* DataSeeder.swift */,
+				436636A028559DCF00808306 /* Menus+CoreDataProperties.swift */,
+				4366368F28559C6000808306 /* Favorites+CoreDataClass.swift */,
+				4366369028559C6000808306 /* Favorites+CoreDataProperties.swift */,
+				4366369128559C6000808306 /* Restaurants+CoreDataClass.swift */,
+				4366369228559C6000808306 /* Restaurants+CoreDataProperties.swift */,
+				4366369328559C6000808306 /* Users+CoreDataClass.swift */,
+				4366369428559C6000808306 /* Users+CoreDataProperties.swift */,
 				428364EF2854D57B00D057E9 /* AppDelegate.swift */,
 				428364F12854D57B00D057E9 /* SceneDelegate.swift */,
 				428364F32854D57B00D057E9 /* ViewController.swift */,
@@ -141,9 +168,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4366369628559C6000808306 /* Favorites+CoreDataProperties.swift in Sources */,
+				4366369828559C6000808306 /* Restaurants+CoreDataProperties.swift in Sources */,
 				428364F42854D57B00D057E9 /* ViewController.swift in Sources */,
+				4366369A28559C6000808306 /* Users+CoreDataProperties.swift in Sources */,
+				4366369928559C6000808306 /* Users+CoreDataClass.swift in Sources */,
+				436636A128559DCF00808306 /* Menus+CoreDataClass.swift in Sources */,
 				428364FA2854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld in Sources */,
 				428364F02854D57B00D057E9 /* AppDelegate.swift in Sources */,
+				43C5043528559ECA00F1C815 /* DataSeeder.swift in Sources */,
+				436636A228559DCF00808306 /* Menus+CoreDataProperties.swift in Sources */,
+				4366369528559C6000808306 /* Favorites+CoreDataClass.swift in Sources */,
+				4366369728559C6000808306 /* Restaurants+CoreDataClass.swift in Sources */,
 				428364F22854D57B00D057E9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
