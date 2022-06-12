@@ -11,14 +11,10 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
         let dataSeeder = DataSeeder(context: self.persistentContainer.viewContext)
-        // Uncomment line below to seed data to database (coredata) at the first time build
-//        dataSeeder.process()
+        dataSeeder.process()
         
         return true
     }

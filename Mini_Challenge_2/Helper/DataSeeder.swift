@@ -34,10 +34,14 @@ public class DataSeeder {
     }
 
     public func process() {
-        seedRestaurants()
-        
         let restaurantsFetchRequest = NSFetchRequest<Restaurants>(entityName: "Restaurants")
         let allRestaurants = try! context.fetch(restaurantsFetchRequest)
+        
+        if !allRestaurants.isEmpty { return }
+        
+        print("seeding data to database is starting...")
+        seedRestaurants()
+        
         restoIndoVegan = allRestaurants.filter({(r: Restaurants) -> Bool in
             return r.name == "Resto Indo Vegan"
         }).first!
@@ -68,6 +72,7 @@ public class DataSeeder {
         
         seedMenus()
         seedUsers()
+        print("seeding data to database success")
     }
     
     fileprivate func seedRestaurants() {
