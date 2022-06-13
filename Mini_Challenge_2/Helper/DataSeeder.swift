@@ -34,13 +34,26 @@ public class DataSeeder {
     }
 
     public func process() {
-        let restaurantsFetchRequest = NSFetchRequest<Restaurants>(entityName: "Restaurants")
-        let allRestaurants = try! context.fetch(restaurantsFetchRequest)
-        
-        if !allRestaurants.isEmpty { return }
+        let checkRestaurant = try! context.fetch(Restaurants.fetchRequest())
+        let r = checkRestaurant.filter({(r: Restaurants) -> Bool in
+            return r.name == "Resto Indo Vegan"
+        }).first ?? Restaurants(context: context)
+
+        if r.name == "Resto Indo Vegan" { return }
         
         print("seeding data to database is starting...")
         seedRestaurants()
+        let allRestaurants = try! context.fetch(Restaurants.fetchRequest())
+        let nilRows = allRestaurants.filter({(r: Restaurants) -> Bool in
+            return r.name == nil
+        })
+        for row in nilRows {
+            context.delete(row)
+            do {
+                try context.save()
+            } catch _ {
+            }
+        }
         
         restoIndoVegan = allRestaurants.filter({(r: Restaurants) -> Bool in
             return r.name == "Resto Indo Vegan"
@@ -100,6 +113,9 @@ public class DataSeeder {
             newRestaurant.imageUrl = restaurant.imageUrl
             newRestaurant.latitude = restaurant.latitude
             newRestaurant.longitude = restaurant.longitude
+            newRestaurant.vegeResto = restaurant.vegeResto
+            newRestaurant.city = restaurant.city
+            newRestaurant.kecamatan = restaurant.kecamatan
         }
         
         do {
