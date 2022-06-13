@@ -34,12 +34,12 @@ public class DataSeeder {
     }
 
     public func process() {
-        let checkRestaurant = try! context.fetch(Restaurants.fetchRequest())
-        let r = checkRestaurant.filter({(r: Restaurants) -> Bool in
-            return r.name == "Resto Indo Vegan"
-        }).first ?? Restaurants(context: context)
-
-        if r.name == "Resto Indo Vegan" { return }
+        let checkUser = try! context.fetch(Users.fetchRequest())
+        let r = checkUser.filter({(r: Users) -> Bool in
+            return r.name == "Vegeta Doe"
+        }).first ?? Users(context: context)
+        
+        if r.name == "Vegeta Doe" { return }
         
         print("seeding data to database is starting...")
         seedRestaurants()
@@ -85,20 +85,32 @@ public class DataSeeder {
         
         seedMenus()
         seedUsers()
+        
+        let users = try! context.fetch(Users.fetchRequest())
+        let nilUsersRows = users.filter({(r: Users) -> Bool in
+            return r.name == nil
+        })
+        for row in nilUsersRows {
+            context.delete(row)
+            do {
+                try context.save()
+            } catch _ {
+            }
+        }
         print("seeding data to database success")
     }
     
     fileprivate func seedRestaurants() {
         let restaurants = [
-            (name: "Resto Indo Vegan", rating: 4.5, openHours: "07:00 - 18:00", phone: "0811953539", priceMin: "10000", priceMax: "60000", address: "Jalan Duri Selatan 1 No. 9, RT.06/ RW.02, RT.6/RW.2, Duri Sel., Kec. Tambora, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11270", imageUrl: "https://drive.google.com/uc?id=1eQa7DP1a1fC9gkjBvg24XJSaJkEDeUFW", latitude: 0.0, longitude: 0.0, vegeResto: true, city: "Jakarta", kecamatan: "Tambora"),
-            (name: "Dharma Kitchen", rating: 4.5, openHours: "10:00 - 21:00", phone: "0216618302", priceMin: "75000", priceMax: "200000", address: "Jl. Pluit Kencana Raya No.124, RT.10/RW.7, Pluit, Kec. Penjaringan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14450", imageUrl: "https://drive.google.com/uc?id=1mpJh9v98tJeahcZIFpsZNPlxZkyxEn2q", latitude: 0.0, longitude: 0.0, vegeResto: true, city: "Jakarta", kecamatan: "Penjaringan"),
-            (name: "Grassland Vegetarian Restaurant", rating: 4.5, openHours: "10:00 - 21:00", phone: "02129414533", priceMin: "10000", priceMax: "50000", address: "Jl. Hadiah 1 No.1564A, RT.7/RW.2, Jelambar, Kec. Grogol petamburan, Kota Jakarta", imageUrl: "https://drive.google.com/uc?id=1gboIULBnm7PdwGKYIRan75D5pK2e-6eG", latitude: 0.0, longitude: 0.0, vegeResto: true, city: "Jakarta", kecamatan: "Grogol Petamburan"),
-            (name: "Vegetus Vegetarian", rating: 4.5, openHours: "09:00 - 22:00", phone: "083876501618", priceMin: "50000", priceMax: "200000", address: "Jl. Pluit Karang Timur, Blok O-8 Timur No.38-39, RT.5/RW.14, Pluit, Penjaringan, RT.5/RW.14, Pluit, Kec. Penjaringan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14450", imageUrl: "https://drive.google.com/uc?id=1V9n_XKuDsbUtTNaDQWfVRvTvmt--bCm_", latitude: 0.0, longitude: 0.0, vegeResto: true, city: "Jakarta", kecamatan: "Penjaringan"),
-            (name: "Che En Vegetarian", rating: 4.5, openHours: "07:00 - 19:00", phone: "0216413523", priceMin: "5000", priceMax: "100000", address: "Gg. 22 No.11 B, RT.1/RW.1, Pademangan Tim., Kec. Pademangan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14410", imageUrl: "https://drive.google.com/uc?id=1DM9PYHzJTAyc3zT-p59JxVW94SklNU3l", latitude: 0.0, longitude: 0.0, vegeResto: true, city: "Jakarta", kecamatan: "Pademangan"),
-            (name: "Starbucks", rating: 4.6, openHours: "06:00 - 22:00", phone: "02139833377", priceMin: "20000", priceMax: "60000", address: "Jl. M.H. Thamrin No.9, RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340", imageUrl: "", latitude: 0.0, longitude: 0.0, vegeResto: false, city: "Jakarta", kecamatan: "Menteng"),
-            (name: "Kayu-Kayu Restaurant", rating: 4.0, openHours: "10:00 - 22:00", phone: "081318002828", priceMin: "10000", priceMax: "350000", address: "Jl. Jalur Sutera No.28A, Pakualam, Kec. Serpong Utara, Kota Tangerang Selatan, Banten 15325", imageUrl: "https://drive.google.com/uc?id=1z1i63WVWTdCjc3m3gjYRFEMoM_gEwvtX", latitude: 0.0, longitude: 0.0, vegeResto: false, city: "Tangerang", kecamatan: "Serpong Utara"),
-            (name: "Taman Santap Rumah Kayu", rating: 4.5, openHours: "10:00 - 22:00", phone: "02154212011", priceMin: "15000", priceMax: "300000", address: "Jl. Ki Hajar Dewantara SKL No. 002, Pakulonan Bar., Kec. Klp. Dua, Kabupaten Tangerang, Banten 15810", imageUrl: "https://drive.google.com/uc?id=1CFRtD39_ZJbvZD9w7kGN2zV71Unl3EWB", latitude: 0.0, longitude: 0.0, vegeResto: false, city: "Tangerang", kecamatan: "Kelapa Dua"),
-            (name: "Formaggio Coffee and Resto", rating: 4.5, openHours: "10:00 - 22:00", phone: "02155783238", priceMin: "20000", priceMax: "60000", address: "Jl. Nyimas Melati No.A2, RT.2/RW.1, Sukarasa, Kec. Tangerang, Kota Tangerang, Banten 15111", imageUrl: "https://drive.google.com/uc?id=1RuwaZ1ITF6XACBQZPu6w5ACW4bgAknXr", latitude: 0.0, longitude: 0.0, vegeResto: false, city: "Tangerang", kecamatan: "Tangerang"),
+            (name: "Resto Indo Vegan", rating: 4.5, openHours: "07:00 - 18:00", phone: "0811953539", priceMin: "10000", priceMax: "60000", address: "Jalan Duri Selatan 1 No. 9, RT.06/ RW.02, RT.6/RW.2, Duri Sel., Kec. Tambora, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11270", imageUrl: "https://drive.google.com/uc?id=1eQa7DP1a1fC9gkjBvg24XJSaJkEDeUFW", latitude: -6.16091552563978, longitude: 106.80619523969511, vegeResto: true, city: "Jakarta", kecamatan: "Tambora"),
+            (name: "Dharma Kitchen", rating: 4.5, openHours: "10:00 - 21:00", phone: "0216618302", priceMin: "75000", priceMax: "200000", address: "Jl. Pluit Kencana Raya No.124, RT.10/RW.7, Pluit, Kec. Penjaringan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14450", imageUrl: "https://drive.google.com/uc?id=1mpJh9v98tJeahcZIFpsZNPlxZkyxEn2q", latitude: -6.119620138581436, longitude: 106.78849407789964, vegeResto: true, city: "Jakarta", kecamatan: "Penjaringan"),
+            (name: "Grassland Vegetarian Restaurant", rating: 4.5, openHours: "10:00 - 21:00", phone: "02129414533", priceMin: "10000", priceMax: "50000", address: "Jl. Hadiah 1 No.1564A, RT.7/RW.2, Jelambar, Kec. Grogol petamburan, Kota Jakarta", imageUrl: "https://drive.google.com/uc?id=1gboIULBnm7PdwGKYIRan75D5pK2e-6eG", latitude: -6.161418660663324, longitude: 106.78157470302833, vegeResto: true, city: "Jakarta", kecamatan: "Grogol Petamburan"),
+            (name: "Vegetus Vegetarian", rating: 4.5, openHours: "09:00 - 22:00", phone: "083876501618", priceMin: "50000", priceMax: "200000", address: "Jl. Pluit Karang Timur, Blok O-8 Timur No.38-39, RT.5/RW.14, Pluit, Penjaringan, RT.5/RW.14, Pluit, Kec. Penjaringan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14450", imageUrl: "https://drive.google.com/uc?id=1V9n_XKuDsbUtTNaDQWfVRvTvmt--bCm_", latitude: -6.1222719045183265, longitude: 106.78334629139079, vegeResto: true, city: "Jakarta", kecamatan: "Penjaringan"),
+            (name: "Che En Vegetarian", rating: 4.5, openHours: "07:00 - 19:00", phone: "0216413523", priceMin: "5000", priceMax: "100000", address: "Gg. 22 No.11 B, RT.1/RW.1, Pademangan Tim., Kec. Pademangan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14410", imageUrl: "https://drive.google.com/uc?id=1DM9PYHzJTAyc3zT-p59JxVW94SklNU3l", latitude: -6.134237332933617, longitude: 106.84126431600886, vegeResto: true, city: "Jakarta", kecamatan: "Pademangan"),
+            (name: "Starbucks", rating: 4.6, openHours: "06:00 - 22:00", phone: "02139833377", priceMin: "20000", priceMax: "60000", address: "Jl. M.H. Thamrin No.9, RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340", imageUrl: "", latitude: -6.186636432957156, longitude: 106.82386064906369, vegeResto: false, city: "Jakarta", kecamatan: "Menteng"),
+            (name: "Kayu-Kayu Restaurant", rating: 4.0, openHours: "10:00 - 22:00", phone: "081318002828", priceMin: "10000", priceMax: "350000", address: "Jl. Jalur Sutera No.28A, Pakualam, Kec. Serpong Utara, Kota Tangerang Selatan, Banten 15325", imageUrl: "https://drive.google.com/uc?id=1z1i63WVWTdCjc3m3gjYRFEMoM_gEwvtX", latitude: -6.232621398368496, longitude: 106.66053343928051, vegeResto: false, city: "Tangerang", kecamatan: "Serpong Utara"),
+            (name: "Taman Santap Rumah Kayu", rating: 4.5, openHours: "10:00 - 22:00", phone: "02154212011", priceMin: "15000", priceMax: "300000", address: "Jl. Ki Hajar Dewantara SKL No. 002, Pakulonan Bar., Kec. Klp. Dua, Kabupaten Tangerang, Banten 15810", imageUrl: "https://drive.google.com/uc?id=1CFRtD39_ZJbvZD9w7kGN2zV71Unl3EWB", latitude: -6.238778671417341, longitude: 106.63809836440906, vegeResto: false, city: "Tangerang", kecamatan: "Kelapa Dua"),
+            (name: "Formaggio Coffee and Resto", rating: 4.5, openHours: "10:00 - 22:00", phone: "02155783238", priceMin: "20000", priceMax: "60000", address: "Jl. Nyimas Melati No.A2, RT.2/RW.1, Sukarasa, Kec. Tangerang, Kota Tangerang, Banten 15111", imageUrl: "https://drive.google.com/uc?id=1RuwaZ1ITF6XACBQZPu6w5ACW4bgAknXr", latitude: -6.172003296055309, longitude: 106.63311005277136, vegeResto: false, city: "Tangerang", kecamatan: "Tangerang"),
         ]
         
         for restaurant in restaurants {
