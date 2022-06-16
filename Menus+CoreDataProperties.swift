@@ -2,7 +2,7 @@
 //  Menus+CoreDataProperties.swift
 //  Mini_Challenge_2
 //
-//  Created by feedloop on 12/06/22.
+//  Created by feedloop on 16/06/22.
 //
 //
 
@@ -16,8 +16,9 @@ extension Menus {
         return NSFetchRequest<Menus>(entityName: "Menus")
     }
 
-    @NSManaged public var name: String?
     @NSManaged public var imageUrl: String?
+    @NSManaged public var name: String?
+    @NSManaged public var image: Data?
     @NSManaged public var restaurant: Restaurants?
 
 }

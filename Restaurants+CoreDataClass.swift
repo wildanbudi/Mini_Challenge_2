@@ -2,7 +2,7 @@
 //  Restaurants+CoreDataClass.swift
 //  Mini_Challenge_2
 //
-//  Created by feedloop on 12/06/22.
+//  Created by feedloop on 16/06/22.
 //
 //
 
