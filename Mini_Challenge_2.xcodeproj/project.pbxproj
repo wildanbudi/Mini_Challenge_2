@@ -68,6 +68,7 @@
 		428364E32854D57B00D057E9 = {
 			isa = PBXGroup;
 			children = (
+				4326F887285B97070095665D /* .gitignore */,
 				428364EE2854D57B00D057E9 /* Mini_Challenge_2 */,
 				428364ED2854D57B00D057E9 /* Products */,
 			);
@@ -95,7 +96,6 @@
 				428364FD2854D57C00D057E9 /* LaunchScreen.storyboard */,
 				428365002854D57C00D057E9 /* Info.plist */,
 				428364F82854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld */,
-				4326F887285B97070095665D /* .gitignore */,
 			);
 			path = Mini_Challenge_2;
 			sourceTree = "<group>";
