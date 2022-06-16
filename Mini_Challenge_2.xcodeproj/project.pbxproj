@@ -38,10 +38,10 @@
 		428364FB2854D57C00D057E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		428364FE2854D57C00D057E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		428365002854D57C00D057E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4326F87F285ADFBA0095665D /* Restaurants+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurants+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		4326F880285ADFBA0095665D /* Restaurants+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurants+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		4326F883285ADFD80095665D /* Menus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Menus+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		4326F884285ADFD80095665D /* Menus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Menus+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4326F87F285ADFBA0095665D /* Restaurants+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurants+CoreDataClass.swift"; path = "Mini_Challenge_2/Model/Restaurants+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4326F880285ADFBA0095665D /* Restaurants+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurants+CoreDataProperties.swift"; path = "Mini_Challenge_2/Model/Restaurants+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4326F883285ADFD80095665D /* Menus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Menus+CoreDataClass.swift"; path = "Mini_Challenge_2/Model/Menus+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4326F884285ADFD80095665D /* Menus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Menus+CoreDataProperties.swift"; path = "Mini_Challenge_2/Model/Menus+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4366368F28559C6000808306 /* Favorites+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorites+CoreDataClass.swift"; path = "Mini_Challenge_2/Model/Favorites+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		4366369028559C6000808306 /* Favorites+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorites+CoreDataProperties.swift"; path = "Mini_Challenge_2/Model/Favorites+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4366369328559C6000808306 /* Users+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Users+CoreDataClass.swift"; path = "Mini_Challenge_2/Model/Users+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -100,11 +100,11 @@
 		43C504362855EA9100F1C815 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4366368F28559C6000808306 /* Favorites+CoreDataClass.swift */,
 				4326F883285ADFD80095665D /* Menus+CoreDataClass.swift */,
 				4326F884285ADFD80095665D /* Menus+CoreDataProperties.swift */,
 				4326F87F285ADFBA0095665D /* Restaurants+CoreDataClass.swift */,
 				4326F880285ADFBA0095665D /* Restaurants+CoreDataProperties.swift */,
-				4366368F28559C6000808306 /* Favorites+CoreDataClass.swift */,
 				4366369028559C6000808306 /* Favorites+CoreDataProperties.swift */,
 				4366369328559C6000808306 /* Users+CoreDataClass.swift */,
 				4366369428559C6000808306 /* Users+CoreDataProperties.swift */,
