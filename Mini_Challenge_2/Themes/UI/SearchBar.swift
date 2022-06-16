@@ -9,23 +9,27 @@ import UIKit
 
 class SearchBar {
     
-    var data: [String] = []
-    var filteredData: [String] = []
+    var data: [Restaurants] = []
+    var filteredData: [Restaurants] = []
     
-    public func search(data: [String], searchText: String) -> [String] {
+    public func search(setData: NSSet, searchText: String) -> [Restaurants] {
+        let data = setData.allObjects as! [Restaurants]
         self.data = data
         filteredData = []
         
+        print(searchText)
         if searchText == "" {
             filteredData = data
         } else {
             for d in data {
-                if d.lowercased().contains(searchText.lowercased()) {
+                if d.name!.lowercased().contains(searchText.lowercased()) {
+                    print(d.name!)
                     filteredData.append(d)
                 }
             }
         }
         
+        print(filteredData)
         return filteredData
     }
 
