@@ -25,8 +25,6 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
         favoriteTableView.dataSource = self
         
         searchBar.delegate = self
-//        tableView.frame = view.bounds
-//        view.addSubview(favoriteTable)
         
         
         let user = usersData.filter({(r: Users) -> Bool in
@@ -102,8 +100,8 @@ extension FavoriteViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let favoriteCell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! FavoriteTableViewCell
             
-        let restaurant = (favRestaurantsData.allObjects as! [Restaurants])[indexPath.row]
-        favoriteCell.restaurantImageView.loadFrom(URLAddress: restaurant.imageUrl!)
+        let restaurant = filteredData[indexPath.row]
+        favoriteCell.restaurantImageView.image = UIImage(data: restaurant.image!)
         favoriteCell.restaurantImageView.layer.cornerRadius = 7
         favoriteCell.restaurantNameLabel.text = restaurant.name
         favoriteCell.restaurantKecamatanLabel.text = restaurant.kecamatan

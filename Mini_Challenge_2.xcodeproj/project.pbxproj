@@ -22,6 +22,7 @@
 		4366369A28559C6000808306 /* Users+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4366369428559C6000808306 /* Users+CoreDataProperties.swift */; };
 		436636A128559DCF00808306 /* Menus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4366369F28559DCF00808306 /* Menus+CoreDataClass.swift */; };
 		436636A228559DCF00808306 /* Menus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436636A028559DCF00808306 /* Menus+CoreDataProperties.swift */; };
+		437454D9285CC222006403EC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 437454D8285CC222006403EC /* .gitignore */; };
 		43C5043528559ECA00F1C815 /* DataSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5043428559ECA00F1C815 /* DataSeeder.swift */; };
 		43C504442856204000F1C815 /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43C504432856204000F1C815 /* Favorite.storyboard */; };
 		43C5044F2856264E00F1C815 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5044E2856264E00F1C815 /* SearchBar.swift */; };
@@ -47,6 +48,7 @@
 		4366369428559C6000808306 /* Users+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Users+CoreDataProperties.swift"; path = "Mini_Challenge_2/Model/Users+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4366369F28559DCF00808306 /* Menus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Menus+CoreDataClass.swift"; path = "Mini_Challenge_2/Model/Menus+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		436636A028559DCF00808306 /* Menus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Menus+CoreDataProperties.swift"; path = "Mini_Challenge_2/Model/Menus+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		437454D8285CC222006403EC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		43C5043428559ECA00F1C815 /* DataSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSeeder.swift; sourceTree = "<group>"; };
 		43C504432856204000F1C815 /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
 		43C5044E2856264E00F1C815 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		428364E32854D57B00D057E9 = {
 			isa = PBXGroup;
 			children = (
+				437454D8285CC222006403EC /* .gitignore */,
 				428364EE2854D57B00D057E9 /* Mini_Challenge_2 */,
 				428364ED2854D57B00D057E9 /* Products */,
 			);
@@ -231,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				437454D9285CC222006403EC /* .gitignore in Resources */,
 				428364FF2854D57C00D057E9 /* LaunchScreen.storyboard in Resources */,
 				428364FC2854D57C00D057E9 /* Assets.xcassets in Resources */,
 				43C504442856204000F1C815 /* Favorite.storyboard in Resources */,
@@ -407,7 +411,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KJUW4SG84H;
+				DEVELOPMENT_TEAM = 7PHRUAQA32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini_Challenge_2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -435,7 +439,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KJUW4SG84H;
+				DEVELOPMENT_TEAM = 7PHRUAQA32;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini_Challenge_2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
