@@ -28,6 +28,12 @@
 		43C5044F2856264E00F1C815 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5044E2856264E00F1C815 /* SearchBar.swift */; };
 		43C5045228562EAE00F1C815 /* Restaurants+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5045028562EAE00F1C815 /* Restaurants+CoreDataClass.swift */; };
 		43C5045328562EAE00F1C815 /* Restaurants+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5045128562EAE00F1C815 /* Restaurants+CoreDataProperties.swift */; };
+		4A160533285CA0F7003C1434 /* DetailPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A160532285CA0F7003C1434 /* DetailPage.storyboard */; };
+		4A160536285CA1B1003C1434 /* OpenMapsDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A160535285CA1B1003C1434 /* OpenMapsDirections.swift */; };
+		4A160539285CA347003C1434 /* PortraitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A160538285CA347003C1434 /* PortraitCollectionViewCell.swift */; };
+		4A16053B285CA35C003C1434 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16053A285CA35C003C1434 /* MockData.swift */; };
+		4ACFCC672858D92E00BE1E52 /* CenteredCollectionView in Frameworks */ = {isa = PBXBuildFile; productRef = 4ACFCC662858D92E00BE1E52 /* CenteredCollectionView */; };
+		4ACFCC6D2858E06A00BE1E52 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACFCC6C2858E06A00BE1E52 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +60,11 @@
 		43C5044E2856264E00F1C815 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		43C5045028562EAE00F1C815 /* Restaurants+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurants+CoreDataClass.swift"; path = "Mini_Challenge_2/Model/Restaurants+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		43C5045128562EAE00F1C815 /* Restaurants+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurants+CoreDataProperties.swift"; path = "Mini_Challenge_2/Model/Restaurants+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4A160532285CA0F7003C1434 /* DetailPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailPage.storyboard; sourceTree = "<group>"; };
+		4A160535285CA1B1003C1434 /* OpenMapsDirections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMapsDirections.swift; sourceTree = "<group>"; };
+		4A160538285CA347003C1434 /* PortraitCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortraitCollectionViewCell.swift; sourceTree = "<group>"; };
+		4A16053A285CA35C003C1434 /* MockData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		4ACFCC6C2858E06A00BE1E52 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ACFCC672858D92E00BE1E52 /* CenteredCollectionView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +139,7 @@
 		43C5043A28561EF600F1C815 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				4ACFCC602858D2C200BE1E52 /* Detail_Restaurant */,
 				43C5043C28561F7C00F1C815 /* Favorite */,
 				428364F32854D57B00D057E9 /* ViewController.swift */,
 				428364F52854D57B00D057E9 /* Main.storyboard */,
@@ -176,6 +189,50 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		4A160534285CA1A3003C1434 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				4A160535285CA1B1003C1434 /* OpenMapsDirections.swift */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		4A160537285CA327003C1434 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4A160538285CA347003C1434 /* PortraitCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		4ACFCC602858D2C200BE1E52 /* Detail_Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				4A160537285CA327003C1434 /* CollectionViewCell */,
+				4A160534285CA1A3003C1434 /* Maps */,
+				4ACFCC622858D2DF00BE1E52 /* Controller */,
+				4ACFCC612858D2D200BE1E52 /* View */,
+			);
+			path = Detail_Restaurant;
+			sourceTree = "<group>";
+		};
+		4ACFCC612858D2D200BE1E52 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A160532285CA0F7003C1434 /* DetailPage.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4ACFCC622858D2DF00BE1E52 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4ACFCC6C2858E06A00BE1E52 /* DetailViewController.swift */,
+				4A16053A285CA35C003C1434 /* MockData.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -192,6 +249,9 @@
 			dependencies = (
 			);
 			name = Mini_Challenge_2;
+			packageProductDependencies = (
+				4ACFCC662858D92E00BE1E52 /* CenteredCollectionView */,
+			);
 			productName = Mini_Challenge_2;
 			productReference = 428364EC2854D57B00D057E9 /* Mini_Challenge_2.app */;
 			productType = "com.apple.product-type.application";
@@ -220,6 +280,9 @@
 				Base,
 			);
 			mainGroup = 428364E32854D57B00D057E9;
+			packageReferences = (
+				4ACFCC652858D92E00BE1E52 /* XCRemoteSwiftPackageReference "CenteredCollectionView" */,
+			);
 			productRefGroup = 428364ED2854D57B00D057E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -238,6 +301,7 @@
 				428364FF2854D57C00D057E9 /* LaunchScreen.storyboard in Resources */,
 				428364FC2854D57C00D057E9 /* Assets.xcassets in Resources */,
 				43C504442856204000F1C815 /* Favorite.storyboard in Resources */,
+				4A160533285CA0F7003C1434 /* DetailPage.storyboard in Resources */,
 				428364F72854D57B00D057E9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,11 +314,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4366369628559C6000808306 /* Favorites+CoreDataProperties.swift in Sources */,
+				4ACFCC6D2858E06A00BE1E52 /* DetailViewController.swift in Sources */,
 				428364F42854D57B00D057E9 /* ViewController.swift in Sources */,
 				4366369A28559C6000808306 /* Users+CoreDataProperties.swift in Sources */,
 				4366369928559C6000808306 /* Users+CoreDataClass.swift in Sources */,
 				43C5044F2856264E00F1C815 /* SearchBar.swift in Sources */,
 				436636A128559DCF00808306 /* Menus+CoreDataClass.swift in Sources */,
+				4A16053B285CA35C003C1434 /* MockData.swift in Sources */,
 				428364FA2854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld in Sources */,
 				428364F02854D57B00D057E9 /* AppDelegate.swift in Sources */,
 				4326F87C285865BE0095665D /* FavoriteTableViewCell.swift in Sources */,
@@ -263,6 +329,8 @@
 				4326F87E285A19F90095665D /* FavoriteViewController.swift in Sources */,
 				436636A228559DCF00808306 /* Menus+CoreDataProperties.swift in Sources */,
 				4366369528559C6000808306 /* Favorites+CoreDataClass.swift in Sources */,
+				4A160539285CA347003C1434 /* PortraitCollectionViewCell.swift in Sources */,
+				4A160536285CA1B1003C1434 /* OpenMapsDirections.swift in Sources */,
 				43C5045328562EAE00F1C815 /* Restaurants+CoreDataProperties.swift in Sources */,
 				428364F22854D57B00D057E9 /* SceneDelegate.swift in Sources */,
 			);
@@ -482,6 +550,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4ACFCC652858D92E00BE1E52 /* XCRemoteSwiftPackageReference "CenteredCollectionView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BenEmdon/CenteredCollectionView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4ACFCC662858D92E00BE1E52 /* CenteredCollectionView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4ACFCC652858D92E00BE1E52 /* XCRemoteSwiftPackageReference "CenteredCollectionView" */;
+			productName = CenteredCollectionView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		428364F82854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld */ = {
