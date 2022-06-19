@@ -14,6 +14,10 @@
 		428364FA2854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 428364F82854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld */; };
 		428364FC2854D57C00D057E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 428364FB2854D57C00D057E9 /* Assets.xcassets */; };
 		428364FF2854D57C00D057E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428364FD2854D57C00D057E9 /* LaunchScreen.storyboard */; };
+		428661C0285FA8ED00FE499C /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428661BE285FA8ED00FE499C /* Explore.storyboard */; };
+		428661C1285FA8ED00FE499C /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428661BF285FA8ED00FE499C /* ExploreViewController.swift */; };
+		428661C4285FA8FE00FE499C /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428661C2285FA8FE00FE499C /* RestaurantTableViewCell.swift */; };
+		428661C5285FA8FE00FE499C /* RestaurantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 428661C3285FA8FE00FE499C /* RestaurantTableViewCell.xib */; };
 		4326F87C285865BE0095665D /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326F87B285865BE0095665D /* FavoriteTableViewCell.swift */; };
 		4326F87E285A19F90095665D /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326F87D285A19F90095665D /* FavoriteViewController.swift */; };
 		4366369528559C6000808306 /* Favorites+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4366368F28559C6000808306 /* Favorites+CoreDataClass.swift */; };
@@ -40,6 +44,10 @@
 		428364FB2854D57C00D057E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		428364FE2854D57C00D057E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		428365002854D57C00D057E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		428661BE285FA8ED00FE499C /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Explore.storyboard; path = "../../../../../../iOS Project/Mini_Challenge_2/Mini_Challenge_2/Pages/Explore/Explore.storyboard"; sourceTree = "<group>"; };
+		428661BF285FA8ED00FE499C /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreViewController.swift; path = "../../../../../../iOS Project/Mini_Challenge_2/Mini_Challenge_2/Pages/Explore/ExploreViewController.swift"; sourceTree = "<group>"; };
+		428661C2285FA8FE00FE499C /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantTableViewCell.swift; path = "../../../../../../../iOS Project/Mini_Challenge_2/Mini_Challenge_2/Pages/Explore/Cell/RestaurantTableViewCell.swift"; sourceTree = "<group>"; };
+		428661C3285FA8FE00FE499C /* RestaurantTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RestaurantTableViewCell.xib; path = "../../../../../../../iOS Project/Mini_Challenge_2/Mini_Challenge_2/Pages/Explore/Cell/RestaurantTableViewCell.xib"; sourceTree = "<group>"; };
 		4326F87B285865BE0095665D /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		4326F87D285A19F90095665D /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		4366368F28559C6000808306 /* Favorites+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorites+CoreDataClass.swift"; path = "Mini_Challenge_2/Model/Favorites+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -101,6 +109,25 @@
 			path = Mini_Challenge_2;
 			sourceTree = "<group>";
 		};
+		428661BC285FA88B00FE499C /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				428661BD285FA89100FE499C /* Cell */,
+				428661BE285FA8ED00FE499C /* Explore.storyboard */,
+				428661BF285FA8ED00FE499C /* ExploreViewController.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		428661BD285FA89100FE499C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				428661C2285FA8FE00FE499C /* RestaurantTableViewCell.swift */,
+				428661C3285FA8FE00FE499C /* RestaurantTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		43C504362855EA9100F1C815 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +154,7 @@
 		43C5043A28561EF600F1C815 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				428661BC285FA88B00FE499C /* Explore */,
 				43C5043C28561F7C00F1C815 /* Favorite */,
 				428364F32854D57B00D057E9 /* ViewController.swift */,
 				428364F52854D57B00D057E9 /* Main.storyboard */,
@@ -238,6 +266,8 @@
 				428364FF2854D57C00D057E9 /* LaunchScreen.storyboard in Resources */,
 				428364FC2854D57C00D057E9 /* Assets.xcassets in Resources */,
 				43C504442856204000F1C815 /* Favorite.storyboard in Resources */,
+				428661C0285FA8ED00FE499C /* Explore.storyboard in Resources */,
+				428661C5285FA8FE00FE499C /* RestaurantTableViewCell.xib in Resources */,
 				428364F72854D57B00D057E9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +286,7 @@
 				43C5044F2856264E00F1C815 /* SearchBar.swift in Sources */,
 				436636A128559DCF00808306 /* Menus+CoreDataClass.swift in Sources */,
 				428364FA2854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld in Sources */,
+				428661C1285FA8ED00FE499C /* ExploreViewController.swift in Sources */,
 				428364F02854D57B00D057E9 /* AppDelegate.swift in Sources */,
 				4326F87C285865BE0095665D /* FavoriteTableViewCell.swift in Sources */,
 				43C5045228562EAE00F1C815 /* Restaurants+CoreDataClass.swift in Sources */,
@@ -264,6 +295,7 @@
 				436636A228559DCF00808306 /* Menus+CoreDataProperties.swift in Sources */,
 				4366369528559C6000808306 /* Favorites+CoreDataClass.swift in Sources */,
 				43C5045328562EAE00F1C815 /* Restaurants+CoreDataProperties.swift in Sources */,
+				428661C4285FA8FE00FE499C /* RestaurantTableViewCell.swift in Sources */,
 				428364F22854D57B00D057E9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
