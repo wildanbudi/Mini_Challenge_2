@@ -20,6 +20,18 @@ class ExploreViewController: UIViewController {
     @IBAction func usernameButton(_ sender: Any) {
         print("go to profile")
     }
+    @IBOutlet weak var segmentedType: UISegmentedControl!
+    @IBAction func restoType(_ sender: Any) {
+        switch segmentedType.selectedSegmentIndex
+        {
+        case 1:
+            print("first")
+        case 2:
+            print("second")
+        default:
+            print("all")
+        }
+    }
     @IBOutlet weak var search: UISearchBar!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -114,12 +126,12 @@ extension ExploreViewController: UITableViewDataSource, UITableViewDelegate {
         cell.rating.text = String(restaurantModel[indexPath.row].rating)
         cell.distance.text = ""
         cell.openStatus.text = ""
-        let location = CLLocation(latitude: restaurantModel[indexPath.row].latitude, longitude: restaurantModel[indexPath.row].longitude)
+        let location = CLLocation(latitude: -6.302483, longitude: 106.652157)
         if currentLocation != nil {
             distance = currentLocation.distance(from: location)
             cell.distance.text = String(distance)
         }
-        print(distance)
+
         
         return cell
     }

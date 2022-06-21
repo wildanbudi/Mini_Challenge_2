@@ -43,6 +43,9 @@
                                     <segment title="Vegetarian"/>
                                     <segment title="Vegetarian-friendly"/>
                                 </segments>
+                                <connections>
+                                    <action selector="restoType:" destination="fcR-DX-6Ys" eventType="valueChanged" id="fI1-Ct-fOY"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPD-ZU-Sae">
                                 <rect key="frame" x="273" y="101" width="71" height="15"/>
@@ -77,10 +80,13 @@
                         <viewLayoutGuide key="safeArea" id="PUW-HU-mv2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oIu-vT-OjO"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="oIu-vT-OjO">
+                        <barButtonItem key="backBarButtonItem" title="sadad" id="rlR-gD-bL9"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="restaurantList" destination="Otp-rA-LID" id="SBr-rv-KVm"/>
                         <outlet property="search" destination="7p2-lb-jU2" id="UnO-fr-MH3"/>
+                        <outlet property="segmentedType" destination="CEj-os-GiG" id="0E9-dp-jgc"/>
                         <outlet property="username" destination="gL9-00-9ne" id="Ktc-Oa-eLR"/>
                     </connections>
                 </viewController>
