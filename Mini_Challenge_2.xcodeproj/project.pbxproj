@@ -28,6 +28,9 @@
 		43C5044F2856264E00F1C815 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5044E2856264E00F1C815 /* SearchBar.swift */; };
 		43C5045228562EAE00F1C815 /* Restaurants+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5045028562EAE00F1C815 /* Restaurants+CoreDataClass.swift */; };
 		43C5045328562EAE00F1C815 /* Restaurants+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5045128562EAE00F1C815 /* Restaurants+CoreDataProperties.swift */; };
+		E1A405FD28616EEE00D47D9D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A405FC28616EEE00D47D9D /* Profile.storyboard */; };
+		E1A4060228616F9A00D47D9D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A4060128616F9A00D47D9D /* ProfileViewController.swift */; };
+		E1A40606286173AD00D47D9D /* BackProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A40605286173AD00D47D9D /* BackProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		43C5044E2856264E00F1C815 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		43C5045028562EAE00F1C815 /* Restaurants+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurants+CoreDataClass.swift"; path = "Mini_Challenge_2/Model/Restaurants+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		43C5045128562EAE00F1C815 /* Restaurants+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurants+CoreDataProperties.swift"; path = "Mini_Challenge_2/Model/Restaurants+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		E1A405FC28616EEE00D47D9D /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		E1A4060128616F9A00D47D9D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E1A40605286173AD00D47D9D /* BackProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackProfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				43C5043C28561F7C00F1C815 /* Favorite */,
+				E1A405FE28616EF600D47D9D /* Profile */,
 				428364F32854D57B00D057E9 /* ViewController.swift */,
 				428364F52854D57B00D057E9 /* Main.storyboard */,
 			);
@@ -174,6 +181,32 @@
 				43C5044E2856264E00F1C815 /* SearchBar.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		E1A405FE28616EF600D47D9D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E1A405FF28616F2100D47D9D /* View */,
+				E1A4060028616F2700D47D9D /* Controller */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		E1A405FF28616F2100D47D9D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1A405FC28616EEE00D47D9D /* Profile.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E1A4060028616F2700D47D9D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E1A4060128616F9A00D47D9D /* ProfileViewController.swift */,
+				E1A40605286173AD00D47D9D /* BackProfile.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A405FD28616EEE00D47D9D /* Profile.storyboard in Resources */,
 				437454D9285CC222006403EC /* .gitignore in Resources */,
 				428364FF2854D57C00D057E9 /* LaunchScreen.storyboard in Resources */,
 				428364FC2854D57C00D057E9 /* Assets.xcassets in Resources */,
@@ -256,10 +290,12 @@
 				43C5044F2856264E00F1C815 /* SearchBar.swift in Sources */,
 				436636A128559DCF00808306 /* Menus+CoreDataClass.swift in Sources */,
 				428364FA2854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld in Sources */,
+				E1A4060228616F9A00D47D9D /* ProfileViewController.swift in Sources */,
 				428364F02854D57B00D057E9 /* AppDelegate.swift in Sources */,
 				4326F87C285865BE0095665D /* FavoriteTableViewCell.swift in Sources */,
 				43C5045228562EAE00F1C815 /* Restaurants+CoreDataClass.swift in Sources */,
 				43C5043528559ECA00F1C815 /* DataSeeder.swift in Sources */,
+				E1A40606286173AD00D47D9D /* BackProfile.swift in Sources */,
 				4326F87E285A19F90095665D /* FavoriteViewController.swift in Sources */,
 				436636A228559DCF00808306 /* Menus+CoreDataProperties.swift in Sources */,
 				4366369528559C6000808306 /* Favorites+CoreDataClass.swift in Sources */,
