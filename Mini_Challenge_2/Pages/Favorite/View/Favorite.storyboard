@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,17 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mMD-nT-jPo">
-                                <rect key="frame" x="0.0" y="88" width="390" height="722"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="sOv-zb-nbj">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Find favorite" translatesAutoresizingMaskIntoConstraints="NO" id="6as-oI-y2b">
+                                <rect key="frame" x="0.0" y="88" width="330" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="330" id="H2i-E1-8YJ"/>
+                                    <constraint firstAttribute="height" constant="44" id="zqe-fr-WY7"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mMD-nT-jPo">
+                                <rect key="frame" x="0.0" y="132" width="390" height="678"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="678" id="GL5-SY-yA4"/>
+                                </constraints>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favoriteCell" rowHeight="155" id="N5s-NH-yis" customClass="FavoriteTableViewCell" customModule="Mini_Challenge_2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="88.666666030883789" width="390" height="155"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N5s-NH-yis" id="seZ-wM-RxB">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="155"/>
@@ -122,25 +129,52 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3K3-dp-PNe">
+                                <rect key="frame" x="330" y="88" width="60" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Uut-le-bxb"/>
+                                    <constraint firstAttribute="width" constant="60" id="cbm-kC-TSc"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="slider.horizontal.3" catalog="system" symbolScale="large"/>
+                                    <color key="baseForegroundColor" red="0.28367751839999999" green="0.55945128200000005" blue="0.078932888810000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Df-e0-D0I"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2Df-e0-D0I" firstAttribute="bottom" secondItem="mMD-nT-jPo" secondAttribute="bottom" id="6F3-6a-QKz"/>
-                            <constraint firstItem="mMD-nT-jPo" firstAttribute="leading" secondItem="2Df-e0-D0I" secondAttribute="leading" id="M6k-Mj-XCf"/>
-                            <constraint firstItem="mMD-nT-jPo" firstAttribute="top" secondItem="2Df-e0-D0I" secondAttribute="top" id="OWw-SV-fYC"/>
-                            <constraint firstItem="2Df-e0-D0I" firstAttribute="trailing" secondItem="mMD-nT-jPo" secondAttribute="trailing" id="mhr-aW-1OW"/>
+                            <constraint firstItem="6as-oI-y2b" firstAttribute="top" secondItem="2Df-e0-D0I" secondAttribute="top" id="0Ke-2d-8xm"/>
+                            <constraint firstItem="mMD-nT-jPo" firstAttribute="leading" secondItem="2Df-e0-D0I" secondAttribute="leading" id="7DV-xz-m2W"/>
+                            <constraint firstItem="mMD-nT-jPo" firstAttribute="top" secondItem="6as-oI-y2b" secondAttribute="bottom" id="GDW-bR-0yV"/>
+                            <constraint firstItem="3K3-dp-PNe" firstAttribute="top" secondItem="2Df-e0-D0I" secondAttribute="top" id="MTT-b3-M6V"/>
+                            <constraint firstItem="mMD-nT-jPo" firstAttribute="trailing" secondItem="2Df-e0-D0I" secondAttribute="trailing" id="d8b-rW-r7J"/>
+                            <constraint firstItem="6as-oI-y2b" firstAttribute="leading" secondItem="2Df-e0-D0I" secondAttribute="leading" id="lcM-GP-g1v"/>
+                            <constraint firstItem="3K3-dp-PNe" firstAttribute="trailing" secondItem="2Df-e0-D0I" secondAttribute="trailing" id="vLD-9g-lNT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g2h-Jy-f94"/>
                     <connections>
                         <outlet property="favoriteTableView" destination="mMD-nT-jPo" id="M6V-KO-2MA"/>
-                        <outlet property="searchBar" destination="sOv-zb-nbj" id="PVq-Om-SHf"/>
+                        <outlet property="filterButton" destination="3K3-dp-PNe" id="TTy-vZ-4Ud"/>
+                        <outlet property="searchBar" destination="6as-oI-y2b" id="LPX-ga-tZ1"/>
+                        <segue destination="V9S-wA-Hdj" kind="presentation" identifier="ShowLocationModal" modalPresentationStyle="formSheet" id="10h-aP-ZQ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZm-HR-JqH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2089.2307692307691" y="751.42180094786727"/>
+        </scene>
+        <!--LocationViewController-->
+        <scene sceneID="hAv-F5-mZu">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Location" storyboardName="Location" referencedIdentifier="LocationViewController" id="V9S-wA-Hdj" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="e1X-E9-wuj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mHD-7Q-xhw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2807" y="751"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qhy-cz-LKi">
@@ -162,6 +196,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
