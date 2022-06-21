@@ -16,7 +16,6 @@ class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var directionButton: UIButton!
     
-    
 }
 
 extension UIImageView {
