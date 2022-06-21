@@ -6,17 +6,38 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class ExploreViewController: UIViewController {
+    
+    var restaurantData: NSSet!
+    var distance: CLLocationDistance!
+    var currentLocation: CLLocation!
 
     @IBOutlet weak var restaurantList: UITableView!
     @IBOutlet weak var username: UIButton!
+    @IBAction func usernameButton(_ sender: Any) {
+        print("go to profile")
+    }
+    @IBOutlet weak var search: UISearchBar!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let locationManager = CLLocationManager()
     var restaurantModel: [Restaurants] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.locationManager.requestAlwaysAuthorization()
+
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
         username.setTitle("Username", for: .normal)
         username.setTitleColor(.black, for: .normal)
         registerCell()
@@ -57,11 +78,24 @@ class ExploreViewController: UIViewController {
 
 }
 
-extension ExploreViewController: UITableViewDelegate {
+extension ExploreViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        let loc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+        currentLocation = loc
+    }
+    
     
 }
 
-extension ExploreViewController: UITableViewDataSource {
+//extension ExploreViewController: UISearchBarDelegate {
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        <#code#>
+//    }
+//}
+
+extension ExploreViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return restaurantModel.count
     }
@@ -80,8 +114,18 @@ extension ExploreViewController: UITableViewDataSource {
         cell.rating.text = String(restaurantModel[indexPath.row].rating)
         cell.distance.text = ""
         cell.openStatus.text = ""
+        let location = CLLocation(latitude: restaurantModel[indexPath.row].latitude, longitude: restaurantModel[indexPath.row].longitude)
+        if currentLocation != nil {
+            distance = currentLocation.distance(from: location)
+            cell.distance.text = String(distance)
+        }
+        print(distance)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("show detail")
     }
     
 }
