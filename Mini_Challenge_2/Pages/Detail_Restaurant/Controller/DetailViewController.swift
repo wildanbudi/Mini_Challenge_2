@@ -119,9 +119,17 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
 //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PortraitCollectionViewCell", for: indexPath) as! PortraitCollectionViewCell
 //            cell.setup(items[indexPath.row])
 //            return cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PortraitCollectionViewCell", for: indexPath) as! PortraitCollectionViewCell
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PortraitCollectionViewCell", for: indexPath) as! PortraitCollectionViewCell
         let menu = menus[indexPath.row]
         cell.cellImageView.image = UIImage(data: menu.image!)
+//        cell = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+        //                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(0.9)), subitems: [item])
+        //                let section = NSCollectionLayoutSection(group: group)
+        //                section.orthogonalScrollingBehavior = .groupPagingCentered
+        //                section.interGroupSpacing = 10
+        //                section.contentInsets = .init(top:0, leading: 10, bottom:0, trailing:10)
+        //                section.boundarySupplementaryItems = [self.supplementaryHeaderItem()]
+        //                section.supplementariesFollowContentInsets = false
 
         return cell
     }
