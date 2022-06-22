@@ -80,14 +80,14 @@
                         <viewLayoutGuide key="safeArea" id="PUW-HU-mv2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="oIu-vT-OjO">
-                        <barButtonItem key="backBarButtonItem" title="sadad" id="rlR-gD-bL9"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="oIu-vT-OjO"/>
                     <connections>
                         <outlet property="restaurantList" destination="Otp-rA-LID" id="SBr-rv-KVm"/>
                         <outlet property="search" destination="7p2-lb-jU2" id="UnO-fr-MH3"/>
                         <outlet property="segmentedType" destination="CEj-os-GiG" id="0E9-dp-jgc"/>
                         <outlet property="username" destination="gL9-00-9ne" id="Ktc-Oa-eLR"/>
+                        <segue destination="XL0-ad-Aje" kind="push" identifier="GoToProfile" id="Ho7-6A-ugT"/>
+                        <segue destination="hye-Wt-cOR" kind="show" identifier="GoToDetail" id="9XR-Th-OuP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0U-69-BaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -159,6 +159,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LtY-1s-1fp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-67" y="118"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="Al0-fh-yTT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="XL0-ad-Aje" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="sB4-g7-uwN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wvV-m7-yxZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="522" y="-540"/>
+        </scene>
+        <!--DetailPage-->
+        <scene sceneID="0hU-2G-FoN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DetailPage" id="hye-Wt-cOR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="w5y-aJ-bOk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="POq-iX-xXk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660" y="-382"/>
         </scene>
     </scenes>
     <resources>

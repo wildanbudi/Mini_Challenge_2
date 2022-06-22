@@ -18,7 +18,7 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var restaurantList: UITableView!
     @IBOutlet weak var username: UIButton!
     @IBAction func usernameButton(_ sender: Any) {
-        print("go to profile")
+        performSegue(withIdentifier: "GoToProfile", sender: self)
     }
     @IBOutlet weak var segmentedType: UISegmentedControl!
     @IBAction func restoType(_ sender: Any) {
@@ -137,7 +137,7 @@ extension ExploreViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("show detail")
+        performSegue(withIdentifier: "GoToDetail", sender: self)
     }
     
 }

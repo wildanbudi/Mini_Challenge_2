@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="saf-pO-GkP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Explore-->
         <scene sceneID="iUB-Se-BkX">
             <objects>
-                <viewController id="vGT-s6-yRB" customClass="BackProfile" customModule="Mini_Challenge_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="vGT-s6-yRB" customClass="BackProfile" customModule="Mini_Challenge_2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6db-3B-cC7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,45 +91,10 @@
             </objects>
             <point key="canvasLocation" x="540.57971014492762" y="847.76785714285711"/>
         </scene>
-        <!--Favorites-->
-        <scene sceneID="fCe-Eb-NcA">
-            <objects>
-                <viewController id="CgZ-Z2-8pt" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fYW-ez-Xfm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="fOD-7G-NTg"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="heart" catalog="system" id="efl-gc-RpG"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F0N-Zd-x1d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-710" y="848"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="Yvi-HT-yfR">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0BY-Y3-Vnb" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="edP-17-aYg">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="vGT-s6-yRB" kind="relationship" relationship="viewControllers" id="qdh-9E-y72"/>
-                        <segue destination="CgZ-Z2-8pt" kind="relationship" relationship="viewControllers" id="4fG-yd-Mbp"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gjX-aF-Smb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="67.633928571428569"/>
-        </scene>
         <!--Profile View Controller-->
         <scene sceneID="9ds-qW-GTy">
             <objects>
-                <viewController id="saf-pO-GkP" customClass="ProfileViewController" customModule="ProfileMC2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="saf-pO-GkP" customClass="ProfileViewController" customModule="Mini_Challenge_2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xvt-Eo-EE8">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -251,11 +215,7 @@
     </scenes>
     <resources>
         <image name="chevron.right.circle" catalog="system" width="128" height="121"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
