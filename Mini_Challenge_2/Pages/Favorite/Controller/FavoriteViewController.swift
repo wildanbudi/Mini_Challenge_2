@@ -87,7 +87,13 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     @objc func deleteButton(_ sender: UIButton) {
         let restaurant = filteredData[sender.tag]
         print("tap to delete: " + restaurant.name!)
+//        let user = Users(context: context)
+//        let restaurant = filteredData[sender.tag]
+//        filteredData = filteredData.filter({(r: Restaurants) -> Bool in
+//            return r.name != restaurant.name
+//        })
 //        context.delete(restaurant)
+//        user.restaurants = NSSet(array: filteredData)
 //        do {
 //            try context.save()
 //            DispatchQueue.main.async {

@@ -2,7 +2,7 @@
 //  Restaurants+CoreDataProperties.swift
 //  Mini_Challenge_2
 //
-//  Created by feedloop on 16/06/22.
+//  Created by feedloop on 22/06/22.
 //
 //
 
@@ -18,6 +18,7 @@ extension Restaurants {
 
     @NSManaged public var address: String?
     @NSManaged public var city: String?
+    @NSManaged public var image: Data?
     @NSManaged public var imageUrl: String?
     @NSManaged public var kecamatan: String?
     @NSManaged public var latitude: Double
@@ -29,9 +30,9 @@ extension Restaurants {
     @NSManaged public var priceMin: String?
     @NSManaged public var rating: Double
     @NSManaged public var vegeResto: Bool
-    @NSManaged public var image: Data?
     @NSManaged public var menus: NSSet?
     @NSManaged public var users: NSSet?
+    @NSManaged public var reviews: NSSet?
 
 }
 
@@ -66,6 +67,23 @@ extension Restaurants {
 
     @objc(removeUsers:)
     @NSManaged public func removeFromUsers(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for reviews
+extension Restaurants {
+
+    @objc(addReviewsObject:)
+    @NSManaged public func addToReviews(_ value: Reviews)
+
+    @objc(removeReviewsObject:)
+    @NSManaged public func removeFromReviews(_ value: Reviews)
+
+    @objc(addReviews:)
+    @NSManaged public func addToReviews(_ values: NSSet)
+
+    @objc(removeReviews:)
+    @NSManaged public func removeFromReviews(_ values: NSSet)
 
 }
 
