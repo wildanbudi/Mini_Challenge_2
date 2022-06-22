@@ -35,6 +35,7 @@
     </entity>
     <entity name="Users" representedClassName="Users" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <relationship name="restaurants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Restaurants" inverseName="users" inverseEntity="Restaurants"/>
@@ -43,7 +44,7 @@
     <elements>
         <element name="Menus" positionX="-18" positionY="81" width="128" height="89"/>
         <element name="Restaurants" positionX="-63" positionY="-18" width="128" height="284"/>
-        <element name="Users" positionX="-54" positionY="63" width="128" height="104"/>
         <element name="Reviews" positionX="-45" positionY="108" width="128" height="119"/>
+        <element name="Users" positionX="-54" positionY="63" width="128" height="119"/>
     </elements>
 </model>

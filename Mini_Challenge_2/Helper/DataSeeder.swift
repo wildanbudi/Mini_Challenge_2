@@ -218,8 +218,9 @@ public class DataSeeder {
     }
     
     fileprivate func seedUsers() {
+        let vegetaImg = UIImage(named: "vegeta")?.jpegData(compressionQuality: 1.0)
         let users = [
-            (name: "Vegeta Doe", email: "vegeta@doe.com", password: "12345")
+            (name: "Vegeta Doe", email: "vegeta@doe.com", password: "12345", image: vegetaImg)
         ]
         
         for user in users {
@@ -227,6 +228,7 @@ public class DataSeeder {
             newUser.name = user.name
             newUser.email = user.email
             newUser.password = user.password
+            newUser.image = user.image
             newUser.restaurants = NSSet(array: [grasslandVegetarian, kayuKayu, starbucks])
         }
         

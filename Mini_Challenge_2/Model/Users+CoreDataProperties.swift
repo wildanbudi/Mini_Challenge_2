@@ -19,6 +19,7 @@ extension Users {
     @NSManaged public var email: String?
     @NSManaged public var name: String?
     @NSManaged public var password: String?
+    @NSManaged public var image: Data?
     @NSManaged public var restaurants: NSSet?
     @NSManaged public var reviews: NSSet?
 
