@@ -30,6 +30,7 @@ extension Restaurants {
     @NSManaged public var priceMin: String?
     @NSManaged public var rating: Double
     @NSManaged public var vegeResto: Bool
+    @NSManaged public var imageMap: Data?
     @NSManaged public var menus: NSSet?
     @NSManaged public var users: NSSet?
     @NSManaged public var reviews: NSSet?

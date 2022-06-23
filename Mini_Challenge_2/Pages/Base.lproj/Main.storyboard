@@ -34,6 +34,16 @@
                                     <action selector="FavoriteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0sP-2B-Qmc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cC-X7-fVQ">
+                                <rect key="frame" x="95" y="228" width="62" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Detail"/>
+                                <connections>
+                                    <action selector="DetailButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eJA-gN-I9l"/>
+                                    <segue destination="8Op-Ck-095" kind="show" identifier="goToDetail" id="fpD-Th-WpI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -47,6 +57,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1876.8115942028987" y="39.508928571428569"/>
+        </scene>
+        <!--DetailPage-->
+        <scene sceneID="I8c-x3-sIo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DetailPage" id="8Op-Ck-095" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Dhn-I9-AQI"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tx6-fY-UNi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2463" y="-34"/>
         </scene>
         <!--ReviewViewController-->
         <scene sceneID="YaL-bI-AfZ">
