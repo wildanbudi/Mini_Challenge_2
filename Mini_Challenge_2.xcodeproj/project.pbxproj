@@ -21,6 +21,10 @@
 		431E18472862C0B300EABE9A /* Review.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 431E18462862C0B300EABE9A /* Review.storyboard */; };
 		431E184A2862C1B400EABE9A /* Users+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E18482862C1B400EABE9A /* Users+CoreDataClass.swift */; };
 		431E184B2862C1B400EABE9A /* Users+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E18492862C1B400EABE9A /* Users+CoreDataProperties.swift */; };
+		431E184D2862C7C600EABE9A /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E184C2862C7C600EABE9A /* ReviewTableViewCell.swift */; };
+		431E184F2862D42B00EABE9A /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E184E2862D42B00EABE9A /* ReviewViewController.swift */; };
+		431E18542863D20500EABE9A /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 431E18532863D20500EABE9A /* Filter.storyboard */; };
+		431E18562863D5CF00EABE9A /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E18552863D5CF00EABE9A /* FilterViewController.swift */; };
 		4326F87C285865BE0095665D /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326F87B285865BE0095665D /* FavoriteTableViewCell.swift */; };
 		4326F87E285A19F90095665D /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326F87D285A19F90095665D /* FavoriteViewController.swift */; };
 		433E033A285F1FDB001D611C /* OpenMapsDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433E0339285F1FDB001D611C /* OpenMapsDirections.swift */; };
@@ -66,6 +70,10 @@
 		431E18462862C0B300EABE9A /* Review.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Review.storyboard; sourceTree = "<group>"; };
 		431E18482862C1B400EABE9A /* Users+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users+CoreDataClass.swift"; sourceTree = "<group>"; };
 		431E18492862C1B400EABE9A /* Users+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		431E184C2862C7C600EABE9A /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		431E184E2862D42B00EABE9A /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		431E18532863D20500EABE9A /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
+		431E18552863D5CF00EABE9A /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		4326F87B285865BE0095665D /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		4326F87D285A19F90095665D /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		433E0339285F1FDB001D611C /* OpenMapsDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMapsDirections.swift; sourceTree = "<group>"; };
@@ -178,6 +186,33 @@
 		431E18452862BEE200EABE9A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				431E184C2862C7C600EABE9A /* ReviewTableViewCell.swift */,
+				431E184E2862D42B00EABE9A /* ReviewViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		431E18502863D1DD00EABE9A /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				431E18522863D1ED00EABE9A /* Controller */,
+				431E18512863D1E700EABE9A /* View */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		431E18512863D1E700EABE9A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				431E18532863D20500EABE9A /* Filter.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		431E18522863D1ED00EABE9A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				431E18552863D5CF00EABE9A /* FilterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -237,6 +272,7 @@
 			children = (
 				4ACFCC602858D2C200BE1E52 /* Detail_Restaurant */,
 				428661BC285FA88B00FE499C /* Explore */,
+				431E18502863D1DD00EABE9A /* Filter */,
 				431E18432862BED300EABE9A /* Review */,
 				43BD12E4286184DA002EA86A /* Location */,
 				43C5043C28561F7C00F1C815 /* Favorite */,
@@ -433,6 +469,7 @@
 				42EA54D2285FBA8C00C87662 /* RestaurantTableViewCell.xib in Resources */,
 				4A160533285CA0F7003C1434 /* DetailPage.storyboard in Resources */,
 				428364F72854D57B00D057E9 /* Main.storyboard in Resources */,
+				431E18542863D20500EABE9A /* Filter.storyboard in Resources */,
 				431E18472862C0B300EABE9A /* Review.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +485,7 @@
 				4ACFCC6D2858E06A00BE1E52 /* DetailViewController.swift in Sources */,
 				428364F42854D57B00D057E9 /* ViewController.swift in Sources */,
 				43AD34242862A8AC00B329E1 /* Reviews+CoreDataProperties.swift in Sources */,
+				431E184F2862D42B00EABE9A /* ReviewViewController.swift in Sources */,
 				43C5044F2856264E00F1C815 /* SearchBar.swift in Sources */,
 				431E184B2862C1B400EABE9A /* Users+CoreDataProperties.swift in Sources */,
 				43AD34222862A8AC00B329E1 /* Restaurants+CoreDataProperties.swift in Sources */,
@@ -464,6 +502,7 @@
 				43BD12EA28618873002EA86A /* LocationTableViewCell.swift in Sources */,
 				43AD34232862A8AC00B329E1 /* Reviews+CoreDataClass.swift in Sources */,
 				43AD34212862A8AC00B329E1 /* Restaurants+CoreDataClass.swift in Sources */,
+				431E18562863D5CF00EABE9A /* FilterViewController.swift in Sources */,
 				436636A228559DCF00808306 /* Menus+CoreDataProperties.swift in Sources */,
 				42EA54D4285FBA8C00C87662 /* ExploreViewController.swift in Sources */,
 				4366369528559C6000808306 /* Favorites+CoreDataClass.swift in Sources */,
@@ -471,6 +510,7 @@
 				4A160536285CA1B1003C1434 /* OpenMapsDirections.swift in Sources */,
 				43C5045328562EAE00F1C815 /* Restaurants+CoreDataProperties.swift in Sources */,
 				42EA54D1285FBA8C00C87662 /* RestaurantTableViewCell.swift in Sources */,
+				431E184D2862C7C600EABE9A /* ReviewTableViewCell.swift in Sources */,
 				431E184A2862C1B400EABE9A /* Users+CoreDataClass.swift in Sources */,
 				428364F22854D57B00D057E9 /* SceneDelegate.swift in Sources */,
 			);

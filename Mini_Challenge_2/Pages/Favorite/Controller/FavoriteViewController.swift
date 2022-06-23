@@ -36,7 +36,7 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
         filteredData = (favRestaurantsData.allObjects as! [Restaurants])
         
         let locationButton =  UIButton(type: .custom)
-        locationButton.setImage(UIImage(systemName: "location"), for: .normal)
+        locationButton.setImage(UIImage(named: "location"), for: .normal)
         locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
         locationButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
         let locationLabel = UILabel(frame: CGRect(x: -70, y: 5, width: 100, height: 20))// set position of label
@@ -81,7 +81,26 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     }
     
     @objc private func showLocation(_ sender: Any) {
-        performSegue(withIdentifier: "ShowLocationModal", sender: self)
+//        performSegue(withIdentifier: "ShowLocationModal", sender: self)
+        let locationStoryboard = UIStoryboard(name: "Location", bundle: nil)
+        let locationViewController = locationStoryboard.instantiateViewController(withIdentifier: "LocationViewController")
+        
+        if let presentationController = locationViewController.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()] /// change to [.medium(), .large()] for a half *and* full screen sheet
+        }
+        
+        self.present(locationViewController, animated: true)
+    }
+    
+    @IBAction private func filterButton(_ sender: UIButton) {
+        let filterStoryboard = UIStoryboard(name: "Filter", bundle: nil)
+        let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterViewController")
+        
+        if let presentationController = filterViewController.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()] /// change to [.medium(), .large()] for a half *and* full screen sheet
+        }
+        
+        self.present(filterViewController, animated: true)
     }
     
     @objc func deleteButton(_ sender: UIButton) {

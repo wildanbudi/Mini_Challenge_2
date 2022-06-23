@@ -11,6 +11,7 @@ import CoreLocation
 class LocationViewController: UIViewController, UITableViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var locationSearchBar: UISearchBar!
     @IBOutlet var locationTableView: UITableView!
+    @IBOutlet var cancelButton: UIButton!
     var locationManager: CLLocationManager?
     
     override func viewDidLoad() {
@@ -35,6 +36,11 @@ class LocationViewController: UIViewController, UITableViewDelegate, CLLocationM
                 }
             }
         }
+    }
+    
+    @IBAction private func unwindFavorite(_ segue: UIStoryboardSegue) {
+        // blank
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
