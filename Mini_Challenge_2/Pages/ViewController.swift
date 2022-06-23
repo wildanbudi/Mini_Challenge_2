@@ -11,7 +11,10 @@ class ViewController: UIViewController {
 
     @IBAction func FavoriteButton(_ sender: UIButton) {
         performSegue(withIdentifier: "GoToFavoriteVC", sender: self)
-        
+    }
+    
+    @IBAction func ReviewButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "GoToReviewVC", sender: self)
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

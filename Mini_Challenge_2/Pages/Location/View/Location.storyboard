@@ -77,6 +77,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8H-tr-Jbl">
+                                <rect key="frame" x="0.0" y="15" width="89" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                    <color key="baseForegroundColor" red="0.28367751839999999" green="0.55945128200000005" blue="0.078932888810000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="unwindFavorite:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8Bi-SF-oJ9"/>
+                                    <segue destination="MiW-Ek-7hH" kind="unwind" unwindAction="unwindFavorite:" id="bxr-Ln-Lmd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -85,11 +97,13 @@
                     <value key="contentSizeForViewInPopover" type="size" width="414" height="400"/>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="v8H-tr-Jbl" id="WdP-JO-3CT"/>
                         <outlet property="locationSearchBar" destination="guw-cj-kjF" id="rdy-hJ-hxI"/>
                         <outlet property="locationTableView" destination="gkz-Kb-5fA" id="vyU-5H-ee1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="MiW-Ek-7hH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4660" y="45.497630331753555"/>
         </scene>
