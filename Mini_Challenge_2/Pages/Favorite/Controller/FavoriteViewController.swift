@@ -16,6 +16,7 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var favoriteTableView: UITableView!
+    @IBOutlet weak var filterButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,33 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
         favRestaurantsData = user.restaurants
         filteredData = (favRestaurantsData.allObjects as! [Restaurants])
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Jakarta", image: UIImage(systemName: "location"))
+        let locationButton =  UIButton(type: .custom)
+        locationButton.setImage(UIImage(systemName: "location"), for: .normal)
+        locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
+        locationButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
+        let locationLabel = UILabel(frame: CGRect(x: -70, y: 5, width: 100, height: 20))// set position of label
+        locationLabel.text = "Location"
+        locationLabel.textColor = UIColor.black
+        locationLabel.backgroundColor = UIColor.clear
+        locationButton.addSubview(locationLabel)
+        locationButton.addTarget(self, action: #selector(showLocation), for: .touchUpInside)
+        let rightBarButton = UIBarButtonItem(customView: locationButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        let profileButton =  UIButton(type: .custom)
+        profileButton.setImage(UIImage(systemName: "person.circle.fill"), for: .normal)
+        profileButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
+        profileButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
+        let profileLabel = UILabel(frame: CGRect(x: 30, y: 5, width: 100, height: 20))// set position of label
+        profileLabel.text = user.name
+        profileLabel.textColor = UIColor.black
+        profileLabel.backgroundColor =   UIColor.clear
+        profileButton.addSubview(profileLabel)
+        profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
+        profileButton.imageView?.contentMode = .scaleAspectFit
+        profileButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        let leftBarButton = UIBarButtonItem(customView: profileButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
     }
     
     func getAllUsers() {
@@ -49,24 +76,39 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    @objc private func didTapLocation() {
-        print("tap")
+    @objc private func showProfile() {
+        print("profile button tap")
     }
     
-    @objc func filterButton() {
-        print("filter button tap")
+    @objc private func showLocation(_ sender: Any) {
+        performSegue(withIdentifier: "ShowLocationModal", sender: self)
     }
     
     @objc func deleteButton(_ sender: UIButton) {
         let restaurant = filteredData[sender.tag]
         print("tap to delete: " + restaurant.name!)
+//        let user = Users(context: context)
+//        let restaurant = filteredData[sender.tag]
+//        filteredData = filteredData.filter({(r: Restaurants) -> Bool in
+//            return r.name != restaurant.name
+//        })
+//        context.delete(restaurant)
+//        user.restaurants = NSSet(array: filteredData)
+//        do {
+//            try context.save()
+//            DispatchQueue.main.async {
+//                self.favoriteTableView.reloadData()
+//            }
+//        } catch _ {
+//        }
     }
     
     @objc func directionButton(_ sender: UIButton) {
         let restaurant = filteredData[sender.tag]
         print("tap to direction: " + restaurant.name!)
+        OpenMapDirections.present(in: self, sourceView: sender, restaurant: restaurant)
     }
-    
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let search = searchBarInstance.search
         filteredData = []

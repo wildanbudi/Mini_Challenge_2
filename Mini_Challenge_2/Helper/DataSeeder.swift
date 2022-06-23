@@ -20,6 +20,7 @@ public class DataSeeder {
     var kayuKayu: Restaurants
     var tamanSantap: Restaurants
     var formaggioCoffeResto: Restaurants
+    var vegeta: Users
     
     init(context: NSManagedObjectContext) {
         self.context = context
@@ -32,6 +33,7 @@ public class DataSeeder {
         self.kayuKayu = Restaurants(context: context)
         self.tamanSantap = Restaurants(context: context)
         self.formaggioCoffeResto = Restaurants(context: context)
+        self.vegeta = Users(context: context)
     }
 
     public func process() {
@@ -39,6 +41,18 @@ public class DataSeeder {
         let r = checkUser.filter({(r: Users) -> Bool in
             return r.name == "Vegeta Doe"
         }).first ?? Users(context: context)
+        
+        var users = try! context.fetch(Users.fetchRequest())
+        var nilUsersRows = users.filter({(u: Users) -> Bool in
+            return u.name == nil
+        })
+        for row in nilUsersRows {
+            context.delete(row)
+            do {
+                try context.save()
+            } catch _ {
+            }
+        }
         
         if r.name == "Vegeta Doe" { return }
         
@@ -87,9 +101,15 @@ public class DataSeeder {
         seedMenus()
         seedUsers()
         
-        let users = try! context.fetch(Users.fetchRequest())
-        let nilUsersRows = users.filter({(r: Users) -> Bool in
-            return r.name == nil
+        users = try! context.fetch(Users.fetchRequest())
+        vegeta = users.filter({(u: Users) -> Bool in
+            return u.name == "Vegeta Doe"
+        }).first!
+        
+        seedReviews()
+        
+        nilUsersRows = users.filter({(u: Users) -> Bool in
+            return u.name == nil
         })
         for row in nilUsersRows {
             context.delete(row)
@@ -198,8 +218,9 @@ public class DataSeeder {
     }
     
     fileprivate func seedUsers() {
+        let vegetaImg = UIImage(named: "vegeta")?.jpegData(compressionQuality: 1.0)
         let users = [
-            (name: "Vegeta Doe", email: "vegeta@doe.com", password: "12345")
+            (name: "Vegeta Doe", email: "vegeta@doe.com", password: "12345", image: vegetaImg)
         ]
         
         for user in users {
@@ -207,7 +228,36 @@ public class DataSeeder {
             newUser.name = user.name
             newUser.email = user.email
             newUser.password = user.password
+            newUser.image = user.image
             newUser.restaurants = NSSet(array: [grasslandVegetarian, kayuKayu, starbucks])
+        }
+        
+        do {
+            try context.save()
+        } catch _ {
+        }
+    }
+    
+    fileprivate func seedReviews() {
+        let formaggioCaesarImg = UIImage(named: "Formaggio 1 - Caesar Salad")?.jpegData(compressionQuality: 1.0)
+        let kayuAsinanImg = UIImage(named: "Kayu-Kayu 1 - Asinan Bogor")?.jpegData(compressionQuality: 1.0)
+        
+        let reviews = [
+            (comment: "Best vegetarian food I’ve ever tried! U guys should try it", rate: 5, date: "2022-05-15", image: formaggioCaesarImg, restaurant: formaggioCoffeResto, user: vegeta),
+            (comment: "Nice place to eat", rate: 5, date: "2022-06-15", image: nil, restaurant: tamanSantap, user: vegeta),
+            (comment: "This resto has best asinan in town", rate: 5, date: "2022-06-15", image: kayuAsinanImg, restaurant: kayuKayu, user: vegeta)
+        ]
+        
+        for review in reviews {
+            let newReview = NSEntityDescription.insertNewObject(forEntityName: "Reviews", into: context) as! Reviews
+            newReview.comment = review.comment
+            newReview.rate = Int16(review.rate)
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            newReview.date = formatter.date(from: review.date)
+            newReview.image = review.image
+            newReview.restaurant = review.restaurant
+            newReview.user = review.user
         }
         
         do {
