@@ -30,7 +30,6 @@
 		43C5045328562EAE00F1C815 /* Restaurants+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5045128562EAE00F1C815 /* Restaurants+CoreDataProperties.swift */; };
 		4A160533285CA0F7003C1434 /* DetailPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A160532285CA0F7003C1434 /* DetailPage.storyboard */; };
 		4A160536285CA1B1003C1434 /* OpenMapsDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A160535285CA1B1003C1434 /* OpenMapsDirections.swift */; };
-		4A16053B285CA35C003C1434 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16053A285CA35C003C1434 /* MockData.swift */; };
 		4A76EBC62860B320003D869F /* AddReviewPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A76EBC52860B320003D869F /* AddReviewPage.storyboard */; };
 		4A76EBCC2860B984003D869F /* RatingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A76EBCB2860B984003D869F /* RatingController.swift */; };
 		4A76EBD02860C4A5003D869F /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A76EBCF2860C4A5003D869F /* AddReviewViewController.swift */; };
@@ -66,7 +65,6 @@
 		43C5045128562EAE00F1C815 /* Restaurants+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Restaurants+CoreDataProperties.swift"; path = "Mini_Challenge_2/Model/Restaurants+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4A160532285CA0F7003C1434 /* DetailPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailPage.storyboard; sourceTree = "<group>"; };
 		4A160535285CA1B1003C1434 /* OpenMapsDirections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMapsDirections.swift; sourceTree = "<group>"; };
-		4A16053A285CA35C003C1434 /* MockData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		4A76EBC52860B320003D869F /* AddReviewPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddReviewPage.storyboard; sourceTree = "<group>"; };
 		4A76EBCB2860B984003D869F /* RatingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingController.swift; sourceTree = "<group>"; };
 		4A76EBCF2860C4A5003D869F /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				4ACFCC6C2858E06A00BE1E52 /* DetailViewController.swift */,
-				4A16053A285CA35C003C1434 /* MockData.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -360,7 +357,6 @@
 				4A76EBCC2860B984003D869F /* RatingController.swift in Sources */,
 				43C5044F2856264E00F1C815 /* SearchBar.swift in Sources */,
 				436636A128559DCF00808306 /* Menus+CoreDataClass.swift in Sources */,
-				4A16053B285CA35C003C1434 /* MockData.swift in Sources */,
 				428364FA2854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld in Sources */,
 				428364F02854D57B00D057E9 /* AppDelegate.swift in Sources */,
 				4326F87C285865BE0095665D /* FavoriteTableViewCell.swift in Sources */,
