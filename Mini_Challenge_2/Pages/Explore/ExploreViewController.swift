@@ -17,6 +17,8 @@ class ExploreViewController: UIViewController {
 
     @IBOutlet weak var restaurantList: UITableView!
     @IBOutlet weak var username: UIButton!
+    @IBOutlet weak var location: UIButton!
+    @IBOutlet weak var filter: UIButton!
     @IBAction func usernameButton(_ sender: Any) {
         performSegue(withIdentifier: "GoToProfile", sender: self)
     }
@@ -52,6 +54,8 @@ class ExploreViewController: UIViewController {
         }
         username.setTitle("Username", for: .normal)
         username.setTitleColor(.black, for: .normal)
+        location.setTitleColor(.gray, for: .normal)
+        location.setTitle("Jakarta", for: .normal)
         registerCell()
         getAllItem()
         UILabel.appearance().font = UIFont(name: "SF Pro", size: 12)
@@ -114,22 +118,22 @@ extension ExploreViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: "restaurantCell", for: indexPath) as? RestaurantTableViewCell)!
-//        let link = restaurantModel[indexPath.row].imageUrl
-//        let url = try! NSData(contentsOf: URL.init(string: link ?? "")!, options: NSData.ReadingOptions())
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.layer.cornerRadius = 15
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.gray.cgColor
-//        cell.restaurantImage.image = UIImage(data: url as Data)
+        if restaurantModel[indexPath.row].image != nil {
+            cell.restaurantImage.image = UIImage(data: restaurantModel[indexPath.row].image!)
+        }
+        cell.restaurantImage.layer.cornerRadius = 7
         cell.name.text = restaurantModel[indexPath.row].name
         cell.location.text = restaurantModel[indexPath.row].kecamatan
         cell.rating.text = String(restaurantModel[indexPath.row].rating)
-        cell.distance.text = ""
-        cell.openStatus.text = ""
-        let location = CLLocation(latitude: -6.302483, longitude: 106.652157)
+        cell.openStatus.text = "Open"
+        let location = CLLocation(latitude: restaurantModel[indexPath.row].latitude, longitude: restaurantModel[indexPath.row].longitude)
         if currentLocation != nil {
             distance = currentLocation.distance(from: location)
-            cell.distance.text = String(distance)
+            cell.distance.text = String(Int(distance/1000)) + "km"
         }
 
         
