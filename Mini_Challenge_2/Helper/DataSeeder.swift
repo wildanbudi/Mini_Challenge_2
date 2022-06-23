@@ -112,6 +112,7 @@ public class DataSeeder {
         let kayuKayuImg = UIImage(named: "Tangerang_Kayu-Kayu")?.jpegData(compressionQuality: 1.0)
         let tamanSantapImg = UIImage(named: "Tangerang_Taman Santap")?.jpegData(compressionQuality: 1.0)
         
+        //let restoIndoVegan
         let restaurants = [
             (name: "Resto Indo Vegan", rating: 4.5, openHours: "07:00 - 18:00", phone: "0811953539", priceMin: "10000", priceMax: "60000", address: "Jalan Duri Selatan 1 No. 9, RT.06/ RW.02, RT.6/RW.2, Duri Sel., Kec. Tambora, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11270", imageUrl: "https://drive.google.com/uc?id=1eQa7DP1a1fC9gkjBvg24XJSaJkEDeUFW", latitude: -6.16091552563978, longitude: 106.80619523969511, vegeResto: true, city: "Jakarta", kecamatan: "Tambora", image: restoIndoVeganImg),
             (name: "Dharma Kitchen", rating: 4.5, openHours: "10:00 - 21:00", phone: "0216618302", priceMin: "75000", priceMax: "200000", address: "Jl. Pluit Kencana Raya No.124, RT.10/RW.7, Pluit, Kec. Penjaringan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14450", imageUrl: "https://drive.google.com/uc?id=1mpJh9v98tJeahcZIFpsZNPlxZkyxEn2q", latitude: -6.119620138581436, longitude: 106.78849407789964, vegeResto: true, city: "Jakarta", kecamatan: "Penjaringan", image: dharmaKitchenImg),

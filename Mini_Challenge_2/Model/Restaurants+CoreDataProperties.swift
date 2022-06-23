@@ -2,7 +2,7 @@
 //  Restaurants+CoreDataProperties.swift
 //  Mini_Challenge_2
 //
-//  Created by feedloop on 16/06/22.
+//  Created by Finn Christoffer Kurniawan on 23/06/22.
 //
 //
 
@@ -18,6 +18,7 @@ extension Restaurants {
 
     @NSManaged public var address: String?
     @NSManaged public var city: String?
+    @NSManaged public var image: Data?
     @NSManaged public var imageUrl: String?
     @NSManaged public var kecamatan: String?
     @NSManaged public var latitude: Double
@@ -29,7 +30,7 @@ extension Restaurants {
     @NSManaged public var priceMin: String?
     @NSManaged public var rating: Double
     @NSManaged public var vegeResto: Bool
-    @NSManaged public var image: Data?
+    @NSManaged public var imageMap: Data?
     @NSManaged public var menus: NSSet?
     @NSManaged public var users: NSSet?
 
