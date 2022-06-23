@@ -17,6 +17,7 @@
 		428B6D64286504D300F2B846 /* BackProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B6D60286504D300F2B846 /* BackProfile.swift */; };
 		428B6D65286504D300F2B846 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B6D61286504D300F2B846 /* ProfileViewController.swift */; };
 		428B6D66286504D300F2B846 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428B6D63286504D300F2B846 /* Profile.storyboard */; };
+		428B6D6E28650A0200F2B846 /* OpenMapsDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428B6D6D28650A0200F2B846 /* OpenMapsDirections.swift */; };
 		42EA54D1285FBA8C00C87662 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA54CD285FBA8C00C87662 /* RestaurantTableViewCell.swift */; };
 		42EA54D2285FBA8C00C87662 /* RestaurantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42EA54CE285FBA8C00C87662 /* RestaurantTableViewCell.xib */; };
 		42EA54D3285FBA8C00C87662 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42EA54CF285FBA8C00C87662 /* Explore.storyboard */; };
@@ -67,6 +68,7 @@
 		428B6D60286504D300F2B846 /* BackProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackProfile.swift; sourceTree = "<group>"; };
 		428B6D61286504D300F2B846 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		428B6D63286504D300F2B846 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		428B6D6D28650A0200F2B846 /* OpenMapsDirections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMapsDirections.swift; sourceTree = "<group>"; };
 		42EA54CD285FBA8C00C87662 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		42EA54CE285FBA8C00C87662 /* RestaurantTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantTableViewCell.xib; sourceTree = "<group>"; };
 		42EA54CF285FBA8C00C87662 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
@@ -195,6 +197,14 @@
 				428B6D63286504D300F2B846 /* Profile.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		428B6D6C28650A0200F2B846 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				428B6D6D28650A0200F2B846 /* OpenMapsDirections.swift */,
+			);
+			path = Maps;
 			sourceTree = "<group>";
 		};
 		42EA54CC285FBA8C00C87662 /* Cell */ = {
@@ -366,13 +376,6 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		4A160534285CA1A3003C1434 /* Maps */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Maps;
-			sourceTree = "<group>";
-		};
 		4A160537285CA327003C1434 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,8 +414,8 @@
 		4ACFCC602858D2C200BE1E52 /* Detail_Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				428B6D6C28650A0200F2B846 /* Maps */,
 				4A160537285CA327003C1434 /* CollectionViewCell */,
-				4A160534285CA1A3003C1434 /* Maps */,
 				4ACFCC622858D2DF00BE1E52 /* Controller */,
 				4ACFCC612858D2D200BE1E52 /* View */,
 			);
@@ -532,6 +535,7 @@
 				43C5044F2856264E00F1C815 /* SearchBar.swift in Sources */,
 				431E184B2862C1B400EABE9A /* Users+CoreDataProperties.swift in Sources */,
 				43AD34222862A8AC00B329E1 /* Restaurants+CoreDataProperties.swift in Sources */,
+				428B6D6E28650A0200F2B846 /* OpenMapsDirections.swift in Sources */,
 				436636A128559DCF00808306 /* Menus+CoreDataClass.swift in Sources */,
 				428364FA2854D57B00D057E9 /* Mini_Challenge_2.xcdatamodeld in Sources */,
 				428B6D65286504D300F2B846 /* ProfileViewController.swift in Sources */,
