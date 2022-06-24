@@ -20,8 +20,10 @@ class FilterViewController: UIViewController {
     @IBOutlet var toTextField: UITextField!
     
     var rateFilter = [false, false, false, false, false]
-    var fromPrice = ""
-    var toPrice = ""
+    var fromPrice = 0
+    var toPrice = 0
+    var delegate: isAbleToReceiveData!
+    var rateList: [Double]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +38,19 @@ class FilterViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction private func applyButtonTapped(_ sender: UIButton) {
-        fromPrice = fromTextField.text!
-        toPrice = toTextField.text!
+        fromPrice = Int(fromTextField.text ?? "0") ?? 0
+        toPrice = Int(toTextField.text ?? "0") ?? 0
         
-        print(rateFilter)
-        print(fromPrice)
-        print(toPrice)
+        rateList = rateFilter.enumerated().filter {
+            $0.element == true
+        }.map{Double($0.offset + 1)}
+        
+        self.dismiss(animated: true, completion: nil)
+
+//        FavoriteViewController().filterReload(rateFilter: a, priceFilter: [fromPrice, toPrice])
+    }
+    func viewWillDisappear() {
+        delegate.filterReload(rateFilter: rateList, priceFilter: [fromPrice, toPrice])
     }
     @IBAction private func star5ButtonTapped(_ sender: UIButton) {
         rateFilter[4] = !rateFilter[4]
@@ -69,6 +78,8 @@ class FilterViewController: UIViewController {
         star1Button.tintColor = .white
     }
     
+    
+    
 
     /*
     // MARK: - Navigation
@@ -80,4 +91,8 @@ class FilterViewController: UIViewController {
     }
     */
 
+}
+
+protocol isAbleToReceiveData {
+  func filterReload(rateFilter: [Double], priceFilter: [Int])  //data: string is an example parameter
 }

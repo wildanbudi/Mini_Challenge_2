@@ -10,7 +10,7 @@ import UIKit
 class FavoriteViewController: UIViewController, UISearchBarDelegate {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var usersData: [Users]!
-    var favRestaurantsData: NSSet!
+    var favRestaurantsData: [Restaurants]!
     var filteredData: [Restaurants]!
     let searchBarInstance = SearchBar()
     
@@ -32,8 +32,8 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
             return r.name == "Vegeta Doe"
         }).first ?? Users(context: context)
         
-        favRestaurantsData = user.restaurants
-        filteredData = (favRestaurantsData.allObjects as! [Restaurants])
+        favRestaurantsData = (user.restaurants!.allObjects as! [Restaurants])
+        filteredData = favRestaurantsData
         
         let locationButton =  UIButton(type: .custom)
         locationButton.setImage(UIImage(named: "location"), for: .normal)
@@ -131,10 +131,44 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let search = searchBarInstance.search
         filteredData = []
-        filteredData = search(favRestaurantsData, searchText)
+        filteredData = search(NSSet(array: favRestaurantsData), searchText)
         DispatchQueue.main.async {
             self.favoriteTableView.reloadData()
         }
+    }
+    
+    func filterReload(rateFilter: [Double], priceFilter: [Int]) {
+        filteredData = favRestaurantsData
+        print(filteredData as Any)
+//        if rateFilter.count > 0 && rateFilter.count < 5 {
+//            filteredData = filteredData.filter({(r: Restaurants) -> Bool in
+//                if rateFilter.count == 1 {
+//                    return r.rating == rateFilter[0]
+//                } else if rateFilter.count == 2 {
+//                    return r.rating == rateFilter[0] || r.rating == rateFilter[1]
+//                } else if rateFilter.count == 3 {
+//                    return r.rating == rateFilter[0] || r.rating == rateFilter[1] || r.rating == rateFilter[2]
+//                } else {
+//                    return r.rating == rateFilter[0] || r.rating == rateFilter[1] || r.rating == rateFilter[2] || r.rating == rateFilter[3]
+//                }
+//            })
+//        }
+        
+//        if priceFilter[0] > 0 {
+//            filteredData = filteredData.filter({(r: Restaurants) -> Bool in
+//                return Int(r.priceMin!)! >= priceFilter[0]
+//            })
+//        }
+//
+//        if priceFilter[1] > 0 {
+//            filteredData = filteredData.filter({(r: Restaurants) -> Bool in
+//                return Int(r.priceMax!)! <= priceFilter[1]
+//            })
+//        }
+        
+        
+        print(rateFilter)
+        print(priceFilter)
     }
 }
 
