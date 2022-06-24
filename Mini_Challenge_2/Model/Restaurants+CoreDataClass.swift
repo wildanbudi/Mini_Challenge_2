@@ -2,7 +2,7 @@
 //  Restaurants+CoreDataClass.swift
 //  Mini_Challenge_2
 //
-//  Created by Finn Christoffer Kurniawan on 23/06/22.
+//  Created by feedloop on 22/06/22.
 //
 //
 

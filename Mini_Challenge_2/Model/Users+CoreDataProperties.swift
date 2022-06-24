@@ -2,7 +2,7 @@
 //  Users+CoreDataProperties.swift
 //  Mini_Challenge_2
 //
-//  Created by feedloop on 12/06/22.
+//  Created by feedloop on 22/06/22.
 //
 //
 
@@ -19,7 +19,9 @@ extension Users {
     @NSManaged public var email: String?
     @NSManaged public var name: String?
     @NSManaged public var password: String?
+    @NSManaged public var image: Data?
     @NSManaged public var restaurants: NSSet?
+    @NSManaged public var reviews: NSSet?
 
 }
 
@@ -37,6 +39,23 @@ extension Users {
 
     @objc(removeRestaurants:)
     @NSManaged public func removeFromRestaurants(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for reviews
+extension Users {
+
+    @objc(addReviewsObject:)
+    @NSManaged public func addToReviews(_ value: Reviews)
+
+    @objc(removeReviewsObject:)
+    @NSManaged public func removeFromReviews(_ value: Reviews)
+
+    @objc(addReviews:)
+    @NSManaged public func addToReviews(_ values: NSSet)
+
+    @objc(removeReviews:)
+    @NSManaged public func removeFromReviews(_ values: NSSet)
 
 }
 

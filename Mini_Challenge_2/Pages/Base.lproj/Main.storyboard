@@ -16,8 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7r1-4q-4ds">
+                                <rect key="frame" x="128" y="238" width="135" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Review"/>
+                                <connections>
+                                    <action selector="ReviewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3AM-hB-Ah5"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Weu-sm-5V0">
-                                <rect key="frame" x="92" y="132" width="76" height="31"/>
+                                <rect key="frame" x="122" y="155" width="147" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Favorite"/>
@@ -42,6 +51,7 @@
                     <navigationItem key="navigationItem" id="XtG-Tl-OKV"/>
                     <connections>
                         <segue destination="9qf-6n-FrL" kind="show" identifier="GoToFavoriteVC" id="nkz-bS-Hi4"/>
+                        <segue destination="4FM-wX-Mwp" kind="show" identifier="GoToReviewVC" id="W1I-d7-1SC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -58,10 +68,20 @@
             </objects>
             <point key="canvasLocation" x="2463" y="-34"/>
         </scene>
+        <!--ReviewViewController-->
+        <scene sceneID="YaL-bI-AfZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Review" referencedIdentifier="ReviewViewController" id="4FM-wX-Mwp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="R0Z-mw-I2G"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J1E-2t-ZMb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2576" y="-50"/>
+        </scene>
         <!--FavoriteViewController-->
         <scene sceneID="287-83-ndT">
             <objects>
-                <viewControllerPlaceholder storyboardName="Favorite" referencedIdentifier="FavoriteViewController" id="9qf-6n-FrL" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Favorite" id="9qf-6n-FrL" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="PDs-56-PaV"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhN-eB-wb8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
