@@ -58,7 +58,7 @@ class ExploreViewController: UIViewController {
         location.setTitle("Jakarta", for: .normal)
         registerCell()
         getAllItem()
-        UILabel.appearance().font = UIFont(name: "SF Pro", size: 12)
+//        UILabel.appearance().font = UIFont(name: "SF Pro", size: 12)
         // Do any additional setup after loading the view.
     }
     
