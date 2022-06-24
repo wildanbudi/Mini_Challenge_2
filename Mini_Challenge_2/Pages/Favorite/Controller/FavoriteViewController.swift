@@ -125,7 +125,7 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     @objc func directionButton(_ sender: UIButton) {
         let restaurant = filteredData[sender.tag]
         print("tap to direction: " + restaurant.name!)
-        OpenMapDirections.present(in: self, sourceView: sender, restaurant: restaurant)
+        OpenMapDirections.present(in: self, sourceView: sender)
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
