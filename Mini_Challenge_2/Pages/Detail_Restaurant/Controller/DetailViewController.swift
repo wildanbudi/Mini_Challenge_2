@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
         
         getAllRestaurant()
         let restaurant = restaurantData.filter({(r: Restaurants) -> Bool in
-            return r.name == "Kayu-Kayu Restaurant"
+            return r.name == "Che En Vegetarian"
         }).first ?? Restaurants(context: context)
         menuRestaurantData = (restaurant.menus!.allObjects as! [Menus])
         
@@ -76,8 +76,9 @@ class DetailViewController: UIViewController {
     
     // Connect Controller to Database
     func connectControllerToData () {
+        let imgMap = UIImage(data: restaurantDetail.imageMap! )
         RestaurantLabel.text = restaurantDetail.name
-        //RestaurantType.image = restaurantDetail
+        RestaurantType.image = UIImage(data: restaurantDetail.image!)
         PriceTagMin.text = restaurantDetail.priceMin
         PriceTagMax.text = restaurantDetail.priceMax
         RateTag.text = String(restaurantDetail.rating)
@@ -86,6 +87,9 @@ class DetailViewController: UIViewController {
         AddressTag.text = restaurantDetail.address
         AddressTag.lineBreakMode = NSLineBreakMode.byWordWrapping
         AddressTag.numberOfLines = 2
+        MapsImageButton.setImage(imgMap, for: .normal)
+        MapsImageButton.layer.cornerRadius = 15
+        MapsImageButton.clipsToBounds = true
     }
     
     // Map Direction Function
