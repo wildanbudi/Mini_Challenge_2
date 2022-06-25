@@ -42,6 +42,7 @@ class ExploreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 255/255)
         self.locationManager.requestAlwaysAuthorization()
 
         // For use in foreground
@@ -78,10 +79,7 @@ class ExploreViewController: UIViewController {
             //error handling
         }
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 125 : 125
-    }
+
     /*
     // MARK: - Navigation
 
@@ -116,12 +114,12 @@ extension ExploreViewController: UITableViewDataSource, UITableViewDelegate {
         return restaurantModel.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: "restaurantCell", for: indexPath) as? RestaurantTableViewCell)!
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        cell.layer.cornerRadius = 15
-        cell.layer.borderWidth = 1.0
-        cell.layer.borderColor = UIColor.gray.cgColor
         if restaurantModel[indexPath.row].image != nil {
             cell.restaurantImage.image = UIImage(data: restaurantModel[indexPath.row].image!)
         }
