@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4276A2C62868D6A0003B1C73 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4276A2C52868D6A0003B1C73 /* CloudKit.framework */; };
 		428364F02854D57B00D057E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428364EF2854D57B00D057E9 /* AppDelegate.swift */; };
 		428364F22854D57B00D057E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428364F12854D57B00D057E9 /* SceneDelegate.swift */; };
 		428364F42854D57B00D057E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428364F32854D57B00D057E9 /* ViewController.swift */; };
@@ -57,6 +58,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4276A2C32868D69E003B1C73 /* Mini_Challenge_2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mini_Challenge_2.entitlements; sourceTree = "<group>"; };
+		4276A2C52868D6A0003B1C73 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		428364EC2854D57B00D057E9 /* Mini_Challenge_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini_Challenge_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		428364EF2854D57B00D057E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		428364F12854D57B00D057E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,18 +116,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ACFCC672858D92E00BE1E52 /* CenteredCollectionView in Frameworks */,
+				4276A2C62868D6A0003B1C73 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4276A2C42868D6A0003B1C73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4276A2C52868D6A0003B1C73 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		428364E32854D57B00D057E9 = {
 			isa = PBXGroup;
 			children = (
 				437454D8285CC222006403EC /* .gitignore */,
 				428364EE2854D57B00D057E9 /* Mini_Challenge_2 */,
 				428364ED2854D57B00D057E9 /* Products */,
+				4276A2C42868D6A0003B1C73 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +152,7 @@
 		428364EE2854D57B00D057E9 /* Mini_Challenge_2 */ = {
 			isa = PBXGroup;
 			children = (
+				4276A2C32868D69E003B1C73 /* Mini_Challenge_2.entitlements */,
 				43C504362855EA9100F1C815 /* Model */,
 				428364EF2854D57B00D057E9 /* AppDelegate.swift */,
 				43C504372855EAB100F1C815 /* Helper */,
@@ -693,11 +707,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Mini_Challenge_2/Mini_Challenge_2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7PHRUAQA32;
+				DEVELOPMENT_TEAM = KJUW4SG84H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini_Challenge_2/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Turn on location services to find restaurant around you";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Turn on location services to find restaurant around you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -721,11 +738,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Mini_Challenge_2/Mini_Challenge_2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7PHRUAQA32;
+				DEVELOPMENT_TEAM = KJUW4SG84H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini_Challenge_2/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Turn on location services to find restaurant around you";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Turn on location services to find restaurant around you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
