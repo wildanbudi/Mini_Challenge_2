@@ -16,6 +16,7 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var openStatus: UILabel!
     @IBOutlet weak var view: UIView!
+    @IBOutlet weak var restaurantType: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

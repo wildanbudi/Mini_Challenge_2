@@ -30,7 +30,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Configure Bar Atribute
         title = "Details"
         configureBarAtribute()
@@ -42,10 +41,10 @@ class DetailViewController: UIViewController {
         let restaurant = restaurantData.filter({(r: Restaurants) -> Bool in
             return r.name == "Che En Vegetarian"
         }).first ?? Restaurants(context: context)
-        menuRestaurantData = (restaurant.menus!.allObjects as! [Menus])
+        menuRestaurantData = (restaurantDetail.menus!.allObjects as! [Menus])
         
         // Data Restaurant from protocol
-        restaurantDetail = restaurant
+//        restaurantDetail = restaurant
         connectControllerToData()
         
         // Filtered menus
