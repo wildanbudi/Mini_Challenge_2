@@ -11,10 +11,16 @@ class ViewController: UIViewController {
 
     @IBAction func FavoriteButton(_ sender: UIButton) {
         performSegue(withIdentifier: "GoToFavoriteVC", sender: self)
-        
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    @IBAction func ReviewButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "GoToReviewVC", sender: self)
+    }
+    
+    @IBAction func DetailButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToDetail", sender: self)
+    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "GoToFavoriteVC" {
 //            guard let vc = segue.destination as? FavoriteViewController else { return }
 //            vc.modalPresentationStyle = .fullScreen

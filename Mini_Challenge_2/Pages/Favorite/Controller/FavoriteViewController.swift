@@ -10,7 +10,7 @@ import UIKit
 class FavoriteViewController: UIViewController, UISearchBarDelegate {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var usersData: [Users]!
-    var favRestaurantsData: NSSet!
+    var favRestaurantsData: [Restaurants]!
     var filteredData: [Restaurants]!
     let searchBarInstance = SearchBar()
     
@@ -32,11 +32,11 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
             return r.name == "Vegeta Doe"
         }).first ?? Users(context: context)
         
-        favRestaurantsData = user.restaurants
-        filteredData = (favRestaurantsData.allObjects as! [Restaurants])
+        favRestaurantsData = (user.restaurants!.allObjects as! [Restaurants])
+        filteredData = favRestaurantsData
         
         let locationButton =  UIButton(type: .custom)
-        locationButton.setImage(UIImage(systemName: "location"), for: .normal)
+        locationButton.setImage(UIImage(named: "location"), for: .normal)
         locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
         locationButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
         let locationLabel = UILabel(frame: CGRect(x: -70, y: 5, width: 100, height: 20))// set position of label
@@ -81,7 +81,26 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     }
     
     @objc private func showLocation(_ sender: Any) {
-        performSegue(withIdentifier: "ShowLocationModal", sender: self)
+//        performSegue(withIdentifier: "ShowLocationModal", sender: self)
+        let locationStoryboard = UIStoryboard(name: "Location", bundle: nil)
+        let locationViewController = locationStoryboard.instantiateViewController(withIdentifier: "LocationViewController")
+        
+        if let presentationController = locationViewController.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()] /// change to [.medium(), .large()] for a half *and* full screen sheet
+        }
+        
+        self.present(locationViewController, animated: true)
+    }
+    
+    @IBAction private func filterButton(_ sender: UIButton) {
+        let filterStoryboard = UIStoryboard(name: "Filter", bundle: nil)
+        let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterViewController")
+        
+        if let presentationController = filterViewController.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()] /// change to [.medium(), .large()] for a half *and* full screen sheet
+        }
+        
+        self.present(filterViewController, animated: true)
     }
     
     @objc func deleteButton(_ sender: UIButton) {
@@ -106,16 +125,50 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     @objc func directionButton(_ sender: UIButton) {
         let restaurant = filteredData[sender.tag]
         print("tap to direction: " + restaurant.name!)
-        OpenMapDirections.present(in: self, sourceView: sender, restaurant: restaurant)
+        //OpenMapDirections.present(in: self, sourceView: sender)
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let search = searchBarInstance.search
         filteredData = []
-        filteredData = search(favRestaurantsData, searchText)
+        filteredData = search(NSSet(array: favRestaurantsData), searchText)
         DispatchQueue.main.async {
             self.favoriteTableView.reloadData()
         }
+    }
+    
+    func filterReload(rateFilter: [Double], priceFilter: [Int]) {
+        filteredData = favRestaurantsData
+        print(filteredData as Any)
+//        if rateFilter.count > 0 && rateFilter.count < 5 {
+//            filteredData = filteredData.filter({(r: Restaurants) -> Bool in
+//                if rateFilter.count == 1 {
+//                    return r.rating == rateFilter[0]
+//                } else if rateFilter.count == 2 {
+//                    return r.rating == rateFilter[0] || r.rating == rateFilter[1]
+//                } else if rateFilter.count == 3 {
+//                    return r.rating == rateFilter[0] || r.rating == rateFilter[1] || r.rating == rateFilter[2]
+//                } else {
+//                    return r.rating == rateFilter[0] || r.rating == rateFilter[1] || r.rating == rateFilter[2] || r.rating == rateFilter[3]
+//                }
+//            })
+//        }
+        
+//        if priceFilter[0] > 0 {
+//            filteredData = filteredData.filter({(r: Restaurants) -> Bool in
+//                return Int(r.priceMin!)! >= priceFilter[0]
+//            })
+//        }
+//
+//        if priceFilter[1] > 0 {
+//            filteredData = filteredData.filter({(r: Restaurants) -> Bool in
+//                return Int(r.priceMax!)! <= priceFilter[1]
+//            })
+//        }
+        
+        
+        print(rateFilter)
+        print(priceFilter)
     }
 }
 

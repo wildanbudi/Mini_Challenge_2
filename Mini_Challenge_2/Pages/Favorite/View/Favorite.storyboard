@@ -140,6 +140,9 @@
                                     <imageReference key="image" image="slider.horizontal.3" catalog="system" symbolScale="large"/>
                                     <color key="baseForegroundColor" red="0.28367751839999999" green="0.55945128200000005" blue="0.078932888810000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="filterButton:" destination="5wF-RX-5ce" eventType="touchUpInside" id="Nog-lT-vOl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Df-e0-D0I"/>
