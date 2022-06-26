@@ -8,9 +8,6 @@
 import UIKit
 
 class FilterViewController: UIViewController {
-    @IBOutlet var cancelButton: UIButton!
-    @IBOutlet var applyButton: UIButton!
-    
     @IBOutlet var star5Button: UIButton!
     @IBOutlet var star4Button: UIButton!
     @IBOutlet var star3Button: UIButton!
@@ -22,7 +19,6 @@ class FilterViewController: UIViewController {
     var rateFilter = [false, false, false, false, false]
     var fromPrice = 0
     var toPrice = 0
-    var delegate: isAbleToReceiveData!
     var rateList: [Double]!
 
     override func viewDidLoad() {
@@ -34,23 +30,13 @@ class FilterViewController: UIViewController {
         self.star1Button.layer.borderColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1).cgColor
     }
     
-    @IBAction private func cancelButtonTapped(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    @IBAction private func applyButtonTapped(_ sender: UIButton) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         fromPrice = Int(fromTextField.text ?? "0") ?? 0
         toPrice = Int(toTextField.text ?? "0") ?? 0
         
         rateList = rateFilter.enumerated().filter {
             $0.element == true
         }.map{Double($0.offset + 1)}
-        
-        self.dismiss(animated: true, completion: nil)
-
-//        FavoriteViewController().filterReload(rateFilter: a, priceFilter: [fromPrice, toPrice])
-    }
-    func viewWillDisappear() {
-        delegate.filterReload(rateFilter: rateList, priceFilter: [fromPrice, toPrice])
     }
     @IBAction private func star5ButtonTapped(_ sender: UIButton) {
         rateFilter[4] = !rateFilter[4]
@@ -91,8 +77,4 @@ class FilterViewController: UIViewController {
     }
     */
 
-}
-
-protocol isAbleToReceiveData {
-  func filterReload(rateFilter: [Double], priceFilter: [Int])  //data: string is an example parameter
 }

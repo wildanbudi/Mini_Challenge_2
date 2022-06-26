@@ -163,11 +163,33 @@
                         <outlet property="filterButton" destination="3K3-dp-PNe" id="TTy-vZ-4Ud"/>
                         <outlet property="searchBar" destination="6as-oI-y2b" id="LPX-ga-tZ1"/>
                         <segue destination="V9S-wA-Hdj" kind="presentation" identifier="ShowLocationModal" modalPresentationStyle="formSheet" id="10h-aP-ZQ7"/>
+                        <segue destination="n09-QQ-5yG" kind="show" identifier="GoToDetail" id="auM-dm-69l"/>
+                        <segue destination="zof-Uj-v3e" kind="show" identifier="GoToProfile" id="Ays-3u-csg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZm-HR-JqH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2089.2307692307691" y="751.42180094786727"/>
+        </scene>
+        <!--DetailViewController-->
+        <scene sceneID="G4M-Mu-bYg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DetailPage" referencedIdentifier="DetailViewController" id="n09-QQ-5yG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="iRo-uk-ZFc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yzn-8V-dYo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2794" y="820"/>
+        </scene>
+        <!--ProfileViewController-->
+        <scene sceneID="pW0-29-P1N">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileViewController" id="zof-Uj-v3e" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zkj-3o-xH6"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J0I-EZ-ube" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2797" y="680"/>
         </scene>
         <!--LocationViewController-->
         <scene sceneID="hAv-F5-mZu">
