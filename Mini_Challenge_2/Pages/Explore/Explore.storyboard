@@ -22,9 +22,60 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CEj-os-GiG">
-                                <rect key="frame" x="16" y="201" width="357" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJZ-06-kl8">
+                                <rect key="frame" x="350" y="143" width="25" height="44"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="slider.horizontal.3" catalog="system">
+                                    <color key="baseForegroundColor" red="0.39607840779999998" green="0.54901963470000004" blue="0.21568629149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="filterButton:" destination="fcR-DX-6Ys" eventType="touchUpInside" id="2Y0-20-7cq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gL9-00-9ne">
+                                <rect key="frame" x="15" y="93" width="91" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" imagePlacement="leading" title="Username" imagePadding="5">
+                                    <imageReference key="image" image="person.circle.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="19"/>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                    <color key="baseForegroundColor" red="0.39607840779999998" green="0.54901963470000004" blue="0.21568629149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="usernameButton:" destination="fcR-DX-6Ys" eventType="touchUpInside" id="kST-r5-CK2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpS-yq-jfO">
+                                <rect key="frame" x="306.33333333333331" y="93" width="68.666666666666686" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Artboard" imagePlacement="trailing" title="Location" imagePadding="3">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                    <color key="baseForegroundColor" red="0.39607840779999998" green="0.54901963470000004" blue="0.21568629149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="locationButton:" destination="fcR-DX-6Ys" eventType="touchUpInside" id="qlI-PA-D3M"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Otp-rA-LID">
+                                <rect key="frame" x="10" y="238" width="370" height="521"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="521" id="7CZ-y6-hc9"/>
+                                    <constraint firstAttribute="height" constant="521" id="8vS-lS-gzI"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="fcR-DX-6Ys" id="FKE-pg-t72"/>
+                                    <outlet property="delegate" destination="fcR-DX-6Ys" id="0eP-o9-aB6"/>
+                                </connections>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CEj-os-GiG">
+                                <rect key="frame" x="10" y="192" width="370" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="Wur-9p-Cb0"/>
+                                    <constraint firstAttribute="width" constant="370" id="vUt-YJ-Gy4"/>
+                                </constraints>
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="Vegetarian"/>
@@ -34,52 +85,35 @@
                                     <action selector="restoType:" destination="fcR-DX-6Ys" eventType="valueChanged" id="fI1-Ct-fOY"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJZ-06-kl8">
-                                <rect key="frame" x="327" y="150" width="47" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="slider.horizontal.3" catalog="system">
-                                    <color key="baseForegroundColor" red="0.39607840779999998" green="0.54901963470000004" blue="0.21568629149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gL9-00-9ne">
-                                <rect key="frame" x="16" y="88" width="132" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" imagePlacement="leading" title="Username" imagePadding="10">
-                                    <imageReference key="image" image="person.circle.fill" catalog="system" symbolScale="large"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="19"/>
-                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
-                                    <color key="baseForegroundColor" red="0.39607840779999998" green="0.54901963470000004" blue="0.21568629149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="usernameButton:" destination="fcR-DX-6Ys" eventType="touchUpInside" id="kST-r5-CK2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpS-yq-jfO">
-                                <rect key="frame" x="232" y="88" width="141" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Artboard" imagePlacement="trailing" title="Location" imagePadding="7">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
-                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="40" bottom="0.0" trailing="-9"/>
-                                    <color key="baseForegroundColor" red="0.39607840779999998" green="0.54901963470000004" blue="0.21568629149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Otp-rA-LID">
-                                <rect key="frame" x="10" y="240" width="370" height="521"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="fcR-DX-6Ys" id="FKE-pg-t72"/>
-                                    <outlet property="delegate" destination="fcR-DX-6Ys" id="0eP-o9-aB6"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PUW-HU-mv2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Otp-rA-LID" firstAttribute="top" secondItem="CEj-os-GiG" secondAttribute="bottom" constant="15" id="7lP-Ed-x44"/>
+                            <constraint firstItem="PUW-HU-mv2" firstAttribute="trailing" secondItem="dJZ-06-kl8" secondAttribute="trailing" constant="15" id="8r6-VG-fnt"/>
+                            <constraint firstItem="CEj-os-GiG" firstAttribute="top" secondItem="7p2-lb-jU2" secondAttribute="bottom" constant="5" id="C62-3d-5Y0"/>
+                            <constraint firstItem="PUW-HU-mv2" firstAttribute="trailing" secondItem="Otp-rA-LID" secondAttribute="trailing" constant="10" id="Fbe-ce-QQ0"/>
+                            <constraint firstItem="dJZ-06-kl8" firstAttribute="centerY" secondItem="7p2-lb-jU2" secondAttribute="centerY" id="JQK-Ht-o1z"/>
+                            <constraint firstItem="PUW-HU-mv2" firstAttribute="bottom" secondItem="Otp-rA-LID" secondAttribute="bottom" constant="2" id="JjU-IC-yzV"/>
+                            <constraint firstItem="Otp-rA-LID" firstAttribute="leading" secondItem="PUW-HU-mv2" secondAttribute="leading" constant="10" id="KJn-uN-DhO"/>
+                            <constraint firstItem="7p2-lb-jU2" firstAttribute="top" secondItem="gL9-00-9ne" secondAttribute="bottom" constant="20" id="OHS-UQ-pEk"/>
+                            <constraint firstItem="PUW-HU-mv2" firstAttribute="trailing" secondItem="hpS-yq-jfO" secondAttribute="trailing" constant="15" id="U4A-n6-fIb"/>
+                            <constraint firstItem="CEj-os-GiG" firstAttribute="leading" secondItem="PUW-HU-mv2" secondAttribute="leading" constant="10" id="VUZ-Gi-oJU"/>
+                            <constraint firstItem="gL9-00-9ne" firstAttribute="leading" secondItem="PUW-HU-mv2" secondAttribute="leading" constant="15" id="YDg-Id-0hZ"/>
+                            <constraint firstItem="gL9-00-9ne" firstAttribute="top" secondItem="PUW-HU-mv2" secondAttribute="top" constant="5" id="d75-uX-AXB"/>
+                            <constraint firstItem="PUW-HU-mv2" firstAttribute="trailing" secondItem="CEj-os-GiG" secondAttribute="trailing" constant="10" id="fpQ-4M-fzr"/>
+                            <constraint firstItem="dJZ-06-kl8" firstAttribute="top" secondItem="hpS-yq-jfO" secondAttribute="bottom" constant="20" id="j1P-Ob-mUD"/>
+                            <constraint firstItem="dJZ-06-kl8" firstAttribute="leading" secondItem="7p2-lb-jU2" secondAttribute="trailing" constant="20" id="qYp-Xf-w1k"/>
+                            <constraint firstItem="hpS-yq-jfO" firstAttribute="top" secondItem="PUW-HU-mv2" secondAttribute="top" constant="5" id="sIw-HL-vns"/>
+                            <constraint firstItem="hpS-yq-jfO" firstAttribute="centerY" secondItem="gL9-00-9ne" secondAttribute="centerY" id="uMe-LH-pNm"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="oIu-vT-OjO"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                            <color key="value" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="filter" destination="dJZ-06-kl8" id="Sg2-h6-fUG"/>
                         <outlet property="location" destination="hpS-yq-jfO" id="zw0-kM-yxW"/>

@@ -144,7 +144,16 @@ public class DataSeeder {
         let kayuKayuImg = UIImage(named: "Tangerang_Kayu-Kayu")?.jpegData(compressionQuality: 1.0)
         let tamanSantapImg = UIImage(named: "Tangerang_Taman Santap")?.jpegData(compressionQuality: 1.0)
         
-        //let restoIndoVegan
+        let restoIndoVeganImgMap = UIImage(named: "Resto Indo Vegan")?.jpegData(compressionQuality: 1.0)
+        let dharmaKitchenImgMap = UIImage(named: "Dharma Kitchen")?.jpegData(compressionQuality: 1.0)
+        let grasslandVegetarianImgMap = UIImage(named: "Grassland Vegetarian Restaurant")?.jpegData(compressionQuality: 1.0)
+        let vegetusVegetarianImgMap = UIImage(named: "Vegetus Vegetarian")?.jpegData(compressionQuality: 1.0)
+        let CheEnVegetarianImgMap = UIImage(named: "Che En Vegetarian")?.jpegData(compressionQuality: 1.0)
+        let starbucksImgMap = UIImage(named: "Starbucks")?.jpegData(compressionQuality: 1.0)
+        let formaggioImgMap = UIImage(named: "Formaggio Coffee _ Resto")?.jpegData(compressionQuality: 1.0)
+        let kayuKayuImgMap = UIImage(named: "Kayu Kayu Restaurant")?.jpegData(compressionQuality: 1.0)
+        let tamanSantapImgMap = UIImage(named: "Taman Santap Rumah Kayu")?.jpegData(compressionQuality: 1.0)
+        
         let restaurants = [
             (name: "Resto Indo Vegan", rating: 4.0, openHours: "07:00 - 18:00", phone: "0811953539", priceMin: "10000", priceMax: "60000", address: "Jalan Duri Selatan 1 No. 9, RT.06/ RW.02, RT.6/RW.2, Duri Sel., Kec. Tambora, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11270", imageUrl: "https://drive.google.com/uc?id=1eQa7DP1a1fC9gkjBvg24XJSaJkEDeUFW", latitude: -6.16091552563978, longitude: 106.80619523969511, vegeResto: true, city: "Jakarta", kecamatan: "Tambora", image: restoIndoVeganImg),
             (name: "Dharma Kitchen", rating: 3.0, openHours: "10:00 - 21:00", phone: "0216618302", priceMin: "75000", priceMax: "200000", address: "Jl. Pluit Kencana Raya No.124, RT.10/RW.7, Pluit, Kec. Penjaringan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14450", imageUrl: "https://drive.google.com/uc?id=1mpJh9v98tJeahcZIFpsZNPlxZkyxEn2q", latitude: -6.119620138581436, longitude: 106.78849407789964, vegeResto: true, city: "Jakarta", kecamatan: "Penjaringan", image: dharmaKitchenImg),
@@ -173,6 +182,7 @@ public class DataSeeder {
             newRestaurant.city = restaurant.city
             newRestaurant.kecamatan = restaurant.kecamatan
             newRestaurant.image = restaurant.image
+            newRestaurant.imageMap = restaurant.imageMap
         }
         
         do {
@@ -182,51 +192,71 @@ public class DataSeeder {
     }
     
     fileprivate func seedMenus() {
+        
+        // Kayu-kayu Restaurant Menu
         let kayuAsinanImg = UIImage(named: "Kayu-Kayu 1 - Asinan Bogor")?.jpegData(compressionQuality: 1.0)
         let kayuBreakfastSetImg = UIImage(named: "Kayu-Kayu 2 - Breakfast Set")?.jpegData(compressionQuality: 1.0)
         let kayuEnokiImg = UIImage(named: "Kayu-Kayu 3 - Enoki Jamur Goreng")?.jpegData(compressionQuality: 1.0)
         let kayuMartabakVegieImg = UIImage(named: "Kayu-Kayu 4 - Martabak Vegie")?.jpegData(compressionQuality: 1.0)
         let kayuTerongBaladoImg = UIImage(named: "Kayu-Kayu 5 - Terong Balado")?.jpegData(compressionQuality: 1.0)
+        
+        // Taman Santap Restaurant Menu
         let tamanSantapKangkungBalacanImg = UIImage(named: "Taman Santap 1 - Kangkung Balacan")?.jpegData(compressionQuality: 1.0)
         let tamanSantapKangkungJamurImg = UIImage(named: "Taman Santap 2 - Kangkung Cah Jamur")?.jpegData(compressionQuality: 1.0)
         let tamanSantapKangkungPlecingImg = UIImage(named: "Taman Santap 3 - Kangkung Plecing")?.jpegData(compressionQuality: 1.0)
         let tamanSantapTaugePolosImg = UIImage(named: "Taman Santap 4 - Tauge Cah Polos")?.jpegData(compressionQuality: 1.0)
         let tamanSantapTerongGorengImg = UIImage(named: "Taman Santap 5 - Terong Goreng")?.jpegData(compressionQuality: 1.0)
+        
+        // Formaggio Restaurant Menu
         let formaggioCaesarImg = UIImage(named: "Formaggio 1 - Caesar Salad")?.jpegData(compressionQuality: 1.0)
         let formaggioCornSoupImg = UIImage(named: "Formaggio 2 - Corn And Carrot Soup")?.jpegData(compressionQuality: 1.0)
         let formaggioMushroomSoupImg = UIImage(named: "Formaggio 3 - Mushroom Cream Soup")?.jpegData(compressionQuality: 1.0)
         let formaggioNacosFungiImg = UIImage(named: "Formaggio 4 - Nacos Con Fungi")?.jpegData(compressionQuality: 1.0)
         let formaggioPadThaiImg = UIImage(named: "Formaggio 5 - Pad Thai")?.jpegData(compressionQuality: 1.0)
-        let restoIndo1 = UIImage(named: "Resto Indo_1")?.jpegData(compressionQuality: 1.0)
-        let restoIndo2 = UIImage(named: "Resto Indo_2")?.jpegData(compressionQuality: 1.0)
-        let restoIndo3 = UIImage(named: "Resto Indo_3")?.jpegData(compressionQuality: 1.0)
-        let restoIndo4 = UIImage(named: "Resto Indo_4")?.jpegData(compressionQuality: 1.0)
-        let restoIndo5 = UIImage(named: "Resto Indo_5")?.jpegData(compressionQuality: 1.0)
-        let dharma1 = UIImage(named: "Dharma Kitchen_1")?.jpegData(compressionQuality: 1.0)
-        let dharma2 = UIImage(named: "Dharma Kitchen_2")?.jpegData(compressionQuality: 1.0)
-        let dharma3 = UIImage(named: "Dharma Kitchen_3")?.jpegData(compressionQuality: 1.0)
-        let dharma4 = UIImage(named: "Dharma Kitchen_4")?.jpegData(compressionQuality: 1.0)
-        let dharma5 = UIImage(named: "Dharma Kitchen_5")?.jpegData(compressionQuality: 1.0)
-        let grassland1 = UIImage(named: "Grassland_1")?.jpegData(compressionQuality: 1.0)
-        let grassland2 = UIImage(named: "Grassland_2")?.jpegData(compressionQuality: 1.0)
-        let grassland3 = UIImage(named: "Grassland_3")?.jpegData(compressionQuality: 1.0)
-        let grassland4 = UIImage(named: "Grassland_4")?.jpegData(compressionQuality: 1.0)
-        let grassland5 = UIImage(named: "Grassland_5")?.jpegData(compressionQuality: 1.0)
-        let vegetus1 = UIImage(named: "Vegetus Vegetarian_1")?.jpegData(compressionQuality: 1.0)
-        let vegetus2 = UIImage(named: "Vegetus Vegetarian_2")?.jpegData(compressionQuality: 1.0)
-        let vegetus3 = UIImage(named: "Vegetus Vegetarian_3")?.jpegData(compressionQuality: 1.0)
-        let vegetus4 = UIImage(named: "Vegetus Vegetarian_4")?.jpegData(compressionQuality: 1.0)
-        let vegetus5 = UIImage(named: "Vegetus Vegetarian_5")?.jpegData(compressionQuality: 1.0)
-        let cheEn1 = UIImage(named: "Che En Vegetarian_1")?.jpegData(compressionQuality: 1.0)
-        let cheEn2 = UIImage(named: "Che En Vegetarian_2")?.jpegData(compressionQuality: 1.0)
-        let cheEn3 = UIImage(named: "Che En Vegetarian_3")?.jpegData(compressionQuality: 1.0)
-        let cheEn4 = UIImage(named: "Che En Vegetarian_4")?.jpegData(compressionQuality: 1.0)
-        let cheEn5 = UIImage(named: "Che En Vegetarian_5")?.jpegData(compressionQuality: 1.0)
-        let starbucks1 = UIImage(named: "Starbucks_1")?.jpegData(compressionQuality: 1.0)
-        let starbucks2 = UIImage(named: "Starbucks_2")?.jpegData(compressionQuality: 1.0)
-        let starbucks3 = UIImage(named: "Starbucks_3")?.jpegData(compressionQuality: 1.0)
-        let starbucks4 = UIImage(named: "Starbucks_4")?.jpegData(compressionQuality: 1.0)
-        let starbucks5 = UIImage(named: "Starbucks_5")?.jpegData(compressionQuality: 1.0)
+        
+        // Che-En Restaurant Menu
+        let CheEnVegetarian_1_MenuImg = UIImage(named: "Che En Vegetarian_1")?.jpegData(compressionQuality: 1.0)
+        let CheEnVegetarian_2_MenuImg = UIImage(named: "Che En Vegetarian_2")?.jpegData(compressionQuality: 1.0)
+        let CheEnVegetarian_3_MenuImg = UIImage(named: "Che En Vegetarian_3")?.jpegData(compressionQuality: 1.0)
+        let CheEnVegetarian_4_MenuImg = UIImage(named: "Che En Vegetarian_4")?.jpegData(compressionQuality: 1.0)
+        let CheEnVegetarian_5_MenuImg = UIImage(named: "Che En Vegetarian_5")?.jpegData(compressionQuality: 1.0)
+        
+        // Dharma Kitchen Restaurant Menu
+        let DharmaKitchen_1_MenuImg = UIImage(named: "Dharma Kitchen_1")?.jpegData(compressionQuality: 1.0)
+        let DharmaKitchen_2_MenuImg = UIImage(named: "Dharma Kitchen_2")?.jpegData(compressionQuality: 1.0)
+        let DharmaKitchen_3_MenuImg = UIImage(named: "Dharma Kitchen_3")?.jpegData(compressionQuality: 1.0)
+        let DharmaKitchen_4_MenuImg = UIImage(named: "Dharma Kitchen_4")?.jpegData(compressionQuality: 1.0)
+        let DharmaKitchen_5_MenuImg = UIImage(named: "Dharma Kitchen_5")?.jpegData(compressionQuality: 1.0)
+        
+        // Grassland Kitchen Restaurant Menu
+        let Grassland_1_MenuImg = UIImage(named: "Grassland_1")?.jpegData(compressionQuality: 1.0)
+        let Grassland_2_MenuImg = UIImage(named: "Grassland_2")?.jpegData(compressionQuality: 1.0)
+        let Grassland_3_MenuImg = UIImage(named: "Grassland_3")?.jpegData(compressionQuality: 1.0)
+        let Grassland_4_MenuImg = UIImage(named: "Grassland_4")?.jpegData(compressionQuality: 1.0)
+        let Grassland_5_MenuImg = UIImage(named: "Grassland_5")?.jpegData(compressionQuality: 1.0)
+        
+        // Resto Indo Kitchen Restaurant Menu
+        let RestoIndo_1_MenuImg = UIImage(named: "Resto Indo_1")?.jpegData(compressionQuality: 1.0)
+        let RestoIndo_2_MenuImg = UIImage(named: "Resto Indo_2")?.jpegData(compressionQuality: 1.0)
+        let RestoIndo_3_MenuImg = UIImage(named: "Resto Indo_3")?.jpegData(compressionQuality: 1.0)
+        let RestoIndo_4_MenuImg = UIImage(named: "Resto Indo_4")?.jpegData(compressionQuality: 1.0)
+        let RestoIndo_5_MenuImg = UIImage(named: "Resto Indo_5")?.jpegData(compressionQuality: 1.0)
+        
+        // Starbucks Restaurant Menu
+        let Starbucks_1_MenuImg = UIImage(named: "Starbucks_1")?.jpegData(compressionQuality: 1.0)
+        let Starbucks_2_MenuImg = UIImage(named: "Starbucks_2")?.jpegData(compressionQuality: 1.0)
+        let Starbucks_3_MenuImg = UIImage(named: "Starbucks_3")?.jpegData(compressionQuality: 1.0)
+        let Starbucks_4_MenuImg = UIImage(named: "Starbucks_4")?.jpegData(compressionQuality: 1.0)
+        let Starbucks_5_MenuImg = UIImage(named: "Starbucks_5")?.jpegData(compressionQuality: 1.0)
+        
+        // Vegetus Vegetarian Restaurant Menu
+        let VegetusVegetarian_1_MenuImg = UIImage(named: "Vegetus Vegetarian_1")?.jpegData(compressionQuality: 1.0)
+        let VegetusVegetarian_2_MenuImg = UIImage(named: "Vegetus Vegetarian_2")?.jpegData(compressionQuality: 1.0)
+        let VegetusVegetarian_3_MenuImg = UIImage(named: "Vegetus Vegetarian_3")?.jpegData(compressionQuality: 1.0)
+        let VegetusVegetarian_4_MenuImg = UIImage(named: "Vegetus Vegetarian_4")?.jpegData(compressionQuality: 1.0)
+        let VegetusVegetarian_5_MenuImg = UIImage(named: "Vegetus Vegetarian_5")?.jpegData(compressionQuality: 1.0)
+        
+        
         
         let menus = [
             (name: "Asinan Bogor", imageUrl: "https://drive.google.com/uc?id=1hyS-ryw5HWKLMd8cu3bnTgJ5Qf_sYDsk", restaurant: kayuKayu, image: kayuAsinanImg),
@@ -244,36 +274,44 @@ public class DataSeeder {
             (name: "Mushroom Cream Soup", imageUrl: "https://drive.google.com/uc?id=1fwP0k1jSZMyd55uOKZC_jaLQJ2Zc_BLf", restaurant: formaggioCoffeResto, image: formaggioMushroomSoupImg),
             (name: "Nacos Con Fungi", imageUrl: "https://drive.google.com/uc?id=1A9Uc_0H8KsQZcGGSvYxCMUYhQ2KrTvW8", restaurant: formaggioCoffeResto, image: formaggioNacosFungiImg),
             (name: "Pad Thai", imageUrl: "https://drive.google.com/uc?id=1JiPQbnR--XcR5BPV9Ll5RoT7xz2aSLoP", restaurant: formaggioCoffeResto, image: formaggioPadThaiImg),
-            (name: "restoIndo1", imageUrl: "", restaurant: restoIndoVegan, image: restoIndo1),
-            (name: "restoIndo2", imageUrl: "", restaurant: restoIndoVegan, image: restoIndo2),
-            (name: "restoIndo3", imageUrl: "", restaurant: restoIndoVegan, image: restoIndo3),
-            (name: "restoIndo4", imageUrl: "", restaurant: restoIndoVegan, image: restoIndo4),
-            (name: "restoIndo5", imageUrl: "", restaurant: restoIndoVegan, image: restoIndo5),
-            (name: "grassland1", imageUrl: "", restaurant: grasslandVegetarian, image: grassland1),
-            (name: "grassland2", imageUrl: "", restaurant: grasslandVegetarian, image: grassland2),
-            (name: "grassland3", imageUrl: "", restaurant: grasslandVegetarian, image: grassland3),
-            (name: "grassland4", imageUrl: "", restaurant: grasslandVegetarian, image: grassland4),
-            (name: "grassland5", imageUrl: "", restaurant: grasslandVegetarian, image: grassland5),
-            (name: "dharma1", imageUrl: "", restaurant: dharmaKitchen, image: dharma1),
-            (name: "dharma2", imageUrl: "", restaurant: dharmaKitchen, image: dharma2),
-            (name: "dharma3", imageUrl: "", restaurant: dharmaKitchen, image: dharma3),
-            (name: "dharma4", imageUrl: "", restaurant: dharmaKitchen, image: dharma4),
-            (name: "dharma5", imageUrl: "", restaurant: dharmaKitchen, image: dharma5),
-            (name: "vegetus1", imageUrl: "", restaurant: vegetusVegetarian, image: vegetus1),
-            (name: "vegetus2", imageUrl: "", restaurant: vegetusVegetarian, image: vegetus2),
-            (name: "vegetus3", imageUrl: "", restaurant: vegetusVegetarian, image: vegetus3),
-            (name: "vegetus4", imageUrl: "", restaurant: vegetusVegetarian, image: vegetus4),
-            (name: "vegetus5", imageUrl: "", restaurant: vegetusVegetarian, image: vegetus5),
-            (name: "cheEn1", imageUrl: "", restaurant: cheEnVegetarian, image: cheEn1),
-            (name: "cheEn2", imageUrl: "", restaurant: cheEnVegetarian, image: cheEn2),
-            (name: "cheEn3", imageUrl: "", restaurant: cheEnVegetarian, image: cheEn3),
-            (name: "cheEn4", imageUrl: "", restaurant: cheEnVegetarian, image: cheEn4),
-            (name: "cheEn5", imageUrl: "", restaurant: cheEnVegetarian, image: cheEn5),
-            (name: "starbucks1", imageUrl: "", restaurant: starbucks, image: starbucks1),
-            (name: "starbucks2", imageUrl: "", restaurant: starbucks, image: starbucks2),
-            (name: "starbucks3", imageUrl: "", restaurant: starbucks, image: starbucks3),
-            (name: "starbucks4", imageUrl: "", restaurant: starbucks, image: starbucks4),
-            (name: "starbucks5", imageUrl: "", restaurant: starbucks, image: starbucks5),
+            (name: "Che En Menu Image1", imageUrl: "https://drive.google.com/file/d/1p3Kfl-SMB4Ap-e7hieJs624_JjLzZZrg/view?usp=sharing", restaurant: cheEnVegetarian, image: CheEnVegetarian_1_MenuImg),
+            (name: "Che En Menu Image2", imageUrl: "https://drive.google.com/file/d/13-7CHnSoZ_3EWVYa8QdG-hcrPRF36nIE/view?usp=sharing", restaurant: cheEnVegetarian, image: CheEnVegetarian_2_MenuImg),
+            (name: "Che En Menu Image3", imageUrl: "https://drive.google.com/file/d/1E64ihfEiswr_48j-0MCoRzJGpQW6f0Ql/view?usp=sharing", restaurant: cheEnVegetarian, image: CheEnVegetarian_3_MenuImg),
+            (name: "Che En Menu Image4", imageUrl: "https://drive.google.com/file/d/1bI-d4fplwjVz5omLzLJ0E1SGPhT-w3kP/view?usp=sharing", restaurant: cheEnVegetarian, image: CheEnVegetarian_4_MenuImg),
+            (name: "Che En Menu Image5", imageUrl: "https://drive.google.com/file/d/1zdMaAIaREf2VCRYoVvcgYBNRzY3CoBSl/view?usp=sharing", restaurant: cheEnVegetarian, image: CheEnVegetarian_5_MenuImg),
+            //
+            (name: "Dharma Kitchen Menu Image1", imageUrl: "https://drive.google.com/file/d/16_1LGU1YPjYbytgU3uObRenu3z8zLzat/view?usp=sharing", restaurant: dharmaKitchen, image: DharmaKitchen_1_MenuImg),
+            (name: "Dharma Kitchen Menu Image2", imageUrl: "https://drive.google.com/file/d/1Hk6P9DoelcsoT6bQsT0wrKzKXBExcO5i/view?usp=sharing", restaurant: dharmaKitchen, image: DharmaKitchen_2_MenuImg),
+            (name: "Dharma Kitchen Menu Image3", imageUrl: "https://drive.google.com/file/d/1WnP5XsQiPJx-8jUc_EW6LVtKcQr40eN2/view?usp=sharing", restaurant: dharmaKitchen, image: DharmaKitchen_3_MenuImg),
+            (name: "Dharma Kitchen Menu Image4", imageUrl: "https://drive.google.com/file/d/1tqWU82GOjmjhOfW905VqUlCUfn_UcgIO/view?usp=sharing", restaurant: dharmaKitchen, image: DharmaKitchen_4_MenuImg),
+            (name: "Dharma Kitchen Menu Image5", imageUrl: "https://drive.google.com/file/d/1tm9rXOyvEBpoVZxbERVVpgEka1o02ilE/view?usp=sharing", restaurant: dharmaKitchen, image: DharmaKitchen_5_MenuImg),
+            //
+            (name: "Grassland Menu Image1", imageUrl: "https://drive.google.com/file/d/14hF7NOMkNYG-8eU26WXrnmx3i5c2oxYB/view?usp=sharing", restaurant: grasslandVegetarian, image: Grassland_1_MenuImg),
+            (name: "Grassland Menu Image2", imageUrl: "https://drive.google.com/file/d/1mlmesCut4oz-_Ji5gYAoUHDYbGfa_FRf/view?usp=sharing", restaurant: grasslandVegetarian, image: Grassland_2_MenuImg),
+            (name: "Grassland Menu Image3", imageUrl: "https://drive.google.com/file/d/15hIkssMkLlwhct4tZ5yECDBhbNO335zF/view?usp=sharing", restaurant: grasslandVegetarian, image: Grassland_3_MenuImg),
+            (name: "Grassland Menu Image4", imageUrl: "https://drive.google.com/file/d/1YMo1zsuUbD3nNQv_leNoMrAmUZRlGUPI/view?usp=sharing", restaurant: grasslandVegetarian, image: Grassland_4_MenuImg),
+            (name: "Grassland Menu Image5", imageUrl: "https://drive.google.com/file/d/18xhfk4YK4tvEsPmzFk_Ut9pIi8WXb2f_/view?usp=sharing", restaurant: grasslandVegetarian, image: Grassland_5_MenuImg),
+            //
+            (name: "Restaurant Indo Menu Image1", imageUrl: "https://drive.google.com/file/d/1SaIrej5rQx4lZXqIgIUSVfArQALquvMM/view?usp=sharing", restaurant: restoIndoVegan, image: RestoIndo_1_MenuImg),
+            (name: "Restaurant Indo Menu Image2", imageUrl: "https://drive.google.com/file/d/1ZdnvJ0cB8NlH4gyQRuM7Aixnkk4BKsMs/view?usp=sharing", restaurant: restoIndoVegan, image: RestoIndo_2_MenuImg),
+            (name: "Restaurant Indo Menu Image3", imageUrl: "https://drive.google.com/file/d/10QNprHW8nYhDv99ZETchuWUytFJIrYMw/view?usp=sharing", restaurant: restoIndoVegan, image: RestoIndo_3_MenuImg),
+            (name: "Restaurant Indo Menu Image4", imageUrl: "https://drive.google.com/file/d/1-fTvzbXmtSs4hsQaa3WqKiA3xEPphwXo/view?usp=sharing", restaurant: restoIndoVegan, image: RestoIndo_4_MenuImg),
+            (name: "Restaurant Indo Menu Image5", imageUrl: "https://drive.google.com/file/d/1QVQpVqJ4vEn4aW34UBsF8oQBbf5oUA1a/view?usp=sharing", restaurant: restoIndoVegan, image: RestoIndo_5_MenuImg),
+
+            //
+            (name: "Starbucks Menu Image1", imageUrl: "https://drive.google.com/file/d/1mmF0ypl3VYmOXGeO4E4MmBQduzIVJD2E/view?usp=sharing", restaurant: starbucks, image: Starbucks_1_MenuImg),
+            (name: "Starbucks Menu Image2", imageUrl: "https://drive.google.com/file/d/1aKeimX89-AUlQav3-fzrpAfQezl3i5Gr/view?usp=sharing", restaurant: starbucks, image: Starbucks_2_MenuImg),
+            (name: "Starbucks Menu Image3", imageUrl: "https://drive.google.com/file/d/1KJflF7QqgNlWPrZmH93vaZ8OJ1lqQv_t/view?usp=sharing", restaurant: starbucks, image: Starbucks_3_MenuImg),
+            (name: "Starbucks Menu Image4", imageUrl: "https://drive.google.com/file/d/1EaTFOmZDWxgunl1XQo5VVH12HFVktMF7/view?usp=sharing", restaurant: starbucks, image: Starbucks_4_MenuImg),
+            (name: "Starbucks Menu Image5", imageUrl: "https://drive.google.com/file/d/10-yvdrBEuyL1NkbWp9Fg-kJcw56Q_ux9/view?usp=sharing", restaurant: starbucks, image: Starbucks_5_MenuImg),
+
+            //
+            (name: "Vegetus Vegetarian Menu Image1", imageUrl: "https://drive.google.com/file/d/15ad-DNTDwP366sGZlcS-Zd6YkCKyOvWj/view?usp=sharing", restaurant: vegetusVegetarian, image: VegetusVegetarian_1_MenuImg),
+            (name: "Vegetus Vegetarian Menu Image2", imageUrl: "https://drive.google.com/file/d/1jPwz2XXVaYgYWWeG8EyRVmPHGXWR58v4/view?usp=sharing", restaurant: vegetusVegetarian, image: VegetusVegetarian_2_MenuImg),
+            (name: "Vegetus Vegetarian Menu Image3", imageUrl: "https://drive.google.com/file/d/1Kg7XI2dKK4J8fh8OienZNYn6iwpWsPMP/view?usp=sharing", restaurant: vegetusVegetarian, image: VegetusVegetarian_3_MenuImg),
+            (name: "Vegetus Vegetarian Menu Image4", imageUrl: "https://drive.google.com/file/d/1mtFVHpYFB9y14OqvIT-kFNLp_N5fU2ae/view?usp=sharing", restaurant: vegetusVegetarian, image: VegetusVegetarian_4_MenuImg),
+            (name: "Vegetus Vegetarian Menu Image5", imageUrl: "https://drive.google.com/file/d/1N0rsvRCjHyL9h0Y7ZhdgqeWJ3KH7Ry1-/view?usp=sharing", restaurant: vegetusVegetarian, image: VegetusVegetarian_5_MenuImg),
+            
         ]
         
         for menu in menus {

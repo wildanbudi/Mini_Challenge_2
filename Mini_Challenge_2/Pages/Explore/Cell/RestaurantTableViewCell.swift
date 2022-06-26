@@ -15,9 +15,14 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var openStatus: UILabel!
+    @IBOutlet weak var view: UIView!
+    @IBOutlet weak var restaurantType: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        view.layer.cornerRadius = 15
+        view.layer.borderWidth = 1.0
+        view.layer.borderColor = UIColor.white.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
