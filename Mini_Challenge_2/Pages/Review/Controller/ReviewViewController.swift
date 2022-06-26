@@ -9,36 +9,19 @@ import UIKit
 
 class ReviewViewController: UIViewController, UITableViewDelegate {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var restaurantsData: [Restaurants]!
     var reviewsData: [Reviews]!
+    var restaurantData: Restaurants!
     
     @IBOutlet var reviewTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAllRestaurants()
         
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
-
-        let restaurant = restaurantsData.filter({(r: Restaurants) -> Bool in
-            return r.name == "Formaggio Coffee and Resto"
-        }).first ?? Restaurants(context: context)
         
-        reviewsData = (restaurant.reviews!.allObjects as! [Reviews])
+        reviewsData = (restaurantData.reviews!.allObjects as! [Reviews])
     }
-    
-    func getAllRestaurants() {
-        do {
-            restaurantsData = try context.fetch(Restaurants.fetchRequest())
-            DispatchQueue.main.async {
-                self.reviewTableView.reloadData()
-            }
-        } catch _ {
-            
-        }
-    }
-    
 
     /*
     // MARK: - Navigation

@@ -94,7 +94,7 @@
         <!--Profile View Controller-->
         <scene sceneID="9ds-qW-GTy">
             <objects>
-                <viewController id="saf-pO-GkP" customClass="ProfileViewController" customModule="Mini_Challenge_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="saf-pO-GkP" customClass="ProfileViewController" customModule="Mini_Challenge_2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xvt-Eo-EE8">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

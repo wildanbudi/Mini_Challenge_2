@@ -14,6 +14,7 @@ class ExploreViewController: UIViewController {
     var restaurantData: NSSet!
     var distance: CLLocationDistance!
     var currentLocation: CLLocation!
+    var selectedRestaurant: Restaurants!
 
     @IBOutlet weak var restaurantList: UITableView!
     @IBOutlet weak var username: UIButton!
@@ -141,7 +142,16 @@ extension ExploreViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRestaurant = restaurantModel[indexPath.row]
         performSegue(withIdentifier: "GoToDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "GoToDetail") {
+            if let detailVC = segue.destination as? DetailViewController {
+                detailVC.restaurantDetail = selectedRestaurant
+            }
+        }
     }
     
 }

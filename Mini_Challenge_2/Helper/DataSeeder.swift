@@ -37,6 +37,18 @@ public class DataSeeder {
     }
 
     public func process() {
+        var allRestaurants = try! context.fetch(Restaurants.fetchRequest())
+        var nilRows = allRestaurants.filter({(r: Restaurants) -> Bool in
+            return r.name == nil
+        })
+        for row in nilRows {
+            context.delete(row)
+            do {
+                try context.save()
+            } catch _ {
+            }
+        }
+        
         let checkUser = try! context.fetch(Users.fetchRequest())
         let r = checkUser.filter({(r: Users) -> Bool in
             return r.name == "Vegeta Doe"
@@ -58,8 +70,8 @@ public class DataSeeder {
         
         print("seeding data to database is starting...")
         seedRestaurants()
-        let allRestaurants = try! context.fetch(Restaurants.fetchRequest())
-        let nilRows = allRestaurants.filter({(r: Restaurants) -> Bool in
+        allRestaurants = try! context.fetch(Restaurants.fetchRequest())
+        nilRows = allRestaurants.filter({(r: Restaurants) -> Bool in
             return r.name == nil
         })
         for row in nilRows {
@@ -122,27 +134,27 @@ public class DataSeeder {
     }
     
     fileprivate func seedRestaurants() {
-        let restoIndoVeganImg = UIImage(named: "Jakarta_RestoIndoVegan")?.jpegData(compressionQuality: 1.0)
-        let dharmaKitchenImg = UIImage(named: "Jakarta_DharmaKitchen")?.jpegData(compressionQuality: 1.0)
-        let grasslandVegetarianImg = UIImage(named: "Jakarta_GrasslandVegetarianRestaurant")?.jpegData(compressionQuality: 1.0)
-        let vegetusVegetarianImg = UIImage(named: "Jakarta_VegetusVegetarian")?.jpegData(compressionQuality: 1.0)
-        let CheEnVegetarianImg = UIImage(named: "Jakarta_CheEnVegetarian")?.jpegData(compressionQuality: 1.0)
-        let starbucksImg = UIImage(named: "Jakarta_Starbucks")?.jpegData(compressionQuality: 1.0)
+        let restoIndoVeganImg = UIImage(named: "Restaurant_Resto Indo Vegan")?.jpegData(compressionQuality: 1.0)
+        let dharmaKitchenImg = UIImage(named: "Restaurant_Dharma Kitchen")?.jpegData(compressionQuality: 1.0)
+        let grasslandVegetarianImg = UIImage(named: "Restaurant_Grassland")?.jpegData(compressionQuality: 1.0)
+        let vegetusVegetarianImg = UIImage(named: "Restaurant_Vegetus")?.jpegData(compressionQuality: 1.0)
+        let CheEnVegetarianImg = UIImage(named: "Restaurant_Che En")?.jpegData(compressionQuality: 1.0)
+        let starbucksImg = UIImage(named: "Restaurant_Starbucks")?.jpegData(compressionQuality: 1.0)
         let formaggioImg = UIImage(named: "Tangerang_Formaggio")?.jpegData(compressionQuality: 1.0)
         let kayuKayuImg = UIImage(named: "Tangerang_Kayu-Kayu")?.jpegData(compressionQuality: 1.0)
         let tamanSantapImg = UIImage(named: "Tangerang_Taman Santap")?.jpegData(compressionQuality: 1.0)
         
         //let restoIndoVegan
         let restaurants = [
-            (name: "Resto Indo Vegan", rating: 4.5, openHours: "07:00 - 18:00", phone: "0811953539", priceMin: "10000", priceMax: "60000", address: "Jalan Duri Selatan 1 No. 9, RT.06/ RW.02, RT.6/RW.2, Duri Sel., Kec. Tambora, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11270", imageUrl: "https://drive.google.com/uc?id=1eQa7DP1a1fC9gkjBvg24XJSaJkEDeUFW", latitude: -6.16091552563978, longitude: 106.80619523969511, vegeResto: true, city: "Jakarta", kecamatan: "Tambora", image: restoIndoVeganImg),
-            (name: "Dharma Kitchen", rating: 4.5, openHours: "10:00 - 21:00", phone: "0216618302", priceMin: "75000", priceMax: "200000", address: "Jl. Pluit Kencana Raya No.124, RT.10/RW.7, Pluit, Kec. Penjaringan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14450", imageUrl: "https://drive.google.com/uc?id=1mpJh9v98tJeahcZIFpsZNPlxZkyxEn2q", latitude: -6.119620138581436, longitude: 106.78849407789964, vegeResto: true, city: "Jakarta", kecamatan: "Penjaringan", image: dharmaKitchenImg),
-            (name: "Grassland Vegetarian Restaurant", rating: 4.5, openHours: "10:00 - 21:00", phone: "02129414533", priceMin: "10000", priceMax: "50000", address: "Jl. Hadiah 1 No.1564A, RT.7/RW.2, Jelambar, Kec. Grogol petamburan, Kota Jakarta", imageUrl: "https://drive.google.com/uc?id=1gboIULBnm7PdwGKYIRan75D5pK2e-6eG", latitude: -6.161418660663324, longitude: 106.78157470302833, vegeResto: true, city: "Jakarta", kecamatan: "Grogol Petamburan", image: grasslandVegetarianImg),
-            (name: "Vegetus Vegetarian", rating: 4.5, openHours: "09:00 - 22:00", phone: "083876501618", priceMin: "50000", priceMax: "200000", address: "Jl. Pluit Karang Timur, Blok O-8 Timur No.38-39, RT.5/RW.14, Pluit, Penjaringan, RT.5/RW.14, Pluit, Kec. Penjaringan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14450", imageUrl: "https://drive.google.com/uc?id=1V9n_XKuDsbUtTNaDQWfVRvTvmt--bCm_", latitude: -6.1222719045183265, longitude: 106.78334629139079, vegeResto: true, city: "Jakarta", kecamatan: "Penjaringan", image: vegetusVegetarianImg),
-            (name: "Che En Vegetarian", rating: 4.5, openHours: "07:00 - 19:00", phone: "0216413523", priceMin: "5000", priceMax: "100000", address: "Gg. 22 No.11 B, RT.1/RW.1, Pademangan Tim., Kec. Pademangan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14410", imageUrl: "https://drive.google.com/uc?id=1DM9PYHzJTAyc3zT-p59JxVW94SklNU3l", latitude: -6.134237332933617, longitude: 106.84126431600886, vegeResto: true, city: "Jakarta", kecamatan: "Pademangan", image: CheEnVegetarianImg),
-            (name: "Starbucks", rating: 4.6, openHours: "06:00 - 22:00", phone: "02139833377", priceMin: "20000", priceMax: "60000", address: "Jl. M.H. Thamrin No.9, RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340", imageUrl: "", latitude: -6.186636432957156, longitude: 106.82386064906369, vegeResto: false, city: "Jakarta", kecamatan: "Menteng", image: starbucksImg),
-            (name: "Kayu-Kayu Restaurant", rating: 4.0, openHours: "10:00 - 22:00", phone: "081318002828", priceMin: "10000", priceMax: "350000", address: "Jl. Jalur Sutera No.28A, Pakualam, Kec. Serpong Utara, Kota Tangerang Selatan, Banten 15325", imageUrl: "https://drive.google.com/uc?id=1z1i63WVWTdCjc3m3gjYRFEMoM_gEwvtX", latitude: -6.232621398368496, longitude: 106.66053343928051, vegeResto: false, city: "Tangerang", kecamatan: "Serpong Utara", image: kayuKayuImg),
-            (name: "Taman Santap Rumah Kayu", rating: 4.5, openHours: "10:00 - 22:00", phone: "02154212011", priceMin: "15000", priceMax: "300000", address: "Jl. Ki Hajar Dewantara SKL No. 002, Pakulonan Bar., Kec. Klp. Dua, Kabupaten Tangerang, Banten 15810", imageUrl: "https://drive.google.com/uc?id=1CFRtD39_ZJbvZD9w7kGN2zV71Unl3EWB", latitude: -6.238778671417341, longitude: 106.63809836440906, vegeResto: false, city: "Tangerang", kecamatan: "Kelapa Dua", image: tamanSantapImg),
-            (name: "Formaggio Coffee and Resto", rating: 4.5, openHours: "10:00 - 22:00", phone: "02155783238", priceMin: "20000", priceMax: "60000", address: "Jl. Nyimas Melati No.A2, RT.2/RW.1, Sukarasa, Kec. Tangerang, Kota Tangerang, Banten 15111", imageUrl: "https://drive.google.com/uc?id=1RuwaZ1ITF6XACBQZPu6w5ACW4bgAknXr", latitude: -6.172003296055309, longitude: 106.63311005277136, vegeResto: false, city: "Tangerang", kecamatan: "Tangerang", image: formaggioImg),
+            (name: "Resto Indo Vegan", rating: 4.0, openHours: "07:00 - 18:00", phone: "0811953539", priceMin: "10000", priceMax: "60000", address: "Jalan Duri Selatan 1 No. 9, RT.06/ RW.02, RT.6/RW.2, Duri Sel., Kec. Tambora, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11270", imageUrl: "https://drive.google.com/uc?id=1eQa7DP1a1fC9gkjBvg24XJSaJkEDeUFW", latitude: -6.16091552563978, longitude: 106.80619523969511, vegeResto: true, city: "Jakarta", kecamatan: "Tambora", image: restoIndoVeganImg),
+            (name: "Dharma Kitchen", rating: 3.0, openHours: "10:00 - 21:00", phone: "0216618302", priceMin: "75000", priceMax: "200000", address: "Jl. Pluit Kencana Raya No.124, RT.10/RW.7, Pluit, Kec. Penjaringan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14450", imageUrl: "https://drive.google.com/uc?id=1mpJh9v98tJeahcZIFpsZNPlxZkyxEn2q", latitude: -6.119620138581436, longitude: 106.78849407789964, vegeResto: true, city: "Jakarta", kecamatan: "Penjaringan", image: dharmaKitchenImg),
+            (name: "Grassland Vegetarian Restaurant", rating: 4.0, openHours: "10:00 - 21:00", phone: "02129414533", priceMin: "10000", priceMax: "50000", address: "Jl. Hadiah 1 No.1564A, RT.7/RW.2, Jelambar, Kec. Grogol petamburan, Kota Jakarta", imageUrl: "https://drive.google.com/uc?id=1gboIULBnm7PdwGKYIRan75D5pK2e-6eG", latitude: -6.161418660663324, longitude: 106.78157470302833, vegeResto: true, city: "Jakarta", kecamatan: "Grogol Petamburan", image: grasslandVegetarianImg),
+            (name: "Vegetus Vegetarian", rating: 5.0, openHours: "09:00 - 22:00", phone: "083876501618", priceMin: "50000", priceMax: "200000", address: "Jl. Pluit Karang Timur, Blok O-8 Timur No.38-39, RT.5/RW.14, Pluit, Penjaringan, RT.5/RW.14, Pluit, Kec. Penjaringan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14450", imageUrl: "https://drive.google.com/uc?id=1V9n_XKuDsbUtTNaDQWfVRvTvmt--bCm_", latitude: -6.1222719045183265, longitude: 106.78334629139079, vegeResto: true, city: "Jakarta", kecamatan: "Penjaringan", image: vegetusVegetarianImg),
+            (name: "Che En Vegetarian", rating: 5.0, openHours: "07:00 - 19:00", phone: "0216413523", priceMin: "5000", priceMax: "100000", address: "Gg. 22 No.11 B, RT.1/RW.1, Pademangan Tim., Kec. Pademangan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14410", imageUrl: "https://drive.google.com/uc?id=1DM9PYHzJTAyc3zT-p59JxVW94SklNU3l", latitude: -6.134237332933617, longitude: 106.84126431600886, vegeResto: true, city: "Jakarta", kecamatan: "Pademangan", image: CheEnVegetarianImg),
+            (name: "Starbucks", rating: 4.0, openHours: "06:00 - 22:00", phone: "02139833377", priceMin: "20000", priceMax: "60000", address: "Jl. M.H. Thamrin No.9, RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340", imageUrl: "", latitude: -6.186636432957156, longitude: 106.82386064906369, vegeResto: false, city: "Jakarta", kecamatan: "Menteng", image: starbucksImg),
+            (name: "Kayu-Kayu Restaurant", rating: 5.0, openHours: "10:00 - 22:00", phone: "081318002828", priceMin: "10000", priceMax: "350000", address: "Jl. Jalur Sutera No.28A, Pakualam, Kec. Serpong Utara, Kota Tangerang Selatan, Banten 15325", imageUrl: "https://drive.google.com/uc?id=1z1i63WVWTdCjc3m3gjYRFEMoM_gEwvtX", latitude: -6.232621398368496, longitude: 106.66053343928051, vegeResto: false, city: "Tangerang", kecamatan: "Serpong Utara", image: kayuKayuImg),
+            (name: "Taman Santap Rumah Kayu", rating: 4.0, openHours: "10:00 - 22:00", phone: "02154212011", priceMin: "15000", priceMax: "300000", address: "Jl. Ki Hajar Dewantara SKL No. 002, Pakulonan Bar., Kec. Klp. Dua, Kabupaten Tangerang, Banten 15810", imageUrl: "https://drive.google.com/uc?id=1CFRtD39_ZJbvZD9w7kGN2zV71Unl3EWB", latitude: -6.238778671417341, longitude: 106.63809836440906, vegeResto: false, city: "Tangerang", kecamatan: "Kelapa Dua", image: tamanSantapImg),
+            (name: "Formaggio Coffee and Resto", rating: 5.0, openHours: "10:00 - 22:00", phone: "02155783238", priceMin: "20000", priceMax: "60000", address: "Jl. Nyimas Melati No.A2, RT.2/RW.1, Sukarasa, Kec. Tangerang, Kota Tangerang, Banten 15111", imageUrl: "https://drive.google.com/uc?id=1RuwaZ1ITF6XACBQZPu6w5ACW4bgAknXr", latitude: -6.172003296055309, longitude: 106.63311005277136, vegeResto: false, city: "Tangerang", kecamatan: "Tangerang", image: formaggioImg),
         ]
         
         for restaurant in restaurants {
@@ -185,6 +197,36 @@ public class DataSeeder {
         let formaggioMushroomSoupImg = UIImage(named: "Formaggio 3 - Mushroom Cream Soup")?.jpegData(compressionQuality: 1.0)
         let formaggioNacosFungiImg = UIImage(named: "Formaggio 4 - Nacos Con Fungi")?.jpegData(compressionQuality: 1.0)
         let formaggioPadThaiImg = UIImage(named: "Formaggio 5 - Pad Thai")?.jpegData(compressionQuality: 1.0)
+        let restoIndo1 = UIImage(named: "Resto Indo_1")?.jpegData(compressionQuality: 1.0)
+        let restoIndo2 = UIImage(named: "Resto Indo_2")?.jpegData(compressionQuality: 1.0)
+        let restoIndo3 = UIImage(named: "Resto Indo_3")?.jpegData(compressionQuality: 1.0)
+        let restoIndo4 = UIImage(named: "Resto Indo_4")?.jpegData(compressionQuality: 1.0)
+        let restoIndo5 = UIImage(named: "Resto Indo_5")?.jpegData(compressionQuality: 1.0)
+        let dharma1 = UIImage(named: "Dharma Kitchen_1")?.jpegData(compressionQuality: 1.0)
+        let dharma2 = UIImage(named: "Dharma Kitchen_2")?.jpegData(compressionQuality: 1.0)
+        let dharma3 = UIImage(named: "Dharma Kitchen_3")?.jpegData(compressionQuality: 1.0)
+        let dharma4 = UIImage(named: "Dharma Kitchen_4")?.jpegData(compressionQuality: 1.0)
+        let dharma5 = UIImage(named: "Dharma Kitchen_5")?.jpegData(compressionQuality: 1.0)
+        let grassland1 = UIImage(named: "Grassland_1")?.jpegData(compressionQuality: 1.0)
+        let grassland2 = UIImage(named: "Grassland_2")?.jpegData(compressionQuality: 1.0)
+        let grassland3 = UIImage(named: "Grassland_3")?.jpegData(compressionQuality: 1.0)
+        let grassland4 = UIImage(named: "Grassland_4")?.jpegData(compressionQuality: 1.0)
+        let grassland5 = UIImage(named: "Grassland_5")?.jpegData(compressionQuality: 1.0)
+        let vegetus1 = UIImage(named: "Vegetus Vegetarian_1")?.jpegData(compressionQuality: 1.0)
+        let vegetus2 = UIImage(named: "Vegetus Vegetarian_2")?.jpegData(compressionQuality: 1.0)
+        let vegetus3 = UIImage(named: "Vegetus Vegetarian_3")?.jpegData(compressionQuality: 1.0)
+        let vegetus4 = UIImage(named: "Vegetus Vegetarian_4")?.jpegData(compressionQuality: 1.0)
+        let vegetus5 = UIImage(named: "Vegetus Vegetarian_5")?.jpegData(compressionQuality: 1.0)
+        let cheEn1 = UIImage(named: "Che En Vegetarian_1")?.jpegData(compressionQuality: 1.0)
+        let cheEn2 = UIImage(named: "Che En Vegetarian_2")?.jpegData(compressionQuality: 1.0)
+        let cheEn3 = UIImage(named: "Che En Vegetarian_3")?.jpegData(compressionQuality: 1.0)
+        let cheEn4 = UIImage(named: "Che En Vegetarian_4")?.jpegData(compressionQuality: 1.0)
+        let cheEn5 = UIImage(named: "Che En Vegetarian_5")?.jpegData(compressionQuality: 1.0)
+        let starbucks1 = UIImage(named: "Starbucks_1")?.jpegData(compressionQuality: 1.0)
+        let starbucks2 = UIImage(named: "Starbucks_2")?.jpegData(compressionQuality: 1.0)
+        let starbucks3 = UIImage(named: "Starbucks_3")?.jpegData(compressionQuality: 1.0)
+        let starbucks4 = UIImage(named: "Starbucks_4")?.jpegData(compressionQuality: 1.0)
+        let starbucks5 = UIImage(named: "Starbucks_5")?.jpegData(compressionQuality: 1.0)
         
         let menus = [
             (name: "Asinan Bogor", imageUrl: "https://drive.google.com/uc?id=1hyS-ryw5HWKLMd8cu3bnTgJ5Qf_sYDsk", restaurant: kayuKayu, image: kayuAsinanImg),
@@ -201,7 +243,37 @@ public class DataSeeder {
             (name: "Corn and Carrot Soup", imageUrl: "https://drive.google.com/uc?id=13J1iIg-THOaMO2oUZk8PDLdYKrCF_qZi", restaurant: formaggioCoffeResto, image: formaggioCornSoupImg),
             (name: "Mushroom Cream Soup", imageUrl: "https://drive.google.com/uc?id=1fwP0k1jSZMyd55uOKZC_jaLQJ2Zc_BLf", restaurant: formaggioCoffeResto, image: formaggioMushroomSoupImg),
             (name: "Nacos Con Fungi", imageUrl: "https://drive.google.com/uc?id=1A9Uc_0H8KsQZcGGSvYxCMUYhQ2KrTvW8", restaurant: formaggioCoffeResto, image: formaggioNacosFungiImg),
-            (name: "Pad Thai", imageUrl: "https://drive.google.com/uc?id=1JiPQbnR--XcR5BPV9Ll5RoT7xz2aSLoP", restaurant: formaggioCoffeResto, image: formaggioPadThaiImg)
+            (name: "Pad Thai", imageUrl: "https://drive.google.com/uc?id=1JiPQbnR--XcR5BPV9Ll5RoT7xz2aSLoP", restaurant: formaggioCoffeResto, image: formaggioPadThaiImg),
+            (name: "restoIndo1", imageUrl: "", restaurant: restoIndoVegan, image: restoIndo1),
+            (name: "restoIndo2", imageUrl: "", restaurant: restoIndoVegan, image: restoIndo2),
+            (name: "restoIndo3", imageUrl: "", restaurant: restoIndoVegan, image: restoIndo3),
+            (name: "restoIndo4", imageUrl: "", restaurant: restoIndoVegan, image: restoIndo4),
+            (name: "restoIndo5", imageUrl: "", restaurant: restoIndoVegan, image: restoIndo5),
+            (name: "grassland1", imageUrl: "", restaurant: grasslandVegetarian, image: grassland1),
+            (name: "grassland2", imageUrl: "", restaurant: grasslandVegetarian, image: grassland2),
+            (name: "grassland3", imageUrl: "", restaurant: grasslandVegetarian, image: grassland3),
+            (name: "grassland4", imageUrl: "", restaurant: grasslandVegetarian, image: grassland4),
+            (name: "grassland5", imageUrl: "", restaurant: grasslandVegetarian, image: grassland5),
+            (name: "dharma1", imageUrl: "", restaurant: dharmaKitchen, image: dharma1),
+            (name: "dharma2", imageUrl: "", restaurant: dharmaKitchen, image: dharma2),
+            (name: "dharma3", imageUrl: "", restaurant: dharmaKitchen, image: dharma3),
+            (name: "dharma4", imageUrl: "", restaurant: dharmaKitchen, image: dharma4),
+            (name: "dharma5", imageUrl: "", restaurant: dharmaKitchen, image: dharma5),
+            (name: "vegetus1", imageUrl: "", restaurant: vegetusVegetarian, image: vegetus1),
+            (name: "vegetus2", imageUrl: "", restaurant: vegetusVegetarian, image: vegetus2),
+            (name: "vegetus3", imageUrl: "", restaurant: vegetusVegetarian, image: vegetus3),
+            (name: "vegetus4", imageUrl: "", restaurant: vegetusVegetarian, image: vegetus4),
+            (name: "vegetus5", imageUrl: "", restaurant: vegetusVegetarian, image: vegetus5),
+            (name: "cheEn1", imageUrl: "", restaurant: cheEnVegetarian, image: cheEn1),
+            (name: "cheEn2", imageUrl: "", restaurant: cheEnVegetarian, image: cheEn2),
+            (name: "cheEn3", imageUrl: "", restaurant: cheEnVegetarian, image: cheEn3),
+            (name: "cheEn4", imageUrl: "", restaurant: cheEnVegetarian, image: cheEn4),
+            (name: "cheEn5", imageUrl: "", restaurant: cheEnVegetarian, image: cheEn5),
+            (name: "starbucks1", imageUrl: "", restaurant: starbucks, image: starbucks1),
+            (name: "starbucks2", imageUrl: "", restaurant: starbucks, image: starbucks2),
+            (name: "starbucks3", imageUrl: "", restaurant: starbucks, image: starbucks3),
+            (name: "starbucks4", imageUrl: "", restaurant: starbucks, image: starbucks4),
+            (name: "starbucks5", imageUrl: "", restaurant: starbucks, image: starbucks5),
         ]
         
         for menu in menus {

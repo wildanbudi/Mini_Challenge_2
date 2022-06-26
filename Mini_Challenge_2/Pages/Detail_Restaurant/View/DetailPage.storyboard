@@ -12,7 +12,7 @@
         <!--Detail View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="DetailViewController" customModule="Mini_Challenge_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="BYZ-38-t0r" customClass="DetailViewController" customModule="Mini_Challenge_2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -249,6 +249,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="See all">
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="seeAllReviews:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iH2-7t-iGy"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOu-eL-l5x" userLabel="Open Hours Tag">
                                                 <rect key="frame" x="269.33333333333331" y="391" width="100" height="17"/>
@@ -393,6 +396,7 @@
                         <outlet property="RestaurantType" destination="2HR-l4-88E" id="n9g-bJ-1jw"/>
                         <outlet property="collectionView" destination="xmP-iB-5jq" id="C15-Ev-gEM"/>
                         <outlet property="locationButton" destination="szP-tf-9PJ" id="IK3-z1-Yrp"/>
+                        <segue destination="1gd-Qj-8E6" kind="show" identifier="GoToReview" id="qIW-Eq-Z8h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -406,6 +410,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G73-sK-V26" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1706.9230769230769" y="86.729857819905206"/>
+        </scene>
+        <!--Review-->
+        <scene sceneID="oCR-a6-iDv">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ReviewViewController" storyboardName="Review" id="1gd-Qj-8E6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="EhV-Wq-Rhn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zTJ-vi-r2r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1735" y="14"/>
         </scene>
     </scenes>
     <resources>

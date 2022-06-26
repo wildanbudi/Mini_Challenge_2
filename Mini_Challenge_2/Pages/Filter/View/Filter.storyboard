@@ -31,7 +31,7 @@
                                     <color key="baseForegroundColor" red="0.28367751839999999" green="0.55945128200000005" blue="0.078932888810000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="cancelButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sfV-qa-m2U"/>
+                                    <segue destination="TMS-sV-p4d" kind="unwind" unwindAction="cancel:" id="4uj-SV-0w2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N86-GI-Tmg">
@@ -42,7 +42,7 @@
                                     <color key="baseForegroundColor" red="0.28367751839999999" green="0.55945128200000005" blue="0.078932888810000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="applyButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YrQ-Lp-vKt"/>
+                                    <segue destination="TMS-sV-p4d" kind="unwind" unwindAction="applyFilter:" id="ajE-PB-OhD"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3h-d6-JoO">
@@ -196,8 +196,6 @@
                     </view>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="applyButton" destination="N86-GI-Tmg" id="Ixh-6t-15Y"/>
-                        <outlet property="cancelButton" destination="gJJ-QE-dKu" id="nFm-fl-HwD"/>
                         <outlet property="fromTextField" destination="dDl-iS-CLE" id="FCu-M1-d9p"/>
                         <outlet property="star1Button" destination="RqS-IT-n2q" id="AMw-H0-BM7"/>
                         <outlet property="star2Button" destination="9ep-z4-APo" id="1VT-8o-K9v"/>
@@ -208,6 +206,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="TMS-sV-p4d" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="18.46153846153846" y="45.497630331753555"/>
         </scene>

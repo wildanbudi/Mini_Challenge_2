@@ -13,6 +13,8 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     var favRestaurantsData: [Restaurants]!
     var filteredData: [Restaurants]!
     let searchBarInstance = SearchBar()
+    var selectedRestaurant: Restaurants!
+    var currentUser: Users!
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var favoriteTableView: UITableView!
@@ -20,20 +22,12 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAllUsers()
+        getUser()
         
         favoriteTableView.delegate = self
         favoriteTableView.dataSource = self
         
         searchBar.delegate = self
-        
-        
-        let user = usersData.filter({(r: Users) -> Bool in
-            return r.name == "Vegeta Doe"
-        }).first ?? Users(context: context)
-        
-        favRestaurantsData = (user.restaurants!.allObjects as! [Restaurants])
-        filteredData = favRestaurantsData
         
         let locationButton =  UIButton(type: .custom)
         locationButton.setImage(UIImage(named: "location"), for: .normal)
@@ -53,7 +47,7 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
         profileButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
         profileButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
         let profileLabel = UILabel(frame: CGRect(x: 30, y: 5, width: 100, height: 20))// set position of label
-        profileLabel.text = user.name
+        profileLabel.text = currentUser.name
         profileLabel.textColor = UIColor.black
         profileLabel.backgroundColor =   UIColor.clear
         profileButton.addSubview(profileLabel)
@@ -64,20 +58,23 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
         self.navigationItem.leftBarButtonItem = leftBarButton
     }
     
-    func getAllUsers() {
-        do {
-            let users = try context.fetch(Users.fetchRequest())
-            usersData = users
-            DispatchQueue.main.async {
-                self.favoriteTableView.reloadData()
-            }
-        } catch _ {
-            
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getUser()
+    }
+    
+    func getUser() {
+        currentUser = UsersModel.getUser()
+        
+        favRestaurantsData = (currentUser.restaurants!.allObjects as! [Restaurants])
+        filteredData = favRestaurantsData
+        DispatchQueue.main.async {
+            self.favoriteTableView.reloadData()
         }
     }
     
     @objc private func showProfile() {
-        print("profile button tap")
+        performSegue(withIdentifier: "GoToProfile", sender: self)
     }
     
     @objc private func showLocation(_ sender: Any) {
@@ -105,27 +102,67 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     
     @objc func deleteButton(_ sender: UIButton) {
         let restaurant = filteredData[sender.tag]
-        print("tap to delete: " + restaurant.name!)
-//        let user = Users(context: context)
-//        let restaurant = filteredData[sender.tag]
-//        filteredData = filteredData.filter({(r: Restaurants) -> Bool in
-//            return r.name != restaurant.name
-//        })
-//        context.delete(restaurant)
-//        user.restaurants = NSSet(array: filteredData)
-//        do {
-//            try context.save()
-//            DispatchQueue.main.async {
-//                self.favoriteTableView.reloadData()
-//            }
-//        } catch _ {
-//        }
+        
+        filteredData = filteredData.filter({(r: Restaurants) -> Bool in
+            return r.name != restaurant.name
+        })
+        currentUser.restaurants = NSSet(array: filteredData)
+        do {
+            try context.save()
+            getUser()
+            DispatchQueue.main.async {
+                self.favoriteTableView.reloadData()
+            }
+        } catch _ {
+        }
     }
     
     @objc func directionButton(_ sender: UIButton) {
         let restaurant = filteredData[sender.tag]
-        print("tap to direction: " + restaurant.name!)
-        OpenMapDirections.present(in: self, sourceView: sender)
+        OpenMapsLocation.present(in: self, sourceView: sender, restaurant: restaurant)
+    }
+    
+    @IBAction func cancel(_ unwindSegue: UIStoryboardSegue) {}
+    
+    @IBAction func applyFilter(_ unwindSegue: UIStoryboardSegue) {
+        guard let filterViewController = unwindSegue.source as? FilterViewController,
+            case let fromPrice = filterViewController.fromPrice,
+            case let toPrice = filterViewController.toPrice,
+            case let rateList = filterViewController.rateList
+            else {
+                    print("return disini")
+                    return
+            }
+        filteredData = favRestaurantsData
+        if rateList!.count > 0 && rateList!.count < 5 {
+            filteredData = filteredData.filter({(r: Restaurants) -> Bool in
+                if rateList!.count == 1 {
+                    return r.rating == rateList![0]
+                } else if rateList!.count == 2 {
+                    return r.rating == rateList![0] || r.rating == rateList![1]
+                } else if rateList!.count == 3 {
+                    return r.rating == rateList![0] || r.rating == rateList![1] || r.rating == rateList![2]
+                } else {
+                    return r.rating == rateList![0] || r.rating == rateList![1] || r.rating == rateList![2] || r.rating == rateList![3]
+                }
+            })
+        }
+        
+        let priceFilter = [fromPrice, toPrice]
+        if priceFilter[0] > 0 {
+            filteredData = filteredData.filter({(r: Restaurants) -> Bool in
+                return Int(r.priceMin!)! >= priceFilter[0]
+            })
+        }
+
+        if priceFilter[1] > 0 {
+            filteredData = filteredData.filter({(r: Restaurants) -> Bool in
+                return Int(r.priceMax!)! <= priceFilter[1]
+            })
+        }
+        DispatchQueue.main.async {
+            self.favoriteTableView.reloadData()
+        }
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -136,46 +173,20 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
             self.favoriteTableView.reloadData()
         }
     }
-    
-    func filterReload(rateFilter: [Double], priceFilter: [Int]) {
-        filteredData = favRestaurantsData
-        print(filteredData as Any)
-//        if rateFilter.count > 0 && rateFilter.count < 5 {
-//            filteredData = filteredData.filter({(r: Restaurants) -> Bool in
-//                if rateFilter.count == 1 {
-//                    return r.rating == rateFilter[0]
-//                } else if rateFilter.count == 2 {
-//                    return r.rating == rateFilter[0] || r.rating == rateFilter[1]
-//                } else if rateFilter.count == 3 {
-//                    return r.rating == rateFilter[0] || r.rating == rateFilter[1] || r.rating == rateFilter[2]
-//                } else {
-//                    return r.rating == rateFilter[0] || r.rating == rateFilter[1] || r.rating == rateFilter[2] || r.rating == rateFilter[3]
-//                }
-//            })
-//        }
-        
-//        if priceFilter[0] > 0 {
-//            filteredData = filteredData.filter({(r: Restaurants) -> Bool in
-//                return Int(r.priceMin!)! >= priceFilter[0]
-//            })
-//        }
-//
-//        if priceFilter[1] > 0 {
-//            filteredData = filteredData.filter({(r: Restaurants) -> Bool in
-//                return Int(r.priceMax!)! <= priceFilter[1]
-//            })
-//        }
-        
-        
-        print(rateFilter)
-        print(priceFilter)
-    }
 }
 
 extension FavoriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let restaurant = filteredData[indexPath.row]
-        print("tap to detail: " + restaurant.name!)
+        selectedRestaurant = filteredData[indexPath.row]
+        performSegue(withIdentifier: "GoToDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "GoToDetail") {
+            if let detailVC = segue.destination as? DetailViewController {
+                detailVC.restaurantDetail = selectedRestaurant
+            }
+        }
     }
 }
 

@@ -13,6 +13,7 @@ class DetailViewController: UIViewController {
     var menuRestaurantData: [Menus]!
     var menus: [Menus]!
     var restaurantDetail: Restaurants!
+    var currentUser: Users!
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var locationButton: UIButton!
@@ -25,6 +26,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var AddressTag: UILabel!
     @IBOutlet weak var MapsImageButton: UIButton!
     @IBOutlet weak var PriceTagMax: UILabel!
+
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -33,19 +35,13 @@ class DetailViewController: UIViewController {
         
         // Configure Bar Atribute
         title = "Details"
+        getUser()
         configureBarAtribute()
-        
         // Collection View Layout
         collectionView.collectionViewLayout = createLayout()
         
-        getAllRestaurant()
-        let restaurant = restaurantData.filter({(r: Restaurants) -> Bool in
-            return r.name == "Kayu-Kayu Restaurant"
-        }).first ?? Restaurants(context: context)
-        menuRestaurantData = (restaurant.menus!.allObjects as! [Menus])
+        menuRestaurantData = (restaurantDetail.menus!.allObjects as! [Menus])
         
-        // Data Restaurant from protocol
-        restaurantDetail = restaurant
         connectControllerToData()
         
         // Filtered menus
@@ -58,19 +54,25 @@ class DetailViewController: UIViewController {
     // Navigation Bar Atribute 
     private func configureBarAtribute() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .done, target: self, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(addToFavorite(_ :)))
+    }
+    
+    @objc func addToFavorite(_ sender: Any) {
+        var newFavorites = currentUser.restaurants?.allObjects as! [Restaurants]
+        newFavorites.append(restaurantDetail)
+        currentUser.restaurants = NSSet(array: newFavorites)
+        do {
+            try context.save()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .done, target: self, action: #selector(addToFavorite(_ :)))
+        } catch _ {
+        }
     }
     
     // Get Data from Restaurant
-    func getAllRestaurant() {
-        do {
-            let restaurants = try context.fetch(Restaurants.fetchRequest())
-            restaurantData = restaurants
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        } catch _ {
-            
+    func getUser() {
+        currentUser = UsersModel.getUser()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
         }
     }
     
@@ -91,6 +93,19 @@ class DetailViewController: UIViewController {
     // Map Direction Function
     @IBAction func mapPressed(_ sender: Any) {
         locationButton.addTarget(self, action: #selector(askToOpenMap), for: .touchUpInside)
+    }
+    
+    @IBAction func seeAllReviews (_ sender: UIButton) {
+        performSegue(withIdentifier: "GoToReview", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "GoToReview") {
+            let nav = segue.destination as! UINavigationController
+            if let reviewVC = nav.topViewController as? ReviewViewController {
+                reviewVC.restaurantData = restaurantDetail
+            }
+        }
     }
     
     // Layout Carousel
