@@ -78,7 +78,7 @@
             </objects>
             <point key="canvasLocation" x="2576" y="-50"/>
         </scene>
-        <!--FavoriteViewController-->
+        <!--Favorite-->
         <scene sceneID="287-83-ndT">
             <objects>
                 <viewControllerPlaceholder storyboardName="Favorite" id="9qf-6n-FrL" sceneMemberID="viewController">
