@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class ExploreViewController: UIViewController, UISearchBarDelegate {
+class ExploreViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let locationManager = CLLocationManager()
@@ -20,13 +20,38 @@ class ExploreViewController: UIViewController, UISearchBarDelegate {
     var currentLocation: CLLocation!
     var detailData: Restaurants!
     let searchInstance = SearchBar()
+    var isProfileShown : Bool = false
 
+    @IBOutlet weak var profileViewLeading: NSLayoutConstraint!
+    @IBOutlet weak var profileView: UIView!
+    @IBOutlet weak var backViewProfile: UIView!
+    @IBOutlet weak var backView2: UIView!
     @IBOutlet weak var restaurantList: UITableView!
     @IBOutlet weak var username: UIButton!
     @IBOutlet weak var location: UIButton!
     @IBOutlet weak var filter: UIButton!
+    @IBAction func backView2Tapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.3) {
+            self.backViewProfile.isHidden = true
+            self.profileViewLeading.constant = -343
+            self.view.layoutIfNeeded()
+            self.backViewProfile.isHidden = true
+            self.backView2.isHidden = true
+        } completion: { (status) in
+        }
+        self.isProfileShown = false
+    }
+    @IBAction func backViewProfileTapped(_ sender: Any) {
+    }
     @IBAction func usernameButton(_ sender: Any) {
-        performSegue(withIdentifier: "GoToProfile", sender: self)
+        UIView.animate(withDuration: 0.3) {
+            self.profileViewLeading.constant = 0
+            self.view.layoutIfNeeded()
+            self.backViewProfile.isHidden = false
+          self.backView2.isHidden = false
+        } completion: { (status) in
+        }
+        self.isProfileShown = true
     }
     @IBOutlet weak var segmentedType: UISegmentedControl!
     @IBAction func restoType(_ sender: Any) {
@@ -80,8 +105,67 @@ class ExploreViewController: UIViewController, UISearchBarDelegate {
         self.present(locationViewController, animated: true)
     }
     
+    private var beginPoint:CGFloat = 0.0
+    private var difference:CGFloat = 0.0
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+      if isProfileShown{
+           if let touch = touches.first{
+              let location = touch.location(in: backViewProfile)
+              beginPoint = location.x
+          }
+      }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+      if isProfileShown{
+          if let touch = touches.first{
+              let location = touch.location(in: backViewProfile)
+              
+              let differenceFromBeginPoint = beginPoint - location.x
+              
+              if (differenceFromBeginPoint>0 || differenceFromBeginPoint<343){
+                  difference = differenceFromBeginPoint
+                  self.profileViewLeading.constant = -differenceFromBeginPoint
+              }
+          }
+      }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+      if  isProfileShown{
+          if difference>100{
+              UIView.animate(withDuration: 0.1) {
+                  self.profileViewLeading.constant = -343
+              } completion: { (status) in
+                  self.isProfileShown = false
+                  self.backViewProfile.isHidden = true
+                self.backView2.isHidden = true
+                self.tabBarController?.tabBar.isHidden = false
+              }
+          }
+          else{
+              UIView.animate(withDuration: 0.1) {
+                  self.profileViewLeading.constant = 0
+              } completion: { (status) in
+                  self.isProfileShown = true
+                  self.backViewProfile.isHidden = false
+                self.backView2.isHidden = false
+                self.tabBarController?.tabBar.isHidden = true
+              }
+          }
+      }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if isProfileShown == false{
+          backViewProfile.isHidden = true
+          backView2.isHidden = true
+        }else{
+          backViewProfile.isHidden = false
+          backView2.isHidden = false
+        }
         self.view.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 255/255)
         search.delegate = self
         self.locationManager.requestAlwaysAuthorization()
@@ -123,15 +207,6 @@ class ExploreViewController: UIViewController, UISearchBarDelegate {
             //error handling
         }
     }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        let search = searchBarInstance.search
-//        filteredData = []
-//        filteredData = search(NSSet(array: favRestaurantsData), searchText)
-//        DispatchQueue.main.async {
-//            self.favoriteTableView.reloadData()
-//        }
-    }
 
     /*
     // MARK: - Navigation
@@ -156,11 +231,15 @@ extension ExploreViewController: CLLocationManagerDelegate {
     
 }
 
-//extension ExploreViewController: UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        <#code#>
-//    }
-//}
+extension ExploreViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let search = searchInstance.search
+        dataShow = search(NSSet(array: dataShow), searchText)
+        DispatchQueue.main.async {
+            self.restaurantList.reloadData()
+        }
+    }
+}
 
 extension ExploreViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

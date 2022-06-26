@@ -38,16 +38,16 @@ class DetailViewController: UIViewController,UITableViewDelegate {
         // Collection View Layout
         collectionView.collectionViewLayout = createLayout()
         
-        getAllRestaurant()
+//        getAllRestaurant()
         
         DetailReviewTableView.delegate = self
         DetailReviewTableView.dataSource = self
         
-        let restaurant = restaurantData.filter({(r: Restaurants) -> Bool in
-            return r.name == "Formaggio Coffee and Resto"
-        }).first ?? Restaurants(context: context)
-        menuRestaurantData = (restaurant.menus!.allObjects as! [Menus])
-        reviewsData = (restaurant.reviews!.allObjects as! [Reviews])
+//        let restaurant = restaurantData.filter({(r: Restaurants) -> Bool in
+//            return r.name == "Formaggio Coffee and Resto"
+//        }).first ?? Restaurants(context: context)
+        menuRestaurantData = (restaurantDetail.menus!.allObjects as! [Menus])
+        reviewsData = (restaurantDetail.reviews!.allObjects as! [Reviews])
         
         // Data Restaurant from protocol
 //        restaurantDetail = restaurant
@@ -66,18 +66,18 @@ class DetailViewController: UIViewController,UITableViewDelegate {
     }
     
     // Get Data from Restaurant
-    func getAllRestaurant() {
-        do {
-            let restaurants = try context.fetch(Restaurants.fetchRequest())
-            restaurantData = restaurants
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.DetailReviewTableView.reloadData()
-            }
-        } catch _ {
-            
-        }
-    }
+//    func getAllRestaurant() {
+//        do {
+//            let restaurants = try context.fetch(Restaurants.fetchRequest())
+//            restaurantData = restaurants
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadData()
+//                self.DetailReviewTableView.reloadData()
+//            }
+//        } catch _ {
+//
+//        }
+//    }
     
     // Connect Controller to Database
     func connectControllerToData () {
