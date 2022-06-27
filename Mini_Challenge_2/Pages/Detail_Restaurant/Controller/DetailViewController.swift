@@ -61,7 +61,6 @@ class DetailViewController: UIViewController,UITableViewDelegate {
     
     // Navigation Bar Atribute 
     private func configureBarAtribute() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .done, target: self, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(addToFavorite(_ :)))
     }
     
@@ -236,8 +235,8 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
 
     
-    @objc func askToOpenMap() {
-        //OpenMapDirections.present(in: self, sourceView: sender)
+    @objc func askToOpenMap(_ sender:UIButton) {
+        OpenMapsLocation.present(in: self, sourceView: sender, restaurant: restaurantDetail)
     }
     
     @IBAction func pageControllerAction(_ sender: UIPageControl) {
