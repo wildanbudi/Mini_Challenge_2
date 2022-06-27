@@ -144,30 +144,81 @@
                                     <action selector="filterButton:" destination="5wF-RX-5ce" eventType="touchUpInside" id="Nog-lT-vOl"/>
                                 </connections>
                             </button>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vGw-4F-657" userLabel="Back View Profile">
+                                <rect key="frame" x="0.0" y="40" width="390" height="764"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="okf-sc-Ptr" appends="YES" id="uet-K0-CQk"/>
+                                </connections>
+                            </view>
+                            <view alpha="0.019999999552965164" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0Z-WR-jeK" userLabel="Back View2">
+                                <rect key="frame" x="290" y="0.0" width="100" height="764"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="o6A-fg-5O1"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="bKs-2a-XBu" appends="YES" id="jfb-Fg-wcX"/>
+                                </connections>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPH-vF-cqZ">
+                                <rect key="frame" x="-343" y="0.0" width="343" height="844"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="0eF-98-BYD"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="zof-Uj-v3e" kind="embed" id="hfN-al-chU"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Df-e0-D0I"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6as-oI-y2b" firstAttribute="top" secondItem="2Df-e0-D0I" secondAttribute="top" id="0Ke-2d-8xm"/>
+                            <constraint firstItem="vGw-4F-657" firstAttribute="centerY" secondItem="WPH-vF-cqZ" secondAttribute="centerY" id="1Zv-iK-qZP"/>
+                            <constraint firstItem="H0Z-WR-jeK" firstAttribute="trailing" secondItem="3K3-dp-PNe" secondAttribute="trailing" id="3vu-UA-5Up"/>
+                            <constraint firstItem="H0Z-WR-jeK" firstAttribute="trailing" secondItem="vGw-4F-657" secondAttribute="trailing" id="4vn-XJ-m7z"/>
                             <constraint firstItem="mMD-nT-jPo" firstAttribute="leading" secondItem="2Df-e0-D0I" secondAttribute="leading" id="7DV-xz-m2W"/>
+                            <constraint firstItem="2Df-e0-D0I" firstAttribute="bottom" secondItem="vGw-4F-657" secondAttribute="bottom" constant="6" id="DTr-qy-mCU"/>
                             <constraint firstItem="mMD-nT-jPo" firstAttribute="top" secondItem="6as-oI-y2b" secondAttribute="bottom" id="GDW-bR-0yV"/>
                             <constraint firstItem="3K3-dp-PNe" firstAttribute="top" secondItem="2Df-e0-D0I" secondAttribute="top" id="MTT-b3-M6V"/>
+                            <constraint firstItem="WPH-vF-cqZ" firstAttribute="top" secondItem="UEY-3h-jw1" secondAttribute="top" id="Qfj-jd-xoK"/>
+                            <constraint firstAttribute="bottom" secondItem="H0Z-WR-jeK" secondAttribute="bottom" constant="80" id="T3z-CC-hbS"/>
                             <constraint firstItem="mMD-nT-jPo" firstAttribute="trailing" secondItem="2Df-e0-D0I" secondAttribute="trailing" id="d8b-rW-r7J"/>
+                            <constraint firstAttribute="bottom" secondItem="WPH-vF-cqZ" secondAttribute="bottom" id="elT-LN-1FO"/>
+                            <constraint firstItem="vGw-4F-657" firstAttribute="leading" secondItem="6as-oI-y2b" secondAttribute="leading" id="kO4-jh-4g7"/>
                             <constraint firstItem="6as-oI-y2b" firstAttribute="leading" secondItem="2Df-e0-D0I" secondAttribute="leading" id="lcM-GP-g1v"/>
+                            <constraint firstItem="WPH-vF-cqZ" firstAttribute="leading" secondItem="2Df-e0-D0I" secondAttribute="leading" constant="-343" id="sJ2-VS-CAp"/>
                             <constraint firstItem="3K3-dp-PNe" firstAttribute="trailing" secondItem="2Df-e0-D0I" secondAttribute="trailing" id="vLD-9g-lNT"/>
+                            <constraint firstItem="H0Z-WR-jeK" firstAttribute="top" secondItem="UEY-3h-jw1" secondAttribute="top" id="zps-Ic-AVK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g2h-Jy-f94"/>
                     <connections>
+                        <outlet property="backView2" destination="H0Z-WR-jeK" id="nfP-rq-6cv"/>
+                        <outlet property="backViewProfile" destination="vGw-4F-657" id="jrK-nu-6P1"/>
                         <outlet property="favoriteTableView" destination="mMD-nT-jPo" id="M6V-KO-2MA"/>
                         <outlet property="filterButton" destination="3K3-dp-PNe" id="TTy-vZ-4Ud"/>
+                        <outlet property="profileView" destination="WPH-vF-cqZ" id="wao-fn-m3V"/>
+                        <outlet property="profileViewLeading" destination="sJ2-VS-CAp" id="aQI-fy-h44"/>
                         <outlet property="searchBar" destination="6as-oI-y2b" id="LPX-ga-tZ1"/>
                         <segue destination="V9S-wA-Hdj" kind="presentation" identifier="ShowLocationModal" modalPresentationStyle="formSheet" id="10h-aP-ZQ7"/>
                         <segue destination="n09-QQ-5yG" kind="show" identifier="GoToDetail" id="auM-dm-69l"/>
-                        <segue destination="zof-Uj-v3e" kind="show" identifier="GoToProfile" id="Ays-3u-csg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZm-HR-JqH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bKs-2a-XBu">
+                    <connections>
+                        <action selector="backView2Tapped:" destination="5wF-RX-5ce" id="41x-6E-TEo"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="okf-sc-Ptr">
+                    <connections>
+                        <action selector="backViewProfileTapped:" destination="5wF-RX-5ce" id="XIl-We-mhR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2089.2307692307691" y="751.42180094786727"/>
         </scene>
