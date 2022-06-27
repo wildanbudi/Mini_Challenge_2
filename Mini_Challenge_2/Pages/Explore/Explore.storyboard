@@ -85,10 +85,39 @@
                                     <action selector="restoType:" destination="fcR-DX-6Ys" eventType="valueChanged" id="fI1-Ct-fOY"/>
                                 </connections>
                             </segmentedControl>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5NH-js-sp8" userLabel="Back View Profile">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="764"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="YGr-Ya-NrU" appends="YES" id="ySp-Rl-uAZ"/>
+                                </connections>
+                            </view>
+                            <view alpha="0.019999999552965199" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJC-iQ-YL6" userLabel="Back View2">
+                                <rect key="frame" x="290" y="0.0" width="100" height="764"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="DQp-pl-5BD"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="1BP-l8-UPQ" appends="YES" id="0lF-Lh-uK3"/>
+                                </connections>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1I-20-8NL" userLabel="Profile View">
+                                <rect key="frame" x="-343" y="0.0" width="343" height="844"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="Nmg-48-VFl"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="XL0-ad-Aje" kind="embed" id="c0G-xD-22u"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PUW-HU-mv2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="PUW-HU-mv2" firstAttribute="trailing" secondItem="RJC-iQ-YL6" secondAttribute="trailing" id="6bn-Rf-jFM"/>
                             <constraint firstItem="Otp-rA-LID" firstAttribute="top" secondItem="CEj-os-GiG" secondAttribute="bottom" constant="15" id="7lP-Ed-x44"/>
                             <constraint firstItem="PUW-HU-mv2" firstAttribute="trailing" secondItem="dJZ-06-kl8" secondAttribute="trailing" constant="15" id="8r6-VG-fnt"/>
                             <constraint firstItem="CEj-os-GiG" firstAttribute="top" secondItem="7p2-lb-jU2" secondAttribute="bottom" constant="5" id="C62-3d-5Y0"/>
@@ -97,15 +126,24 @@
                             <constraint firstItem="PUW-HU-mv2" firstAttribute="bottom" secondItem="Otp-rA-LID" secondAttribute="bottom" constant="2" id="JjU-IC-yzV"/>
                             <constraint firstItem="Otp-rA-LID" firstAttribute="leading" secondItem="PUW-HU-mv2" secondAttribute="leading" constant="10" id="KJn-uN-DhO"/>
                             <constraint firstItem="7p2-lb-jU2" firstAttribute="top" secondItem="gL9-00-9ne" secondAttribute="bottom" constant="20" id="OHS-UQ-pEk"/>
+                            <constraint firstItem="5NH-js-sp8" firstAttribute="top" secondItem="DqT-R2-Lgb" secondAttribute="top" id="TER-TK-h94"/>
                             <constraint firstItem="PUW-HU-mv2" firstAttribute="trailing" secondItem="hpS-yq-jfO" secondAttribute="trailing" constant="15" id="U4A-n6-fIb"/>
                             <constraint firstItem="CEj-os-GiG" firstAttribute="leading" secondItem="PUW-HU-mv2" secondAttribute="leading" constant="10" id="VUZ-Gi-oJU"/>
                             <constraint firstItem="gL9-00-9ne" firstAttribute="leading" secondItem="PUW-HU-mv2" secondAttribute="leading" constant="15" id="YDg-Id-0hZ"/>
+                            <constraint firstAttribute="trailing" secondItem="5NH-js-sp8" secondAttribute="trailing" id="bbb-aw-prf"/>
+                            <constraint firstAttribute="bottom" secondItem="b1I-20-8NL" secondAttribute="bottom" id="bnL-tS-DhG"/>
                             <constraint firstItem="gL9-00-9ne" firstAttribute="top" secondItem="PUW-HU-mv2" secondAttribute="top" constant="5" id="d75-uX-AXB"/>
                             <constraint firstItem="PUW-HU-mv2" firstAttribute="trailing" secondItem="CEj-os-GiG" secondAttribute="trailing" constant="10" id="fpQ-4M-fzr"/>
+                            <constraint firstItem="RJC-iQ-YL6" firstAttribute="top" secondItem="DqT-R2-Lgb" secondAttribute="top" id="hA2-h1-iG6"/>
                             <constraint firstItem="dJZ-06-kl8" firstAttribute="top" secondItem="hpS-yq-jfO" secondAttribute="bottom" constant="20" id="j1P-Ob-mUD"/>
+                            <constraint firstItem="5NH-js-sp8" firstAttribute="leading" secondItem="DqT-R2-Lgb" secondAttribute="leading" id="lGF-vo-91z"/>
+                            <constraint firstItem="b1I-20-8NL" firstAttribute="top" secondItem="DqT-R2-Lgb" secondAttribute="top" id="lGX-EL-BwU"/>
+                            <constraint firstItem="b1I-20-8NL" firstAttribute="leading" secondItem="DqT-R2-Lgb" secondAttribute="leading" constant="-343" id="mNV-iq-sXL"/>
                             <constraint firstItem="dJZ-06-kl8" firstAttribute="leading" secondItem="7p2-lb-jU2" secondAttribute="trailing" constant="20" id="qYp-Xf-w1k"/>
                             <constraint firstItem="hpS-yq-jfO" firstAttribute="top" secondItem="PUW-HU-mv2" secondAttribute="top" constant="5" id="sIw-HL-vns"/>
+                            <constraint firstAttribute="bottom" secondItem="RJC-iQ-YL6" secondAttribute="bottom" constant="80" id="tHT-ht-jRj"/>
                             <constraint firstItem="hpS-yq-jfO" firstAttribute="centerY" secondItem="gL9-00-9ne" secondAttribute="centerY" id="uMe-LH-pNm"/>
+                            <constraint firstAttribute="bottom" secondItem="5NH-js-sp8" secondAttribute="bottom" constant="80" id="yuk-04-fDo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="oIu-vT-OjO"/>
@@ -115,17 +153,30 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="backView2" destination="RJC-iQ-YL6" id="UsW-ub-YUE"/>
+                        <outlet property="backViewProfile" destination="5NH-js-sp8" id="Zqp-SY-432"/>
                         <outlet property="filter" destination="dJZ-06-kl8" id="Sg2-h6-fUG"/>
                         <outlet property="location" destination="hpS-yq-jfO" id="zw0-kM-yxW"/>
+                        <outlet property="profileView" destination="b1I-20-8NL" id="oz4-H6-FxH"/>
+                        <outlet property="profileViewLeading" destination="mNV-iq-sXL" id="WuX-ck-pTL"/>
                         <outlet property="restaurantList" destination="Otp-rA-LID" id="SBr-rv-KVm"/>
                         <outlet property="search" destination="7p2-lb-jU2" id="UnO-fr-MH3"/>
                         <outlet property="segmentedType" destination="CEj-os-GiG" id="0E9-dp-jgc"/>
                         <outlet property="username" destination="gL9-00-9ne" id="Ktc-Oa-eLR"/>
-                        <segue destination="XL0-ad-Aje" kind="push" identifier="GoToProfile" id="Ho7-6A-ugT"/>
                         <segue destination="hye-Wt-cOR" kind="show" identifier="GoToDetail" id="9XR-Th-OuP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0U-69-BaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="1BP-l8-UPQ">
+                    <connections>
+                        <action selector="backView2Tapped:" destination="fcR-DX-6Ys" id="lY0-Bp-ndt"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="YGr-Ya-NrU">
+                    <connections>
+                        <action selector="backViewProfileTapped:" destination="fcR-DX-6Ys" id="OXv-1K-HAC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="41.53846153846154" y="-529.62085308056874"/>
         </scene>
