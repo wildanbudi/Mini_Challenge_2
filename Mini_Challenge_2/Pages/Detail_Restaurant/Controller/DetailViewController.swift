@@ -61,7 +61,6 @@ class DetailViewController: UIViewController,UITableViewDelegate {
     
     // Navigation Bar Atribute 
     private func configureBarAtribute() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .done, target: self, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(addToFavorite(_ :)))
     }
     
@@ -133,7 +132,7 @@ class DetailViewController: UIViewController,UITableViewDelegate {
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(1)), subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .groupPagingCentered
-                section.interGroupSpacing = 13
+                section.interGroupSpacing = 10
                 section.contentInsets = .init(top:0, leading: 0, bottom:0, trailing:0)
                 section.supplementariesFollowContentInsets = false
             return section
@@ -236,8 +235,8 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
 
     
-    @objc func askToOpenMap() {
-        //OpenMapDirections.present(in: self, sourceView: sender)
+    @objc func askToOpenMap(_ sender:UIButton) {
+        OpenMapsLocation.present(in: self, sourceView: sender, restaurant: restaurantDetail)
     }
     
     @IBAction func pageControllerAction(_ sender: UIPageControl) {

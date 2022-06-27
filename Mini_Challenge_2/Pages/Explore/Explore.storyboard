@@ -79,7 +79,7 @@
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="Vegetarian"/>
-                                    <segment title="Vegetarian-friendly"/>
+                                    <segment title="Vege-friendly"/>
                                 </segments>
                                 <connections>
                                     <action selector="restoType:" destination="fcR-DX-6Ys" eventType="valueChanged" id="fI1-Ct-fOY"/>
