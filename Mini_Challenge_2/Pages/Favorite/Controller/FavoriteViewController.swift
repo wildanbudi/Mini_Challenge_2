@@ -16,6 +16,9 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     var selectedRestaurant: Restaurants!
     var currentUser: Users!
     var isProfileShown : Bool = false
+    var favFromPrice = 0
+    var favToPrice = 0
+    var favRateList: [Double]!
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var favoriteTableView: UITableView!
@@ -212,7 +215,11 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
             presentationController.detents = [.medium()] /// change to [.medium(), .large()] for a half *and* full screen sheet
         }
         
-        self.present(filterViewController, animated: true)
+        let filterVC = filterViewController as! FilterViewController
+        filterVC.fromPrice = favFromPrice
+        filterVC.toPrice = favToPrice
+        filterVC.rateList = favRateList
+        self.present(filterVC, animated: true)
     }
     
     @objc func deleteButton(_ sender: UIButton) {
@@ -247,22 +254,26 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
             else {
                     return
             }
+        
         filteredData = favRestaurantsData
-        if rateList!.count > 0 && rateList!.count < 5 {
+        favRateList = rateList
+        if favRateList!.count > 0 && favRateList!.count < 5 {
             filteredData = filteredData.filter({(r: Restaurants) -> Bool in
-                if rateList!.count == 1 {
-                    return r.rating == rateList![0]
-                } else if rateList!.count == 2 {
-                    return r.rating == rateList![0] || r.rating == rateList![1]
-                } else if rateList!.count == 3 {
-                    return r.rating == rateList![0] || r.rating == rateList![1] || r.rating == rateList![2]
+                if favRateList!.count == 1 {
+                    return r.rating == favRateList![0]
+                } else if favRateList!.count == 2 {
+                    return r.rating == favRateList![0] || r.rating == favRateList![1]
+                } else if favRateList!.count == 3 {
+                    return r.rating == favRateList![0] || r.rating == favRateList![1] || r.rating == favRateList![2]
                 } else {
-                    return r.rating == rateList![0] || r.rating == rateList![1] || r.rating == rateList![2] || r.rating == rateList![3]
+                    return r.rating == favRateList![0] || r.rating == favRateList![1] || r.rating == favRateList![2] || r.rating == favRateList![3]
                 }
             })
         }
         
-        let priceFilter = [fromPrice, toPrice]
+        favFromPrice = fromPrice
+        favToPrice = toPrice
+        let priceFilter = [favFromPrice, favToPrice]
         if priceFilter[0] > 0 {
             filteredData = filteredData.filter({(r: Restaurants) -> Bool in
                 return Int(r.priceMin!)! >= priceFilter[0]

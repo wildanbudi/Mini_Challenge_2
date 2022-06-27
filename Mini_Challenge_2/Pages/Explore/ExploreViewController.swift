@@ -167,6 +167,7 @@ class ExploreViewController: UIViewController {
             else {
                     return
             }
+        
         dataShow = restaurantModel
         if rateList!.count > 0 && rateList!.count < 5 {
             dataShow = dataShow.filter({(r: Restaurants) -> Bool in
