@@ -169,7 +169,6 @@
 			children = (
 				42EA54CC285FBA8C00C87662 /* Cell */,
 				42EA54CF285FBA8C00C87662 /* Explore.storyboard */,
-				42EA54D0285FBA8C00C87662 /* ExploreViewController.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -211,6 +210,7 @@
 		42EA54CC285FBA8C00C87662 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				42EA54D0285FBA8C00C87662 /* ExploreViewController.swift */,
 				42EA54CD285FBA8C00C87662 /* RestaurantTableViewCell.swift */,
 				42EA54CE285FBA8C00C87662 /* RestaurantTableViewCell.xib */,
 			);
