@@ -21,6 +21,9 @@ class ExploreViewController: UIViewController {
     var detailData: Restaurants!
     let searchInstance = SearchBar()
     var isProfileShown : Bool = false
+    var exploreFromPrice = 0
+    var exploreToPrice = 0
+    var exploreRateList: [Double]!
 
     @IBOutlet weak var profileViewLeading: NSLayoutConstraint!
     @IBOutlet weak var profileView: UIView!
@@ -92,6 +95,10 @@ class ExploreViewController: UIViewController {
             presentationController.detents = [.medium()] /// change to [.medium(), .large()] for a half *and* full screen sheet
         }
         
+        let filterVC = filterViewController as! FilterViewController
+        filterVC.fromPrice = exploreFromPrice
+        filterVC.toPrice = exploreToPrice
+        filterVC.rateList = exploreRateList
         self.present(filterViewController, animated: true)
     }
     @IBAction func locationButton(_ sender: Any) {
@@ -167,22 +174,26 @@ class ExploreViewController: UIViewController {
             else {
                     return
             }
+        
         dataShow = restaurantModel
+        exploreRateList = rateList
         if rateList!.count > 0 && rateList!.count < 5 {
             dataShow = dataShow.filter({(r: Restaurants) -> Bool in
-                if rateList!.count == 1 {
-                    return r.rating == rateList![0]
-                } else if rateList!.count == 2 {
-                    return r.rating == rateList![0] || r.rating == rateList![1]
-                } else if rateList!.count == 3 {
-                    return r.rating == rateList![0] || r.rating == rateList![1] || r.rating == rateList![2]
+                if exploreRateList!.count == 1 {
+                    return r.rating == exploreRateList![0]
+                } else if exploreRateList!.count == 2 {
+                    return r.rating == exploreRateList![0] || r.rating == exploreRateList![1]
+                } else if exploreRateList!.count == 3 {
+                    return r.rating == exploreRateList![0] || r.rating == exploreRateList![1] || r.rating == exploreRateList![2]
                 } else {
-                    return r.rating == rateList![0] || r.rating == rateList![1] || r.rating == rateList![2] || r.rating == rateList![3]
+                    return r.rating == exploreRateList![0] || r.rating == exploreRateList![1] || r.rating == exploreRateList![2] || r.rating == exploreRateList![3]
                 }
             })
         }
         
-        let priceFilter = [fromPrice, toPrice]
+        exploreFromPrice = fromPrice
+        exploreToPrice = toPrice
+        let priceFilter = [exploreFromPrice, exploreToPrice]
         if priceFilter[0] > 0 {
             dataShow = dataShow.filter({(r: Restaurants) -> Bool in
                 return Int(r.priceMin!)! >= priceFilter[0]
