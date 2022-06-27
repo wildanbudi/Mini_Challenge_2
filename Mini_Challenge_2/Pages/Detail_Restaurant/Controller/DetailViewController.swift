@@ -132,7 +132,7 @@ class DetailViewController: UIViewController,UITableViewDelegate {
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(1)), subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .groupPagingCentered
-                section.interGroupSpacing = 13
+                section.interGroupSpacing = 10
                 section.contentInsets = .init(top:0, leading: 0, bottom:0, trailing:0)
                 section.supplementariesFollowContentInsets = false
             return section
