@@ -157,6 +157,48 @@ class ExploreViewController: UIViewController {
       }
     }
     
+    @IBAction func cancel(_ unwindSegue: UIStoryboardSegue) {}
+    
+    @IBAction func applyFilter(_ unwindSegue: UIStoryboardSegue) {
+        guard let filterViewController = unwindSegue.source as? FilterViewController,
+            case let fromPrice = filterViewController.fromPrice,
+            case let toPrice = filterViewController.toPrice,
+            case let rateList = filterViewController.rateList
+            else {
+                    return
+            }
+        dataShow = restaurantModel
+        if rateList!.count > 0 && rateList!.count < 5 {
+            dataShow = dataShow.filter({(r: Restaurants) -> Bool in
+                if rateList!.count == 1 {
+                    return r.rating == rateList![0]
+                } else if rateList!.count == 2 {
+                    return r.rating == rateList![0] || r.rating == rateList![1]
+                } else if rateList!.count == 3 {
+                    return r.rating == rateList![0] || r.rating == rateList![1] || r.rating == rateList![2]
+                } else {
+                    return r.rating == rateList![0] || r.rating == rateList![1] || r.rating == rateList![2] || r.rating == rateList![3]
+                }
+            })
+        }
+        
+        let priceFilter = [fromPrice, toPrice]
+        if priceFilter[0] > 0 {
+            dataShow = dataShow.filter({(r: Restaurants) -> Bool in
+                return Int(r.priceMin!)! >= priceFilter[0]
+            })
+        }
+
+        if priceFilter[1] > 0 {
+            dataShow = dataShow.filter({(r: Restaurants) -> Bool in
+                return Int(r.priceMax!)! <= priceFilter[1]
+            })
+        }
+        DispatchQueue.main.async {
+            self.restaurantList.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if isProfileShown == false{

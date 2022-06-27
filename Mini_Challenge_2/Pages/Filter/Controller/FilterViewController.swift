@@ -33,11 +33,12 @@ class FilterViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         fromPrice = Int(fromTextField.text ?? "0") ?? 0
         toPrice = Int(toTextField.text ?? "0") ?? 0
-        
+
         rateList = rateFilter.enumerated().filter {
             $0.element == true
         }.map{Double($0.offset + 1)}
     }
+    
     @IBAction private func star5ButtonTapped(_ sender: UIButton) {
         rateFilter[4] = !rateFilter[4]
         sender.backgroundColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)

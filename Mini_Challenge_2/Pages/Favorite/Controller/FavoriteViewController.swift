@@ -15,13 +15,25 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     let searchBarInstance = SearchBar()
     var selectedRestaurant: Restaurants!
     var currentUser: Users!
+    var isProfileShown : Bool = false
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var favoriteTableView: UITableView!
     @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var profileViewLeading: NSLayoutConstraint!
+    @IBOutlet weak var profileView: UIView!
+    @IBOutlet weak var backViewProfile: UIView!
+    @IBOutlet weak var backView2: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if isProfileShown == false {
+          backViewProfile.isHidden = true
+          backView2.isHidden = true
+        } else {
+          backViewProfile.isHidden = false
+          backView2.isHidden = false
+        }
         getUser()
         
         favoriteTableView.delegate = self
@@ -63,6 +75,58 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
         getUser()
     }
     
+    private var beginPoint:CGFloat = 0.0
+    private var difference:CGFloat = 0.0
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+      if isProfileShown{
+           if let touch = touches.first{
+              let location = touch.location(in: backViewProfile)
+              beginPoint = location.x
+          }
+      }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+      if isProfileShown{
+          if let touch = touches.first{
+              let location = touch.location(in: backViewProfile)
+              
+              let differenceFromBeginPoint = beginPoint - location.x
+              
+              if (differenceFromBeginPoint>0 || differenceFromBeginPoint<343){
+                  difference = differenceFromBeginPoint
+                  self.profileViewLeading.constant = -differenceFromBeginPoint
+              }
+          }
+      }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+      if  isProfileShown{
+          if difference>100{
+              UIView.animate(withDuration: 0.1) {
+                  self.profileViewLeading.constant = -343
+              } completion: { (status) in
+                  self.isProfileShown = false
+                  self.backViewProfile.isHidden = true
+                self.backView2.isHidden = true
+                self.tabBarController?.tabBar.isHidden = false
+              }
+          }
+          else{
+              UIView.animate(withDuration: 0.1) {
+                  self.profileViewLeading.constant = 0
+              } completion: { (status) in
+                  self.isProfileShown = true
+                  self.backViewProfile.isHidden = false
+                self.backView2.isHidden = false
+                self.tabBarController?.tabBar.isHidden = true
+              }
+          }
+      }
+    }
+    
     func getUser() {
         currentUser = UsersModel.getUser()
         
@@ -73,9 +137,60 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    @objc private func showProfile() {
-        performSegue(withIdentifier: "GoToProfile", sender: self)
+    @IBAction func backView2Tapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.3) {
+            self.backViewProfile.isHidden = true
+            self.profileViewLeading.constant = -343
+            self.view.layoutIfNeeded()
+            self.backViewProfile.isHidden = true
+            self.backView2.isHidden = true
+        } completion: { (status) in
+        }
+        self.isProfileShown = false
+        let locationButton =  UIButton(type: .custom)
+        locationButton.setImage(UIImage(named: "location"), for: .normal)
+        locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
+        locationButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
+        let locationLabel = UILabel(frame: CGRect(x: -70, y: 5, width: 100, height: 20))// set position of label
+        locationLabel.text = "Location"
+        locationLabel.textColor = UIColor.black
+        locationLabel.backgroundColor = UIColor.clear
+        locationButton.addSubview(locationLabel)
+        locationButton.addTarget(self, action: #selector(showLocation), for: .touchUpInside)
+        let rightBarButton = UIBarButtonItem(customView: locationButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        let profileButton =  UIButton(type: .custom)
+        profileButton.setImage(UIImage(systemName: "person.circle.fill"), for: .normal)
+        profileButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
+        profileButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
+        let profileLabel = UILabel(frame: CGRect(x: 30, y: 5, width: 100, height: 20))// set position of label
+        profileLabel.text = currentUser.name
+        profileLabel.textColor = UIColor.black
+        profileLabel.backgroundColor =   UIColor.clear
+        profileButton.addSubview(profileLabel)
+        profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
+        profileButton.imageView?.contentMode = .scaleAspectFit
+        profileButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        let leftBarButton = UIBarButtonItem(customView: profileButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
     }
+
+    @IBAction func backViewProfileTapped(_ sender: Any) {}
+    
+    @objc private func showProfile() {
+//        performSegue(withIdentifier: "GoToProfile", sender: self)
+        UIView.animate(withDuration: 0.3) {
+            self.profileViewLeading.constant = 0
+            self.view.layoutIfNeeded()
+            self.backViewProfile.isHidden = false
+            self.backView2.isHidden = false
+         } completion: { (status) in }
+         self.isProfileShown = true
+        self.navigationItem.setLeftBarButtonItems(nil, animated: true)
+        self.navigationItem.setRightBarButtonItems(nil, animated: true)
+    }
+    
     
     @objc private func showLocation(_ sender: Any) {
 //        performSegue(withIdentifier: "ShowLocationModal", sender: self)
@@ -130,7 +245,6 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
             case let toPrice = filterViewController.toPrice,
             case let rateList = filterViewController.rateList
             else {
-                    print("return disini")
                     return
             }
         filteredData = favRestaurantsData
