@@ -78,6 +78,9 @@
                                                 </constraints>
                                                 <color key="pageIndicatorTintColor" systemColor="quaternaryLabelColor"/>
                                                 <color key="currentPageIndicatorTintColor" systemColor="secondaryLabelColor"/>
+                                                <connections>
+                                                    <action selector="pageControllerAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="9Wq-IM-oTm"/>
+                                                </connections>
                                             </pageControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbx-Kb-7sY" userLabel="Restaurant">
                                                 <rect key="frame" x="16" y="310" width="313" height="26"/>
@@ -486,6 +489,7 @@
                         <outlet property="RestaurantType" destination="2HR-l4-88E" id="n9g-bJ-1jw"/>
                         <outlet property="collectionView" destination="xmP-iB-5jq" id="C15-Ev-gEM"/>
                         <outlet property="locationButton" destination="szP-tf-9PJ" id="IK3-z1-Yrp"/>
+                        <outlet property="pageController" destination="yej-NW-hLt" id="c7l-Lf-3R2"/>
                         <segue destination="1gd-Qj-8E6" kind="show" identifier="GoToReview" id="qIW-Eq-Z8h"/>
                     </connections>
                 </viewController>

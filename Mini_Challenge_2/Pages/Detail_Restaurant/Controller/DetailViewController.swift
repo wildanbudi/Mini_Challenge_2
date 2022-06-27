@@ -17,6 +17,7 @@ class DetailViewController: UIViewController,UITableViewDelegate {
     var currentUser: Users!
     var reviewsData: [Reviews]!
     
+    @IBOutlet weak var pageController: UIPageControl!
     @IBOutlet weak var DetailReviewTableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var locationButton: UIButton!
@@ -92,7 +93,7 @@ class DetailViewController: UIViewController,UITableViewDelegate {
         }else{
             RestaurantType.isHidden = false
         }
-        //RestaurantType.image = UIImage(data: restaurantDetail.image!)
+        pageController.isHidden = true
         PriceTagMin.text = restaurantDetail.priceMin
         PriceTagMax.text = restaurantDetail.priceMax
         RateTag.text = String(restaurantDetail.rating)
@@ -155,9 +156,9 @@ class DetailViewController: UIViewController,UITableViewDelegate {
 
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource,UITableViewDataSource {
     
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return sections.count
-//    }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return menus.count
+    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return menus.count
@@ -169,6 +170,23 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.cellImageView.image = UIImage(data: menu.image!)
         return cell
     }
+  
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let visibleRect = CGRect(origin: self.collectionView.contentOffset, size: self.collectionView.bounds.size)
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        if let visibleIndexPath = self.collectionView.indexPathForItem(at: visiblePoint) {
+            self.pageController.currentPage = visibleIndexPath.row
+        }
+    }
+    
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//       let visibleRect = CGRect(origin: self.collectionView.contentOffset, size: self.collectionView.bounds.size)
+//       let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+//       if let visibleIndexPath = self.collectionView.indexPathForItem(at: visiblePoint) {
+//                self.pageController.currentPage = visibleIndexPath.row
+//       }
+//    }
+    
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
         }
@@ -220,6 +238,10 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     @objc func askToOpenMap() {
         //OpenMapDirections.present(in: self, sourceView: sender)
+    }
+    
+    @IBAction func pageControllerAction(_ sender: UIPageControl) {
+           self.collectionView.scrollToItem(at: IndexPath(row: sender.currentPage, section: 0), at: .centeredHorizontally, animated: true)
     }
 }
 
