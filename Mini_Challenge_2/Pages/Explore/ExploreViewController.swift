@@ -15,6 +15,7 @@ class ExploreViewController: UIViewController {
     let locationManager = CLLocationManager()
     var restaurantModel: [Restaurants] = []
     var dataShow: [Restaurants] = []
+    var currentData: [Restaurants] = []
     var restaurantData: NSSet!
     var distance: CLLocationDistance!
     var currentLocation: CLLocation!
@@ -44,7 +45,7 @@ class ExploreViewController: UIViewController {
         } completion: { (status) in
         }
         self.isProfileShown = false
-        
+        search.isHidden = false
         let locationButton =  UIButton(type: .custom)
         locationButton.setImage(UIImage(named: "location"), for: .normal)
         locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
@@ -61,7 +62,7 @@ class ExploreViewController: UIViewController {
         let profileButton =  UIButton(type: .custom)
         profileButton.setImage(UIImage(systemName: "person.circle.fill"), for: .normal)
         profileButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
-        profileButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
+        profileButton.frame = CGRect(x: 0, y: 5, width: 0, height: 30)
         let profileLabel = UILabel(frame: CGRect(x: 30, y: 5, width: 100, height: 20))// set position of label
         profileLabel.text = currentUser.name
         profileLabel.textColor = UIColor.black
@@ -84,32 +85,35 @@ class ExploreViewController: UIViewController {
         } completion: { (status) in
         }
         self.isProfileShown = true
+        search.isHidden = true
+        self.navigationItem.setLeftBarButtonItems(nil, animated: true)
+        self.navigationItem.setRightBarButtonItems(nil, animated: true)
     }
     @IBOutlet weak var segmentedType: UISegmentedControl!
     @IBAction func restoType(_ sender: Any) {
         switch segmentedType.selectedSegmentIndex
         {
         case 1:
-            dataShow = restaurantModel.filter({(r: Restaurants) -> Bool in
+            currentData = restaurantModel.filter({(r: Restaurants) -> Bool in
                 return r.vegeResto == true
             })
-            
+            dataShow = currentData
             DispatchQueue.main.async {
                 self.restaurantList.reloadData()
             }
         case 2:
-            dataShow = restaurantModel.filter({(r: Restaurants) -> Bool in
+            currentData = restaurantModel.filter({(r: Restaurants) -> Bool in
                 return r.vegeResto == false && r.name != nil
             })
-            
+            dataShow = currentData
             DispatchQueue.main.async {
                 self.restaurantList.reloadData()
             }
         default:
-            dataShow = restaurantModel.filter({(r: Restaurants) -> Bool in
+            currentData = restaurantModel.filter({(r: Restaurants) -> Bool in
                 return r.name != nil
             })
-            
+            dataShow = currentData
             DispatchQueue.main.async {
                 self.restaurantList.reloadData()
             }
@@ -241,6 +245,8 @@ class ExploreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        username.isHidden = true
+        location.isHidden = true
         if isProfileShown == false{
           backViewProfile.isHidden = true
           backView2.isHidden = true
@@ -264,10 +270,10 @@ class ExploreViewController: UIViewController {
         registerCell()
         getAllItem()
         getUser()
-        dataShow = restaurantModel.filter({(r: Restaurants) -> Bool in
+        currentData = restaurantModel.filter({(r: Restaurants) -> Bool in
             return r.name != nil
         })
-        
+        dataShow = currentData
         let locationButton =  UIButton(type: .custom)
         locationButton.setImage(UIImage(named: "location"), for: .normal)
         locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
@@ -350,7 +356,7 @@ extension ExploreViewController: CLLocationManagerDelegate {
 extension ExploreViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let search = searchInstance.search
-        dataShow = search(NSSet(array: dataShow), searchText)
+        dataShow = search(NSSet(array: currentData), searchText)
         DispatchQueue.main.async {
             self.restaurantList.reloadData()
         }
