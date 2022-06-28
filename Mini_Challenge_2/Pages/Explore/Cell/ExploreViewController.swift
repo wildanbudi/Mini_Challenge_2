@@ -24,6 +24,7 @@ class ExploreViewController: UIViewController {
     var exploreFromPrice = 0
     var exploreToPrice = 0
     var exploreRateList: [Double]!
+    var currentUser: Users!
 
     @IBOutlet weak var profileViewLeading: NSLayoutConstraint!
     @IBOutlet weak var profileView: UIView!
@@ -43,10 +44,38 @@ class ExploreViewController: UIViewController {
         } completion: { (status) in
         }
         self.isProfileShown = false
+        
+        let locationButton =  UIButton(type: .custom)
+        locationButton.setImage(UIImage(named: "location"), for: .normal)
+        locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
+        locationButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
+        let locationLabel = UILabel(frame: CGRect(x: -70, y: 5, width: 100, height: 20))// set position of label
+        locationLabel.text = "Location"
+        locationLabel.textColor = UIColor.black
+        locationLabel.backgroundColor = UIColor.clear
+        locationButton.addSubview(locationLabel)
+        locationButton.addTarget(self, action: #selector(showLocation), for: .touchUpInside)
+        let rightBarButton = UIBarButtonItem(customView: locationButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        let profileButton =  UIButton(type: .custom)
+        profileButton.setImage(UIImage(systemName: "person.circle.fill"), for: .normal)
+        profileButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
+        profileButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
+        let profileLabel = UILabel(frame: CGRect(x: 30, y: 5, width: 100, height: 20))// set position of label
+        profileLabel.text = currentUser.name
+        profileLabel.textColor = UIColor.black
+        profileLabel.backgroundColor =   UIColor.clear
+        profileButton.addSubview(profileLabel)
+        profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
+        profileButton.imageView?.contentMode = .scaleAspectFit
+        profileButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        let leftBarButton = UIBarButtonItem(customView: profileButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
     }
     @IBAction func backViewProfileTapped(_ sender: Any) {
     }
-    @IBAction func usernameButton(_ sender: Any) {
+    @objc private func showProfile(_ sender: Any) {
         UIView.animate(withDuration: 0.3) {
             self.profileViewLeading.constant = 0
             self.view.layoutIfNeeded()
@@ -101,7 +130,7 @@ class ExploreViewController: UIViewController {
         filterVC.rateList = exploreRateList
         self.present(filterViewController, animated: true)
     }
-    @IBAction func locationButton(_ sender: Any) {
+    @objc private func showLocation(_ sender: Any) {
         let locationStoryboard = UIStoryboard(name: "Location", bundle: nil)
         let locationViewController = locationStoryboard.instantiateViewController(withIdentifier: "LocationViewController")
         
@@ -231,15 +260,41 @@ class ExploreViewController: UIViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-        username.setTitle("Username", for: .normal)
-        username.setTitleColor(.black, for: .normal)
-        location.setTitleColor(.gray, for: .normal)
-        location.setTitle("Jakarta", for: .normal)
+        
         registerCell()
         getAllItem()
+        getUser()
         dataShow = restaurantModel.filter({(r: Restaurants) -> Bool in
             return r.name != nil
         })
+        
+        let locationButton =  UIButton(type: .custom)
+        locationButton.setImage(UIImage(named: "location"), for: .normal)
+        locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
+        locationButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
+        let locationLabel = UILabel(frame: CGRect(x: -70, y: 5, width: 100, height: 20))// set position of label
+        locationLabel.text = "Location"
+        locationLabel.textColor = UIColor.black
+        locationLabel.backgroundColor = UIColor.clear
+        locationButton.addSubview(locationLabel)
+        locationButton.addTarget(self, action: #selector(showLocation), for: .touchUpInside)
+        let rightBarButton = UIBarButtonItem(customView: locationButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        let profileButton =  UIButton(type: .custom)
+        profileButton.setImage(UIImage(systemName: "person.circle.fill"), for: .normal)
+        profileButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
+        profileButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
+        let profileLabel = UILabel(frame: CGRect(x: 30, y: 5, width: 100, height: 20))// set position of label
+        profileLabel.text = currentUser.name
+        profileLabel.textColor = UIColor.black
+        profileLabel.backgroundColor =   UIColor.clear
+        profileButton.addSubview(profileLabel)
+        profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
+        profileButton.imageView?.contentMode = .scaleAspectFit
+        profileButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        let leftBarButton = UIBarButtonItem(customView: profileButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
 //        UILabel.appearance().font = UIFont(name: "SF Pro", size: 12)
         // Do any additional setup after loading the view.
     }
@@ -258,6 +313,14 @@ class ExploreViewController: UIViewController {
         }
         catch{
             //error handling
+        }
+    }
+    
+    func getUser() {
+        currentUser = UsersModel.getUser()
+        
+        DispatchQueue.main.async {
+            self.restaurantList.reloadData()
         }
     }
 
