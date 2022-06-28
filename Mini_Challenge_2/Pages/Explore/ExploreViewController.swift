@@ -15,12 +15,17 @@ class ExploreViewController: UIViewController {
     let locationManager = CLLocationManager()
     var restaurantModel: [Restaurants] = []
     var dataShow: [Restaurants] = []
+    var currentData: [Restaurants] = []
     var restaurantData: NSSet!
     var distance: CLLocationDistance!
     var currentLocation: CLLocation!
     var detailData: Restaurants!
     let searchInstance = SearchBar()
     var isProfileShown : Bool = false
+    var exploreFromPrice = 0
+    var exploreToPrice = 0
+    var exploreRateList: [Double]!
+    var currentUser: Users!
 
     @IBOutlet weak var profileViewLeading: NSLayoutConstraint!
     @IBOutlet weak var profileView: UIView!
@@ -40,10 +45,38 @@ class ExploreViewController: UIViewController {
         } completion: { (status) in
         }
         self.isProfileShown = false
+        search.isHidden = false
+        let locationButton =  UIButton(type: .custom)
+        locationButton.setImage(UIImage(named: "location"), for: .normal)
+        locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
+        locationButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
+        let locationLabel = UILabel(frame: CGRect(x: -70, y: 5, width: 100, height: 20))// set position of label
+        locationLabel.text = "Location"
+        locationLabel.textColor = UIColor.black
+        locationLabel.backgroundColor = UIColor.clear
+        locationButton.addSubview(locationLabel)
+        locationButton.addTarget(self, action: #selector(showLocation), for: .touchUpInside)
+        let rightBarButton = UIBarButtonItem(customView: locationButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        let profileButton =  UIButton(type: .custom)
+        profileButton.setImage(UIImage(systemName: "person.circle.fill"), for: .normal)
+        profileButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
+        profileButton.frame = CGRect(x: 0, y: 5, width: 0, height: 30)
+        let profileLabel = UILabel(frame: CGRect(x: 30, y: 5, width: 100, height: 20))// set position of label
+        profileLabel.text = currentUser.name
+        profileLabel.textColor = UIColor.black
+        profileLabel.backgroundColor =   UIColor.clear
+        profileButton.addSubview(profileLabel)
+        profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
+        profileButton.imageView?.contentMode = .scaleAspectFit
+        profileButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        let leftBarButton = UIBarButtonItem(customView: profileButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
     }
     @IBAction func backViewProfileTapped(_ sender: Any) {
     }
-    @IBAction func usernameButton(_ sender: Any) {
+    @objc private func showProfile(_ sender: Any) {
         UIView.animate(withDuration: 0.3) {
             self.profileViewLeading.constant = 0
             self.view.layoutIfNeeded()
@@ -52,32 +85,35 @@ class ExploreViewController: UIViewController {
         } completion: { (status) in
         }
         self.isProfileShown = true
+        search.isHidden = true
+        self.navigationItem.setLeftBarButtonItems(nil, animated: true)
+        self.navigationItem.setRightBarButtonItems(nil, animated: true)
     }
     @IBOutlet weak var segmentedType: UISegmentedControl!
     @IBAction func restoType(_ sender: Any) {
         switch segmentedType.selectedSegmentIndex
         {
         case 1:
-            dataShow = restaurantModel.filter({(r: Restaurants) -> Bool in
+            currentData = restaurantModel.filter({(r: Restaurants) -> Bool in
                 return r.vegeResto == true
             })
-            
+            dataShow = currentData
             DispatchQueue.main.async {
                 self.restaurantList.reloadData()
             }
         case 2:
-            dataShow = restaurantModel.filter({(r: Restaurants) -> Bool in
+            currentData = restaurantModel.filter({(r: Restaurants) -> Bool in
                 return r.vegeResto == false && r.name != nil
             })
-            
+            dataShow = currentData
             DispatchQueue.main.async {
                 self.restaurantList.reloadData()
             }
         default:
-            dataShow = restaurantModel.filter({(r: Restaurants) -> Bool in
+            currentData = restaurantModel.filter({(r: Restaurants) -> Bool in
                 return r.name != nil
             })
-            
+            dataShow = currentData
             DispatchQueue.main.async {
                 self.restaurantList.reloadData()
             }
@@ -92,9 +128,13 @@ class ExploreViewController: UIViewController {
             presentationController.detents = [.medium()] /// change to [.medium(), .large()] for a half *and* full screen sheet
         }
         
+        let filterVC = filterViewController as! FilterViewController
+        filterVC.fromPrice = exploreFromPrice
+        filterVC.toPrice = exploreToPrice
+        filterVC.rateList = exploreRateList
         self.present(filterViewController, animated: true)
     }
-    @IBAction func locationButton(_ sender: Any) {
+    @objc private func showLocation(_ sender: Any) {
         let locationStoryboard = UIStoryboard(name: "Location", bundle: nil)
         let locationViewController = locationStoryboard.instantiateViewController(withIdentifier: "LocationViewController")
         
@@ -167,22 +207,26 @@ class ExploreViewController: UIViewController {
             else {
                     return
             }
+        
         dataShow = restaurantModel
+        exploreRateList = rateList
         if rateList!.count > 0 && rateList!.count < 5 {
             dataShow = dataShow.filter({(r: Restaurants) -> Bool in
-                if rateList!.count == 1 {
-                    return r.rating == rateList![0]
-                } else if rateList!.count == 2 {
-                    return r.rating == rateList![0] || r.rating == rateList![1]
-                } else if rateList!.count == 3 {
-                    return r.rating == rateList![0] || r.rating == rateList![1] || r.rating == rateList![2]
+                if exploreRateList!.count == 1 {
+                    return r.rating == exploreRateList![0]
+                } else if exploreRateList!.count == 2 {
+                    return r.rating == exploreRateList![0] || r.rating == exploreRateList![1]
+                } else if exploreRateList!.count == 3 {
+                    return r.rating == exploreRateList![0] || r.rating == exploreRateList![1] || r.rating == exploreRateList![2]
                 } else {
-                    return r.rating == rateList![0] || r.rating == rateList![1] || r.rating == rateList![2] || r.rating == rateList![3]
+                    return r.rating == exploreRateList![0] || r.rating == exploreRateList![1] || r.rating == exploreRateList![2] || r.rating == exploreRateList![3]
                 }
             })
         }
         
-        let priceFilter = [fromPrice, toPrice]
+        exploreFromPrice = fromPrice
+        exploreToPrice = toPrice
+        let priceFilter = [exploreFromPrice, exploreToPrice]
         if priceFilter[0] > 0 {
             dataShow = dataShow.filter({(r: Restaurants) -> Bool in
                 return Int(r.priceMin!)! >= priceFilter[0]
@@ -201,6 +245,8 @@ class ExploreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        username.isHidden = true
+        location.isHidden = true
         if isProfileShown == false{
           backViewProfile.isHidden = true
           backView2.isHidden = true
@@ -220,15 +266,41 @@ class ExploreViewController: UIViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-        username.setTitle("Username", for: .normal)
-        username.setTitleColor(.black, for: .normal)
-        location.setTitleColor(.gray, for: .normal)
-        location.setTitle("Jakarta", for: .normal)
+        
         registerCell()
         getAllItem()
-        dataShow = restaurantModel.filter({(r: Restaurants) -> Bool in
+        getUser()
+        currentData = restaurantModel.filter({(r: Restaurants) -> Bool in
             return r.name != nil
         })
+        dataShow = currentData
+        let locationButton =  UIButton(type: .custom)
+        locationButton.setImage(UIImage(named: "location"), for: .normal)
+        locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
+        locationButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
+        let locationLabel = UILabel(frame: CGRect(x: -70, y: 5, width: 100, height: 20))// set position of label
+        locationLabel.text = "Location"
+        locationLabel.textColor = UIColor.black
+        locationLabel.backgroundColor = UIColor.clear
+        locationButton.addSubview(locationLabel)
+        locationButton.addTarget(self, action: #selector(showLocation), for: .touchUpInside)
+        let rightBarButton = UIBarButtonItem(customView: locationButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        let profileButton =  UIButton(type: .custom)
+        profileButton.setImage(UIImage(systemName: "person.circle.fill"), for: .normal)
+        profileButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
+        profileButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
+        let profileLabel = UILabel(frame: CGRect(x: 30, y: 5, width: 100, height: 20))// set position of label
+        profileLabel.text = currentUser.name
+        profileLabel.textColor = UIColor.black
+        profileLabel.backgroundColor =   UIColor.clear
+        profileButton.addSubview(profileLabel)
+        profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
+        profileButton.imageView?.contentMode = .scaleAspectFit
+        profileButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        let leftBarButton = UIBarButtonItem(customView: profileButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
 //        UILabel.appearance().font = UIFont(name: "SF Pro", size: 12)
         // Do any additional setup after loading the view.
     }
@@ -247,6 +319,14 @@ class ExploreViewController: UIViewController {
         }
         catch{
             //error handling
+        }
+    }
+    
+    func getUser() {
+        currentUser = UsersModel.getUser()
+        
+        DispatchQueue.main.async {
+            self.restaurantList.reloadData()
         }
     }
 
@@ -276,7 +356,7 @@ extension ExploreViewController: CLLocationManagerDelegate {
 extension ExploreViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let search = searchInstance.search
-        dataShow = search(NSSet(array: dataShow), searchText)
+        dataShow = search(NSSet(array: currentData), searchText)
         DispatchQueue.main.async {
             self.restaurantList.reloadData()
         }

@@ -23,13 +23,11 @@ class SearchBar {
         } else {
             for d in data {
                 if d.name!.lowercased().contains(searchText.lowercased()) {
-                    print(d.name!)
                     filteredData.append(d)
                 }
             }
         }
         
-        print(filteredData)
         return filteredData
     }
 
