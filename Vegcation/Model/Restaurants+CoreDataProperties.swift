@@ -1,8 +1,8 @@
 //
 //  Restaurants+CoreDataProperties.swift
-//  Mini_Challenge_2
+//  Vegcation
 //
-//  Created by feedloop on 22/06/22.
+//  Created by Wildan Budi on 03/07/22.
 //
 //
 
@@ -19,6 +19,7 @@ extension Restaurants {
     @NSManaged public var address: String?
     @NSManaged public var city: String?
     @NSManaged public var image: Data?
+    @NSManaged public var imageMap: Data?
     @NSManaged public var imageUrl: String?
     @NSManaged public var kecamatan: String?
     @NSManaged public var latitude: Double
@@ -30,10 +31,9 @@ extension Restaurants {
     @NSManaged public var priceMin: String?
     @NSManaged public var rating: Double
     @NSManaged public var vegeResto: Bool
-    @NSManaged public var imageMap: Data?
     @NSManaged public var menus: NSSet?
-    @NSManaged public var users: NSSet?
     @NSManaged public var reviews: NSSet?
+    @NSManaged public var users: NSSet?
 
 }
 
@@ -54,23 +54,6 @@ extension Restaurants {
 
 }
 
-// MARK: Generated accessors for users
-extension Restaurants {
-
-    @objc(addUsersObject:)
-    @NSManaged public func addToUsers(_ value: Users)
-
-    @objc(removeUsersObject:)
-    @NSManaged public func removeFromUsers(_ value: Users)
-
-    @objc(addUsers:)
-    @NSManaged public func addToUsers(_ values: NSSet)
-
-    @objc(removeUsers:)
-    @NSManaged public func removeFromUsers(_ values: NSSet)
-
-}
-
 // MARK: Generated accessors for reviews
 extension Restaurants {
 
@@ -85,6 +68,23 @@ extension Restaurants {
 
     @objc(removeReviews:)
     @NSManaged public func removeFromReviews(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for users
+extension Restaurants {
+
+    @objc(addUsersObject:)
+    @NSManaged public func addToUsers(_ value: Users)
+
+    @objc(removeUsersObject:)
+    @NSManaged public func removeFromUsers(_ value: Users)
+
+    @objc(addUsers:)
+    @NSManaged public func addToUsers(_ values: NSSet)
+
+    @objc(removeUsers:)
+    @NSManaged public func removeFromUsers(_ values: NSSet)
 
 }
 

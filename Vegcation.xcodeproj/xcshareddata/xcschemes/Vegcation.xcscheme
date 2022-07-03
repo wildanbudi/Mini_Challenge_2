@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "428364EB2854D57B00D057E9"
-               BuildableName = "Mini_Challenge_2.app"
-               BlueprintName = "Mini_Challenge_2"
-               ReferencedContainer = "container:Mini_Challenge_2.xcodeproj">
+               BuildableName = "Vegcation.app"
+               BlueprintName = "Vegcation"
+               ReferencedContainer = "container:Vegcation.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "428364EB2854D57B00D057E9"
-            BuildableName = "Mini_Challenge_2.app"
-            BlueprintName = "Mini_Challenge_2"
-            ReferencedContainer = "container:Mini_Challenge_2.xcodeproj">
+            BuildableName = "Vegcation.app"
+            BlueprintName = "Vegcation"
+            ReferencedContainer = "container:Vegcation.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "428364EB2854D57B00D057E9"
-            BuildableName = "Mini_Challenge_2.app"
-            BlueprintName = "Mini_Challenge_2"
-            ReferencedContainer = "container:Mini_Challenge_2.xcodeproj">
+            BuildableName = "Vegcation.app"
+            BlueprintName = "Vegcation"
+            ReferencedContainer = "container:Vegcation.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

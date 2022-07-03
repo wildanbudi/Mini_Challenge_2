@@ -12,7 +12,7 @@
         <!--Explore View Controller-->
         <scene sceneID="UBi-GB-EAa">
             <objects>
-                <viewController id="fcR-DX-6Ys" customClass="ExploreViewController" customModule="Mini_Challenge_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fcR-DX-6Ys" customClass="ExploreViewController" customModule="Vegcation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DqT-R2-Lgb">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
