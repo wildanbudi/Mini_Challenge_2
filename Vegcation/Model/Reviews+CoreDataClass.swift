@@ -1,8 +1,8 @@
 //
 //  Reviews+CoreDataClass.swift
-//  Mini_Challenge_2
+//  Vegcation
 //
-//  Created by feedloop on 22/06/22.
+//  Created by Wildan Budi on 03/07/22.
 //
 //
 

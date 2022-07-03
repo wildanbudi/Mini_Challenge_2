@@ -1,8 +1,8 @@
 //
 //  Menus+CoreDataProperties.swift
-//  Mini_Challenge_2
+//  Vegcation
 //
-//  Created by feedloop on 16/06/22.
+//  Created by Wildan Budi on 03/07/22.
 //
 //
 
@@ -16,9 +16,9 @@ extension Menus {
         return NSFetchRequest<Menus>(entityName: "Menus")
     }
 
+    @NSManaged public var image: Data?
     @NSManaged public var imageUrl: String?
     @NSManaged public var name: String?
-    @NSManaged public var image: Data?
     @NSManaged public var restaurant: Restaurants?
 
 }

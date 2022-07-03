@@ -1,8 +1,8 @@
 //
 //  Users+CoreDataProperties.swift
-//  Mini_Challenge_2
+//  Vegcation
 //
-//  Created by feedloop on 22/06/22.
+//  Created by Wildan Budi on 03/07/22.
 //
 //
 
@@ -17,9 +17,9 @@ extension Users {
     }
 
     @NSManaged public var email: String?
+    @NSManaged public var image: Data?
     @NSManaged public var name: String?
     @NSManaged public var password: String?
-    @NSManaged public var image: Data?
     @NSManaged public var restaurants: NSSet?
     @NSManaged public var reviews: NSSet?
 
