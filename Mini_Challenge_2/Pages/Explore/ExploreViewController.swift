@@ -77,6 +77,7 @@ class ExploreViewController: UIViewController {
     @IBAction func backViewProfileTapped(_ sender: Any) {
     }
     @objc private func showProfile(_ sender: Any) {
+        self.search.endEditing(true)
         UIView.animate(withDuration: 0.3) {
             self.profileViewLeading.constant = 0
             self.view.layoutIfNeeded()
@@ -121,6 +122,7 @@ class ExploreViewController: UIViewController {
     }
     @IBOutlet weak var search: UISearchBar!
     @IBAction func filterButton(_ sender: Any) {
+        self.search.endEditing(true)
         let filterStoryboard = UIStoryboard(name: "Filter", bundle: nil)
         let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterViewController")
         
@@ -135,6 +137,7 @@ class ExploreViewController: UIViewController {
         self.present(filterViewController, animated: true)
     }
     @objc private func showLocation(_ sender: Any) {
+        self.search.endEditing(true)
         let locationStoryboard = UIStoryboard(name: "Location", bundle: nil)
         let locationViewController = locationStoryboard.instantiateViewController(withIdentifier: "LocationViewController")
         
@@ -149,12 +152,12 @@ class ExploreViewController: UIViewController {
     private var difference:CGFloat = 0.0
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-      if isProfileShown{
-           if let touch = touches.first{
+        if isProfileShown{
+            if let touch = touches.first{
               let location = touch.location(in: backViewProfile)
               beginPoint = location.x
-          }
-      }
+            }
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -257,6 +260,7 @@ class ExploreViewController: UIViewController {
         self.view.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 255/255)
         search.delegate = self
         self.locationManager.requestAlwaysAuthorization()
+        self.restaurantList.keyboardDismissMode = .onDrag
 
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()

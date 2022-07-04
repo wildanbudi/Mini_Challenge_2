@@ -49,30 +49,7 @@ class FilterViewController: UIViewController {
             }
         }
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//
-//        let rateButtons = [self.star1Button, self.star2Button, self.star3Button, self.star4Button, self.star5Button]
-//        for i in 0...4 {
-//            rateButtons[i]!.layer.borderColor = vegeGreen.cgColor
-//            rateButtons[i]!.setTitle("\(i+1) Star", for: .normal)
-//            rateButtons[i]!.titleLabel?.font = .systemFont(ofSize: 17.0, weight: .bold)
-//            if rateFilter[i] {
-//                rateButtons[i]!.setImage(UIImage(systemName: "star.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
-//                rateButtons[i]!.backgroundColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
-//                rateButtons[i]!.setTitleColor(.white, for: .normal)
-//            } else {
-//                rateButtons[i]!.setImage(UIImage(systemName: "star.fill")?.withTintColor(vegeGreen, renderingMode: .alwaysOriginal), for: .normal)
-//                rateButtons[i]!.setTitleColor(vegeGreen, for: .normal)
-//                rateButtons[i]!.backgroundColor = .white
-//            }
-//        }
-//
-//        fromTextField.text = String(fromPrice)
-//        toTextField.text = String(toPrice)
-//    }
-    
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         fromPrice = Int(fromTextField.text ?? "0") ?? 0
         toPrice = Int(toTextField.text ?? "0") ?? 0

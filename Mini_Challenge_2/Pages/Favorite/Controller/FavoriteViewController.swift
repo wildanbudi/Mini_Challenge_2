@@ -41,6 +41,7 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
         
         favoriteTableView.delegate = self
         favoriteTableView.dataSource = self
+        self.favoriteTableView.keyboardDismissMode = .onDrag
         
         searchBar.delegate = self
         
@@ -182,7 +183,7 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     @IBAction func backViewProfileTapped(_ sender: Any) {}
     
     @objc private func showProfile() {
-//        performSegue(withIdentifier: "GoToProfile", sender: self)
+        self.searchBar.endEditing(true)
         UIView.animate(withDuration: 0.3) {
             self.profileViewLeading.constant = 0
             self.view.layoutIfNeeded()
@@ -196,7 +197,7 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     
     
     @objc private func showLocation(_ sender: Any) {
-//        performSegue(withIdentifier: "ShowLocationModal", sender: self)
+        self.searchBar.endEditing(true)
         let locationStoryboard = UIStoryboard(name: "Location", bundle: nil)
         let locationViewController = locationStoryboard.instantiateViewController(withIdentifier: "LocationViewController")
         
@@ -208,6 +209,7 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
     }
     
     @IBAction private func filterButton(_ sender: UIButton) {
+        self.searchBar.endEditing(true)
         let filterStoryboard = UIStoryboard(name: "Filter", bundle: nil)
         let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterViewController")
         
