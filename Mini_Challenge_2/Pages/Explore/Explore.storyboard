@@ -163,6 +163,7 @@
                         <outlet property="segmentedType" destination="CEj-os-GiG" id="0E9-dp-jgc"/>
                         <outlet property="username" destination="gL9-00-9ne" id="Ktc-Oa-eLR"/>
                         <segue destination="hye-Wt-cOR" kind="show" identifier="GoToDetail" id="9XR-Th-OuP"/>
+                        <segue destination="B1y-4J-nJl" kind="presentation" identifier="GoToPermission" modalPresentationStyle="fullScreen" id="7sg-0x-7Bp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0U-69-BaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -171,11 +172,7 @@
                         <action selector="backView2Tapped:" destination="fcR-DX-6Ys" id="lY0-Bp-ndt"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="YGr-Ya-NrU">
-                    <connections>
-                        <action selector="backViewProfileTapped:" destination="fcR-DX-6Ys" id="OXv-1K-HAC"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="YGr-Ya-NrU"/>
             </objects>
             <point key="canvasLocation" x="41.53846153846154" y="-529.62085308056874"/>
         </scene>
@@ -273,6 +270,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POq-iX-xXk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="660" y="-382"/>
+        </scene>
+        <!--Permission-->
+        <scene sceneID="dyy-NE-rlg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Permission" id="B1y-4J-nJl" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5f3-di-KNQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rBm-1Q-Zhl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="999" y="-503"/>
         </scene>
     </scenes>
     <resources>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		422E5D60287205FD00F36CE3 /* Permission.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 422E5D5F287205FD00F36CE3 /* Permission.storyboard */; };
+		422E5D622872061B00F36CE3 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422E5D612872061B00F36CE3 /* PermissionViewController.swift */; };
 		4276A2C62868D6A0003B1C73 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4276A2C52868D6A0003B1C73 /* CloudKit.framework */; };
 		428364F02854D57B00D057E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428364EF2854D57B00D057E9 /* AppDelegate.swift */; };
 		428364F22854D57B00D057E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428364F12854D57B00D057E9 /* SceneDelegate.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		422E5D5F287205FD00F36CE3 /* Permission.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Permission.storyboard; sourceTree = "<group>"; };
+		422E5D612872061B00F36CE3 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		4276A2C32868D69E003B1C73 /* Mini_Challenge_2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mini_Challenge_2.entitlements; sourceTree = "<group>"; };
 		4276A2C52868D6A0003B1C73 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		428364EC2854D57B00D057E9 /* Mini_Challenge_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini_Challenge_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +127,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		422E5D632872062600F36CE3 /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				422E5D5F287205FD00F36CE3 /* Permission.storyboard */,
+				422E5D612872061B00F36CE3 /* PermissionViewController.swift */,
+			);
+			path = Permission;
+			sourceTree = "<group>";
+		};
 		4276A2C42868D6A0003B1C73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +348,7 @@
 				43C5043C28561F7C00F1C815 /* Favorite */,
 				428364F32854D57B00D057E9 /* ViewController.swift */,
 				428364F52854D57B00D057E9 /* Main.storyboard */,
+				422E5D632872062600F36CE3 /* Permission */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -514,6 +528,7 @@
 				428364FC2854D57C00D057E9 /* Assets.xcassets in Resources */,
 				43BD12E8286186EC002EA86A /* Location.storyboard in Resources */,
 				43C504442856204000F1C815 /* Favorite.storyboard in Resources */,
+				422E5D60287205FD00F36CE3 /* Permission.storyboard in Resources */,
 				42EA54D2285FBA8C00C87662 /* RestaurantTableViewCell.xib in Resources */,
 				4A160533285CA0F7003C1434 /* DetailPage.storyboard in Resources */,
 				428364F72854D57B00D057E9 /* Main.storyboard in Resources */,
@@ -563,6 +578,7 @@
 				431E184D2862C7C600EABE9A /* ReviewTableViewCell.swift in Sources */,
 				431E184A2862C1B400EABE9A /* Users+CoreDataClass.swift in Sources */,
 				428364F22854D57B00D057E9 /* SceneDelegate.swift in Sources */,
+				422E5D622872061B00F36CE3 /* PermissionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

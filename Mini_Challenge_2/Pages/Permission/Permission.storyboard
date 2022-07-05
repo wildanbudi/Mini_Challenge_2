@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Permission View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="PermissionViewController" customModule="Mini_Challenge_2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8p-O0-2mC">
+                                <rect key="frame" x="28" y="667" width="358" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Otq-0Z-Bv8"/>
+                                    <constraint firstAttribute="width" constant="358" id="wWH-tA-rMT"/>
+                                </constraints>
+                                <color key="tintColor" red="0.39607840779999998" green="0.54901963470000004" blue="0.21568629149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Sure, I'd like that">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" red="0.39607840779999998" green="0.54901963470000004" blue="0.21568629149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="turnOnButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wVT-M7-wSZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahy-Mp-7UV">
+                                <rect key="frame" x="28" y="747" width="358" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="358" id="1ej-6p-1er"/>
+                                    <constraint firstAttribute="height" constant="50" id="CUc-Wh-FK0"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Not now"/>
+                                <connections>
+                                    <action selector="laterButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="l87-Qh-zRS"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow Your Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ds-yY-VA4">
+                                <rect key="frame" x="44" y="458" width="326" height="41"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="34"/>
+                                <color key="textColor" red="0.39974978570000003" green="0.54926711319999999" blue="0.21559402350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5m3-v0-4lJ">
+                                <rect key="frame" x="56" y="517" width="302" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fdy-k0-ULl"/>
+                                </constraints>
+                                <string key="text">Please turn on your location services
+to help you find restaurant nearby.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Allow_Location" translatesAutoresizingMaskIntoConstraints="NO" id="j9i-S4-zPk">
+                                <rect key="frame" x="89" y="178" width="236" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="5gw-CK-RVd"/>
+                                    <constraint firstAttribute="width" constant="236" id="bud-rC-zyy"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9Ds-yY-VA4" firstAttribute="centerX" secondItem="j9i-S4-zPk" secondAttribute="centerX" id="9Fz-UA-zuB"/>
+                            <constraint firstItem="5m3-v0-4lJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="56" id="BoX-yd-t6n"/>
+                            <constraint firstItem="T8p-O0-2mC" firstAttribute="top" secondItem="5m3-v0-4lJ" secondAttribute="bottom" constant="100" id="CTE-tL-oci"/>
+                            <constraint firstItem="j9i-S4-zPk" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="N4b-6H-S4f"/>
+                            <constraint firstItem="5m3-v0-4lJ" firstAttribute="centerX" secondItem="9Ds-yY-VA4" secondAttribute="centerX" id="OWK-0I-Jh1"/>
+                            <constraint firstItem="T8p-O0-2mC" firstAttribute="centerX" secondItem="5m3-v0-4lJ" secondAttribute="centerX" id="Qh8-un-ihF"/>
+                            <constraint firstItem="9Ds-yY-VA4" firstAttribute="top" secondItem="j9i-S4-zPk" secondAttribute="bottom" constant="30" id="TCJ-1X-n8U"/>
+                            <constraint firstItem="j9i-S4-zPk" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="134" id="Y3T-h3-T3O"/>
+                            <constraint firstItem="ahy-Mp-7UV" firstAttribute="centerX" secondItem="T8p-O0-2mC" secondAttribute="centerX" id="bK3-42-3IX"/>
+                            <constraint firstItem="ahy-Mp-7UV" firstAttribute="top" secondItem="T8p-O0-2mC" secondAttribute="bottom" constant="30" id="hs7-nC-93N"/>
+                            <constraint firstItem="5m3-v0-4lJ" firstAttribute="top" secondItem="9Ds-yY-VA4" secondAttribute="bottom" constant="18" id="zRG-n8-kCf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="ahy-Mp-7UV" id="fka-hQ-NWQ"/>
+                        <outlet property="confirmButton" destination="T8p-O0-2mC" id="a6P-7K-ehz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34.782608695652179" y="78.348214285714278"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Allow_Location" width="711" height="750"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -12,15 +12,14 @@ import MapKit
 class ExploreViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let searchInstance = SearchBar()
     let locationManager = CLLocationManager()
+    var distance: CLLocationDistance!
+    var currentLocation: CLLocation!
     var restaurantModel: [Restaurants] = []
     var dataShow: [Restaurants] = []
     var currentData: [Restaurants] = []
-    var restaurantData: NSSet!
-    var distance: CLLocationDistance!
-    var currentLocation: CLLocation!
     var detailData: Restaurants!
-    let searchInstance = SearchBar()
     var isProfileShown : Bool = false
     var exploreFromPrice = 0
     var exploreToPrice = 0
@@ -35,6 +34,48 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var username: UIButton!
     @IBOutlet weak var location: UIButton!
     @IBOutlet weak var filter: UIButton!
+    @IBOutlet weak var search: UISearchBar!
+    @IBOutlet weak var segmentedType: UISegmentedControl!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 255/255)
+        username.isHidden = true
+        location.isHidden = true
+        search.delegate = self
+        
+        if isProfileShown == false{
+          backViewProfile.isHidden = true
+          backView2.isHidden = true
+        }else{
+          backViewProfile.isHidden = false
+          backView2.isHidden = false
+        }
+        
+        switch locationManager.authorizationStatus {
+        case .authorizedAlways, .authorizedWhenInUse:
+            if CLLocationManager.locationServicesEnabled() {
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                locationManager.startUpdatingLocation()
+            }
+        default:
+            performSegue(withIdentifier: "GoToPermission", sender: self)
+        }
+        
+        registerCell()
+        getAllItem()
+        getUser()
+        currentData = restaurantModel.filter({(r: Restaurants) -> Bool in
+            return r.name != nil
+        })
+        dataShow = currentData
+        initNavigation()
+        
+        // Do any additional setup after loading the view.
+    }
+    
     @IBAction func backView2Tapped(_ sender: Any) {
         UIView.animate(withDuration: 0.3) {
             self.backViewProfile.isHidden = true
@@ -46,50 +87,9 @@ class ExploreViewController: UIViewController {
         }
         self.isProfileShown = false
         search.isHidden = false
-        let locationButton =  UIButton(type: .custom)
-        locationButton.setImage(UIImage(named: "location"), for: .normal)
-        locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
-        locationButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
-        let locationLabel = UILabel(frame: CGRect(x: -70, y: 5, width: 100, height: 20))// set position of label
-        locationLabel.text = "Location"
-        locationLabel.textColor = UIColor.black
-        locationLabel.backgroundColor = UIColor.clear
-        locationButton.addSubview(locationLabel)
-        locationButton.addTarget(self, action: #selector(showLocation), for: .touchUpInside)
-        let rightBarButton = UIBarButtonItem(customView: locationButton)
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        
-        let profileButton =  UIButton(type: .custom)
-        profileButton.setImage(UIImage(systemName: "person.circle.fill"), for: .normal)
-        profileButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
-        profileButton.frame = CGRect(x: 0, y: 5, width: 0, height: 30)
-        let profileLabel = UILabel(frame: CGRect(x: 30, y: 5, width: 100, height: 20))// set position of label
-        profileLabel.text = currentUser.name
-        profileLabel.textColor = UIColor.black
-        profileLabel.backgroundColor =   UIColor.clear
-        profileButton.addSubview(profileLabel)
-        profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
-        profileButton.imageView?.contentMode = .scaleAspectFit
-        profileButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
-        let leftBarButton = UIBarButtonItem(customView: profileButton)
-        self.navigationItem.leftBarButtonItem = leftBarButton
+        initNavigation()
     }
-    @IBAction func backViewProfileTapped(_ sender: Any) {
-    }
-    @objc private func showProfile(_ sender: Any) {
-        UIView.animate(withDuration: 0.3) {
-            self.profileViewLeading.constant = 0
-            self.view.layoutIfNeeded()
-            self.backViewProfile.isHidden = false
-          self.backView2.isHidden = false
-        } completion: { (status) in
-        }
-        self.isProfileShown = true
-        search.isHidden = true
-        self.navigationItem.setLeftBarButtonItems(nil, animated: true)
-        self.navigationItem.setRightBarButtonItems(nil, animated: true)
-    }
-    @IBOutlet weak var segmentedType: UISegmentedControl!
+    
     @IBAction func restoType(_ sender: Any) {
         switch segmentedType.selectedSegmentIndex
         {
@@ -119,7 +119,7 @@ class ExploreViewController: UIViewController {
             }
         }
     }
-    @IBOutlet weak var search: UISearchBar!
+    
     @IBAction func filterButton(_ sender: Any) {
         let filterStoryboard = UIStoryboard(name: "Filter", bundle: nil)
         let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterViewController")
@@ -133,68 +133,6 @@ class ExploreViewController: UIViewController {
         filterVC.toPrice = exploreToPrice
         filterVC.rateList = exploreRateList
         self.present(filterViewController, animated: true)
-    }
-    @objc private func showLocation(_ sender: Any) {
-        let locationStoryboard = UIStoryboard(name: "Location", bundle: nil)
-        let locationViewController = locationStoryboard.instantiateViewController(withIdentifier: "LocationViewController")
-        
-        if let presentationController = locationViewController.presentationController as? UISheetPresentationController {
-            presentationController.detents = [.medium()] /// change to [.medium(), .large()] for a half *and* full screen sheet
-        }
-        
-        self.present(locationViewController, animated: true)
-    }
-    
-    private var beginPoint:CGFloat = 0.0
-    private var difference:CGFloat = 0.0
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-      if isProfileShown{
-           if let touch = touches.first{
-              let location = touch.location(in: backViewProfile)
-              beginPoint = location.x
-          }
-      }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-      if isProfileShown{
-          if let touch = touches.first{
-              let location = touch.location(in: backViewProfile)
-              
-              let differenceFromBeginPoint = beginPoint - location.x
-              
-              if (differenceFromBeginPoint>0 || differenceFromBeginPoint<343){
-                  difference = differenceFromBeginPoint
-                  self.profileViewLeading.constant = -differenceFromBeginPoint
-              }
-          }
-      }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-      if  isProfileShown{
-          if difference>100{
-              UIView.animate(withDuration: 0.1) {
-                  self.profileViewLeading.constant = -343
-              } completion: { (status) in
-                  self.isProfileShown = false
-                  self.backViewProfile.isHidden = true
-                self.backView2.isHidden = true
-                self.tabBarController?.tabBar.isHidden = false
-              }
-          }
-          else{
-              UIView.animate(withDuration: 0.1) {
-                  self.profileViewLeading.constant = 0
-              } completion: { (status) in
-                  self.isProfileShown = true
-                  self.backViewProfile.isHidden = false
-                self.backView2.isHidden = false
-                self.tabBarController?.tabBar.isHidden = true
-              }
-          }
-      }
     }
     
     @IBAction func cancel(_ unwindSegue: UIStoryboardSegue) {}
@@ -243,37 +181,87 @@ class ExploreViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        username.isHidden = true
-        location.isHidden = true
-        if isProfileShown == false{
-          backViewProfile.isHidden = true
-          backView2.isHidden = true
-        }else{
-          backViewProfile.isHidden = false
-          backView2.isHidden = false
+    private var beginPoint:CGFloat = 0.0
+    private var difference:CGFloat = 0.0
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+      if isProfileShown{
+           if let touch = touches.first{
+              let location = touch.location(in: backViewProfile)
+              beginPoint = location.x
+          }
+      }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+      if isProfileShown{
+          if let touch = touches.first{
+              let location = touch.location(in: backViewProfile)
+              
+              let differenceFromBeginPoint = beginPoint - location.x
+              
+              if (differenceFromBeginPoint>0 || differenceFromBeginPoint<343){
+                  difference = differenceFromBeginPoint
+                  self.profileViewLeading.constant = -differenceFromBeginPoint
+              }
+          }
+      }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+      if  isProfileShown{
+          if difference>100{
+              UIView.animate(withDuration: 0.1) {
+                  self.profileViewLeading.constant = -343
+              } completion: { (status) in
+                  self.isProfileShown = false
+                  self.backViewProfile.isHidden = true
+                  self.search.isHidden = false
+                  self.backView2.isHidden = true
+                  self.tabBarController?.tabBar.isHidden = false
+                  self.initNavigation()
+              }
+          }
+          else{
+              UIView.animate(withDuration: 0.1) {
+                  self.profileViewLeading.constant = 0
+              } completion: { (status) in
+                  self.isProfileShown = true
+                  self.backViewProfile.isHidden = false
+                  self.search.isHidden = true
+                  self.backView2.isHidden = false
+                  self.tabBarController?.tabBar.isHidden = true
+              }
+          }
+      }
+    }
+    
+    @objc private func showProfile(_ sender: Any) {
+        UIView.animate(withDuration: 0.3) {
+            self.profileViewLeading.constant = 0
+            self.view.layoutIfNeeded()
+            self.backViewProfile.isHidden = false
+          self.backView2.isHidden = false
+        } completion: { (status) in
         }
-        self.view.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 255/255)
-        search.delegate = self
-        self.locationManager.requestAlwaysAuthorization()
-
-        // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
-
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
+        self.isProfileShown = true
+        search.isHidden = true
+        self.navigationItem.setLeftBarButtonItems(nil, animated: true)
+        self.navigationItem.setRightBarButtonItems(nil, animated: true)
+    }
+    
+    @objc private func showLocation(_ sender: Any) {
+        let locationStoryboard = UIStoryboard(name: "Location", bundle: nil)
+        let locationViewController = locationStoryboard.instantiateViewController(withIdentifier: "LocationViewController")
+        
+        if let presentationController = locationViewController.presentationController as? UISheetPresentationController {
+            presentationController.detents = [.medium()] /// change to [.medium(), .large()] for a half *and* full screen sheet
         }
         
-        registerCell()
-        getAllItem()
-        getUser()
-        currentData = restaurantModel.filter({(r: Restaurants) -> Bool in
-            return r.name != nil
-        })
-        dataShow = currentData
+        self.present(locationViewController, animated: true)
+    }
+    
+    func initNavigation() {
         let locationButton =  UIButton(type: .custom)
         locationButton.setImage(UIImage(named: "location"), for: .normal)
         locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
@@ -301,8 +289,6 @@ class ExploreViewController: UIViewController {
         profileButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
         let leftBarButton = UIBarButtonItem(customView: profileButton)
         self.navigationItem.leftBarButtonItem = leftBarButton
-//        UILabel.appearance().font = UIFont(name: "SF Pro", size: 12)
-        // Do any additional setup after loading the view.
     }
     
     func registerCell() {
@@ -339,7 +325,6 @@ class ExploreViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 extension ExploreViewController: CLLocationManagerDelegate {
@@ -349,8 +334,6 @@ extension ExploreViewController: CLLocationManagerDelegate {
         let loc = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         currentLocation = loc
     }
-    
-    
 }
 
 extension ExploreViewController: UISearchBarDelegate {
@@ -365,6 +348,31 @@ extension ExploreViewController: UISearchBarDelegate {
 
 extension ExploreViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if dataShow.count == 0 {
+            let messageImage = UIImageView()
+            messageImage.translatesAutoresizingMaskIntoConstraints = false
+            messageImage.heightAnchor.constraint(equalToConstant: self.view.frame.width/1.65).isActive = true
+            messageImage.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+            messageImage.image = UIImage(named: "Illust_Restaurant Not Found")
+            let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.width))
+
+            messageLabel.translatesAutoresizingMaskIntoConstraints = false
+            messageLabel.text = "Oh no! We cannot find the restaurant"
+            messageLabel.textColor = UIColor(red: 174/255, green: 174/255, blue: 178/255, alpha: 1)
+            messageLabel.numberOfLines = 0
+            messageLabel.textAlignment = .center
+            messageLabel.font = UIFont(name: "SFPro", size: 17)
+            messageLabel.sizeToFit()
+
+            messageImage.addSubview(messageLabel)
+            messageLabel.centerXAnchor.constraint(equalTo: messageImage.centerXAnchor).isActive = true
+            messageLabel.heightAnchor.constraint(equalToConstant: 520).isActive = true
+
+            restaurantList.backgroundView = messageImage
+            restaurantList.separatorStyle = .none
+        } else {
+            restaurantList.backgroundView = nil
+        }
         return dataShow.count
     }
     
@@ -374,6 +382,7 @@ extension ExploreViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: "restaurantCell", for: indexPath) as? RestaurantTableViewCell)!
+        
         if dataShow[indexPath.row].image != nil {
             cell.restaurantImage.image = UIImage(data: dataShow[indexPath.row].image!)
         }
@@ -382,6 +391,7 @@ extension ExploreViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             cell.restaurantType.image = UIImage(systemName: "")
         }
+        
         cell.restaurantImage.layer.cornerRadius = 7
         cell.name.text = dataShow[indexPath.row].name
         cell.location.text = dataShow[indexPath.row].kecamatan
@@ -391,8 +401,9 @@ extension ExploreViewController: UITableViewDataSource, UITableViewDelegate {
         if currentLocation != nil {
             distance = currentLocation.distance(from: location)
             cell.distance.text = String(Int(distance/1000)) + "km"
+        } else {
+            cell.distance.text = "- km"
         }
-
         
         return cell
     }

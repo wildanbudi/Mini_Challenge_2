@@ -34,6 +34,7 @@ extension Restaurants {
     @NSManaged public var menus: NSSet?
     @NSManaged public var users: NSSet?
     @NSManaged public var reviews: NSSet?
+//    var distance: Int?
 
 }
 
