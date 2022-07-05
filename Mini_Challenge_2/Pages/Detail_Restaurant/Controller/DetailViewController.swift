@@ -83,6 +83,54 @@ class DetailViewController: UIViewController,UITableViewDelegate {
         }
     }
     
+    func formatPointsMin() ->String{
+        let num = Double(restaurantDetail.priceMin!)!
+        let thousandNum = num/1000
+        let millionNum = num/1000000
+        if num >= 1000 && num < 1000000{
+            if(floor(thousandNum) == thousandNum){
+                return("\(Int(thousandNum))k")
+            }
+            return("\(thousandNum)k")
+        }
+        if num > 1000000{
+            if(floor(millionNum) == millionNum){
+                return("\(Int(thousandNum))k")
+            }
+            return ("\(millionNum)M")
+        }
+        else{
+            if(floor(num) == num){
+                return ("\(Int(num))")
+            }
+            return ("\(num)")
+        }
+    }
+    
+    func formatPointsMax() ->String{
+        let num = Double(restaurantDetail.priceMax!)!
+        let thousandNum = num/1000
+        let millionNum = num/1000000
+        if num >= 1000 && num < 1000000{
+            if(floor(thousandNum) == thousandNum){
+                return("\(Int(thousandNum))k")
+            }
+            return("\(thousandNum)k")
+        }
+        if num > 1000000{
+            if(floor(millionNum) == millionNum){
+                return("\(Int(thousandNum))k")
+            }
+            return ("\(millionNum)M")
+        }
+        else{
+            if(floor(num) == num){
+                return ("\(Int(num))")
+            }
+            return ("\(num)")
+        }
+    }
+    
     // Connect Controller to Database
     func connectControllerToData () {
         let imgMap = UIImage(data: restaurantDetail.imageMap! )
@@ -93,8 +141,8 @@ class DetailViewController: UIViewController,UITableViewDelegate {
             RestaurantType.isHidden = false
         }
         pageController.isHidden = true
-        PriceTagMin.text = restaurantDetail.priceMin
-        PriceTagMax.text = restaurantDetail.priceMax
+        PriceTagMin.text = formatPointsMin()
+        PriceTagMax.text = formatPointsMax()
         RateTag.text = String(restaurantDetail.rating)
         OpenHourTag.text = restaurantDetail.openHours
         ContactTag.text = restaurantDetail.phone
