@@ -17,7 +17,6 @@ class SearchBar {
         self.data = data
         filteredData = []
         
-        print(searchText)
         if searchText == "" {
             filteredData = data
         } else {

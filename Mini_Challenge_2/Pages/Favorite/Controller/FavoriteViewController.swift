@@ -45,33 +45,7 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
         
         searchBar.delegate = self
         
-        let locationButton =  UIButton(type: .custom)
-        locationButton.setImage(UIImage(named: "location"), for: .normal)
-        locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
-        locationButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
-        let locationLabel = UILabel(frame: CGRect(x: -70, y: 5, width: 100, height: 20))// set position of label
-        locationLabel.text = "Location"
-        locationLabel.textColor = UIColor.black
-        locationLabel.backgroundColor = UIColor.clear
-        locationButton.addSubview(locationLabel)
-        locationButton.addTarget(self, action: #selector(showLocation), for: .touchUpInside)
-        let rightBarButton = UIBarButtonItem(customView: locationButton)
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        
-        let profileButton =  UIButton(type: .custom)
-        profileButton.setImage(UIImage(systemName: "person.circle.fill"), for: .normal)
-        profileButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
-        profileButton.frame = CGRect(x: 0, y: 5, width: 0, height: 31)
-        let profileLabel = UILabel(frame: CGRect(x: 30, y: 5, width: 100, height: 20))// set position of label
-        profileLabel.text = currentUser.name
-        profileLabel.textColor = UIColor.black
-        profileLabel.backgroundColor =   UIColor.clear
-        profileButton.addSubview(profileLabel)
-        profileButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
-        profileButton.imageView?.contentMode = .scaleAspectFit
-        profileButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
-        let leftBarButton = UIBarButtonItem(customView: profileButton)
-        self.navigationItem.leftBarButtonItem = leftBarButton
+        setNavBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -128,6 +102,7 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
                 self.tabBarController?.tabBar.isHidden = true
               }
           }
+          setNavBar()
       }
     }
     
@@ -141,16 +116,7 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    @IBAction func backView2Tapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.3) {
-            self.backViewProfile.isHidden = true
-            self.profileViewLeading.constant = -343
-            self.view.layoutIfNeeded()
-            self.backViewProfile.isHidden = true
-            self.backView2.isHidden = true
-        } completion: { (status) in
-        }
-        self.isProfileShown = false
+    func setNavBar() {
         let locationButton =  UIButton(type: .custom)
         locationButton.setImage(UIImage(named: "location"), for: .normal)
         locationButton.tintColor = UIColor(red: 90/255, green: 141/255, blue: 38/255, alpha: 1)
@@ -178,6 +144,19 @@ class FavoriteViewController: UIViewController, UISearchBarDelegate {
         profileButton.imageEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
         let leftBarButton = UIBarButtonItem(customView: profileButton)
         self.navigationItem.leftBarButtonItem = leftBarButton
+    }
+    
+    @IBAction func backView2Tapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.3) {
+            self.backViewProfile.isHidden = true
+            self.profileViewLeading.constant = -343
+            self.view.layoutIfNeeded()
+            self.backViewProfile.isHidden = true
+            self.backView2.isHidden = true
+        } completion: { (status) in
+        }
+        self.isProfileShown = false
+        setNavBar()
     }
 
     @IBAction func backViewProfileTapped(_ sender: Any) {}
@@ -323,6 +302,33 @@ extension FavoriteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if filteredData.count == 0 {
+            let messageImage = UIImageView()
+            messageImage.translatesAutoresizingMaskIntoConstraints = false
+            messageImage.heightAnchor.constraint(equalToConstant: self.view.frame.width/1.65).isActive = true
+            messageImage.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+            messageImage.image = UIImage(named: "Illust_Restaurant Not Found")
+            let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.width))
+            
+            messageLabel.translatesAutoresizingMaskIntoConstraints = false
+            messageLabel.text = "Oh no! We cannot find the restaurant"
+            messageLabel.textColor = UIColor(red: 174/255, green: 174/255, blue: 178/255, alpha: 1)
+            messageLabel.numberOfLines = 0
+            messageLabel.textAlignment = .center
+            messageLabel.font = UIFont(name: "SFPro", size: 17)
+            messageLabel.sizeToFit()
+            
+            messageImage.addSubview(messageLabel)
+            messageLabel.centerXAnchor.constraint(equalTo: messageImage.centerXAnchor).isActive = true
+            messageLabel.heightAnchor.constraint(equalToConstant: 520).isActive = true
+            
+            favoriteTableView.backgroundView = messageImage
+            favoriteTableView.separatorStyle = .none
+        } else {
+            favoriteTableView.backgroundView = nil
+            favoriteTableView.separatorStyle = .singleLine
+        }
+
         return filteredData.count
     }
     
